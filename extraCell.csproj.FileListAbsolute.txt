@@ -1,0 +1,9 @@
+c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\bin\Debug\extraCell.exe
+c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\bin\Debug\extraCell.pdb
+c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\obj\x86\Debug\extraCell.Form1.resources
+c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\obj\x86\Debug\extraCell.Properties.Resources.resources
+c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\obj\x86\Debug\extraCell.exe
+c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\obj\x86\Debug\extraCell.pdb
