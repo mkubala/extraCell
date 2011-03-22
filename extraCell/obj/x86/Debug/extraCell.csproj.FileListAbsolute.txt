@@ -9,3 +9,10 @@ c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\obj\x8
 c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\obj\x86\Debug\extraCell.pdb
 C:\git\extraCell\extraCell\obj\x86\Debug\extraCell.exe
 C:\git\extraCell\extraCell\obj\x86\Debug\extraCell.pdb
+C:\git\extraCell\extraCell\bin\Debug\extraCell.exe
+C:\git\extraCell\extraCell\bin\Debug\extraCell.pdb
+C:\git\extraCell\extraCell\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\git\extraCell\extraCell\obj\x86\Debug\extraCell.Form1.resources
+C:\git\extraCell\extraCell\obj\x86\Debug\extraCell.Properties.Resources.resources
+C:\git\extraCell\extraCell\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\git\extraCell\extraCell\obj\x86\Debug\GenerateResource.write.1.tlog

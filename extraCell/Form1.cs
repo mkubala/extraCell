@@ -17,7 +17,7 @@ namespace extraCell
             dataGridView1.ColumnCount = 300;
             dataGridView1.RowCount = 300;
      
-            for (byte  i = 0; i < 300; i++)
+            for ( int  i = 0; i < 300; i++)
             {
                 dataGridView1.Columns[i].Name = (Convert.ToChar(65+i)).ToString();
                 dataGridView1.Rows[i].HeaderCell.Value = i.ToString();
