@@ -7,3 +7,5 @@ c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\obj\x8
 c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\obj\x86\Debug\GenerateResource.write.1.tlog
 c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\obj\x86\Debug\extraCell.exe
 c:\users\caruso\documents\visual studio 2010\Projects\extraCell\extraCell\obj\x86\Debug\extraCell.pdb
+C:\git\extraCell\extraCell\obj\x86\Debug\extraCell.exe
+C:\git\extraCell\extraCell\obj\x86\Debug\extraCell.pdb
