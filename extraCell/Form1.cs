@@ -19,8 +19,8 @@ namespace extraCell
 
             ece = new ExtraCellEngine();
 
-            dataGridView1.ColumnCount = 20;
-            dataGridView1.RowCount = 20;
+            /*dataGridView1.ColumnCount = 20;
+            dataGridView1.RowCount = 20;*/
 
             dataGridView1.DataSource = ece.toDataTable();
             
