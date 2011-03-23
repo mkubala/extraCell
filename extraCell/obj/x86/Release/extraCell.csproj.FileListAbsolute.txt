@@ -1,0 +1,9 @@
+C:\Users\hwastu\git-test\extraCell\extraCell\bin\Release\extraCell.exe
+C:\Users\hwastu\git-test\extraCell\extraCell\bin\Release\extraCell.pdb
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Release\extraCell.Form1.resources
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Release\extraCell.Properties.Resources.resources
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Release\extraCell.exe
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Release\extraCell.pdb

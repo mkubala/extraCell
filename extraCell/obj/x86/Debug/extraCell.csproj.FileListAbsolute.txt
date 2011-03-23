@@ -16,3 +16,12 @@ C:\git\extraCell\extraCell\obj\x86\Debug\extraCell.Form1.resources
 C:\git\extraCell\extraCell\obj\x86\Debug\extraCell.Properties.Resources.resources
 C:\git\extraCell\extraCell\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\git\extraCell\extraCell\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\extraCell.exe
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\extraCell.pdb
+C:\Users\hwastu\git-test\extraCell\extraCell\bin\Debug\extraCell.exe
+C:\Users\hwastu\git-test\extraCell\extraCell\bin\Debug\extraCell.pdb
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\extraCell.Form1.resources
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\extraCell.Properties.Resources.resources
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\GenerateResource.write.1.tlog
