@@ -19,29 +19,14 @@ namespace extraCell
 
             ece = new ExtraCellEngine();
 
-            /*dataGridView1.ColumnCount = 20;
-            dataGridView1.RowCount = 20;*/
 
             dataGridView1.DataSource = ece.toDataTable();
-            
-            
-            /*for ( int  i = 0; i < 20; i++)
-            {
-                dataGridView1.Columns[i].Name = (Convert.ToChar(65+i)).ToString();
-                dataGridView1.Rows[i].HeaderCell.Value = i.ToString();
-<<<<<<< HEAD
-            }
-
-            // Wylaczenie sortowania 
 
             foreach (DataGridViewColumn kol in this.dataGridView1.Columns)
             {
                 kol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             }
-=======
-            }*/
-            
->>>>>>> 8d5f1d70a71a710a089c622deda4f7180c0d6bf9
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
