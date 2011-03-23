@@ -22,8 +22,13 @@ namespace extraCell
                 dataGridView1.Columns[i].Name = (Convert.ToChar(65+i)).ToString();
                 dataGridView1.Rows[i].HeaderCell.Value = i.ToString();
             }
-            
-            
+
+            // Wylaczenie sortowania 
+
+            foreach (DataGridViewColumn kol in this.dataGridView1.Columns)
+            {
+                kol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
