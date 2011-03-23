@@ -22,6 +22,8 @@ namespace extraCell
 
             dataGridView1.DataSource = ece.toDataTable();
 
+            // Wylaczenie sortowania
+
             foreach (DataGridViewColumn kol in this.dataGridView1.Columns)
             {
                 kol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
