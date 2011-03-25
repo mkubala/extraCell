@@ -23,12 +23,12 @@ namespace extraCell
             dataGridView1.DataSource = ece.toDataTable();
 
             // Wylaczenie sortowania
-
+/*
             foreach (DataGridViewColumn kol in this.dataGridView1.Columns)
             {
                 kol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             }
-
+            */
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -38,7 +38,11 @@ namespace extraCell
 
         private void otworzToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openFileDialog1.Filter = "Pliki xml|.xml";
+            openFileDialog1.FileName = "";
+            openFileDialog1.ShowDialog();
+            
+            //Operacje po otwarciu pliku
         }
 
         private void zamknijToolStripMenuItem_Click(object sender, EventArgs e)
@@ -118,6 +122,17 @@ namespace extraCell
             }
         }
 
+        private void NowyStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ZapiszStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+ 
 
 
     }
