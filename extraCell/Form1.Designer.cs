@@ -59,22 +59,22 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.filesTab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new extraCell.extraCellTable();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.extraCellTable1 = new extraCell.extraCellTable();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.button2 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new extraCell.extraCellTable();
+            this.extraCellTable1 = new extraCell.extraCellTable();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.filesTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.extraCellTable1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -301,23 +301,23 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.tabControl1);
+            this.panel1.Controls.Add(this.filesTab);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 72);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(566, 302);
             this.panel1.TabIndex = 3;
             // 
-            // tabControl1
+            // filesTab
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(566, 302);
-            this.tabControl1.TabIndex = 0;
+            this.filesTab.Controls.Add(this.tabPage1);
+            this.filesTab.Controls.Add(this.tabPage2);
+            this.filesTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filesTab.Location = new System.Drawing.Point(0, 0);
+            this.filesTab.Name = "filesTab";
+            this.filesTab.SelectedIndex = 0;
+            this.filesTab.Size = new System.Drawing.Size(566, 302);
+            this.filesTab.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -330,17 +330,6 @@
             this.tabPage1.Text = "plik1.xml";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 50;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.Size = new System.Drawing.Size(552, 270);
-            this.dataGridView1.TabIndex = 0;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.extraCellTable1);
@@ -351,16 +340,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "plik2.xml";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // extraCellTable1
-            // 
-            this.extraCellTable1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.extraCellTable1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.extraCellTable1.Location = new System.Drawing.Point(3, 3);
-            this.extraCellTable1.Name = "extraCellTable1";
-            this.extraCellTable1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.extraCellTable1.Size = new System.Drawing.Size(552, 270);
-            this.extraCellTable1.TabIndex = 0;
             // 
             // button1
             // 
@@ -382,6 +361,30 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Engine = null;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 50;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView1.Size = new System.Drawing.Size(552, 270);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
+            // 
+            // extraCellTable1
+            // 
+            this.extraCellTable1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.extraCellTable1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.extraCellTable1.Engine = null;
+            this.extraCellTable1.Location = new System.Drawing.Point(3, 3);
+            this.extraCellTable1.Name = "extraCellTable1";
+            this.extraCellTable1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.extraCellTable1.Size = new System.Drawing.Size(552, 270);
+            this.extraCellTable1.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -402,10 +405,10 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.filesTab.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.extraCellTable1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -441,7 +444,7 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl filesTab;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private extraCellTable dataGridView1;

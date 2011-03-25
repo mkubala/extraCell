@@ -58,7 +58,4 @@ namespace extraCell
         }
     }
 
-    public class Class1
-    {
-    }
 }

@@ -6,12 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace extraCell
 {
     public partial class Form1 : Form
     {
         private ExtraCellEngine ece;
+        private List <TabPage> karty = new List <TabPage>();
+        private List<extraCellTable> tabelki = new List<extraCellTable>();
 
         public Form1()
         {
@@ -29,6 +32,14 @@ namespace extraCell
                 kol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             }
             */
+            dataGridView1.DataSource = null;
+
+             DataGridViewCustomColumn col = new DataGridViewCustomColumn();
+            dataGridView1.Columns.Add(col);
+            
+          
+
+      //      dataGridView1.DataSource = ece.toDataTable();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -38,10 +49,52 @@ namespace extraCell
 
         private void otworzToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Pliki xml|.xml";
+            openFileDialog1.Filter = "Pliki xml|.xml|Wszystkie pliki|*.*";
             openFileDialog1.FileName = "";
             openFileDialog1.ShowDialog();
+
+            System.Windows.Forms.TabPage karta = new System.Windows.Forms.TabPage();
+
+            karta.Size = new System.Drawing.Size(558, 276);
+            karty.Add(karta);
+
+            filesTab.Controls.Add(karta);
+
+        
+
+   //            extraCellTable tabelka = new extraCellTable();
+
+            extraCellTable tabelka = new extraCellTable();
+
+            karta.Controls.Add(tabelka);
+
+            tabelka.Size = new System.Drawing.Size(552, 270);
+            tabelka.Location = new System.Drawing.Point(3, 3);
+
+
             
+            tabelka.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            tabelka.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabelka.Location = new System.Drawing.Point(3, 3);
+            tabelka.RowHeadersWidth = 50;
+            tabelka.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            tabelka.Size = new System.Drawing.Size(552, 270);
+
+
+            tabelki.Add(tabelka);
+
+            tabelka.DataSource = new ExtraCellEngine().toDataTable();
+
+
+            dataGridView1.DataSource = ece.toDataTable();
+     
+
+
+            karta.Padding = new System.Windows.Forms.Padding(3);
+
+            karta.Text = openFileDialog1.FileName;
+            karta.UseVisualStyleBackColor = true;
+
             //Operacje po otwarciu pliku
         }
 
@@ -131,6 +184,18 @@ namespace extraCell
         {
 
         }
+
+        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Debug.WriteLine("Zaznaczona komorka " + DateTime.Now.ToLongTimeString());
+
+           DataGridViewCellStyle styl =  new DataGridViewCellStyle();
+
+            
+
+            this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style = styl;
+        }
+
 
  
 
