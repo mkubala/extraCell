@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace extraCell
 {
@@ -49,53 +50,58 @@ namespace extraCell
 
         private void otworzToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Pliki xml|.xml|Wszystkie pliki|*.*";
+            openFileDialog1.Filter = "Pliki xml|*.xml|Wszystkie pliki|*.*";
             openFileDialog1.FileName = "";
-            openFileDialog1.ShowDialog();
 
-            System.Windows.Forms.TabPage karta = new System.Windows.Forms.TabPage();
+            DialogResult result = openFileDialog1.ShowDialog();
 
-            karta.Size = new System.Drawing.Size(558, 276);
-            karty.Add(karta);
+            // Process open file dialog box results
+            if (result == DialogResult.OK)
+            {
+                // Open document
+                string filename = openFileDialog1.FileName;
 
-            filesTab.Controls.Add(karta);
+                // Dodanie karty
 
-        
+                System.Windows.Forms.TabPage karta = new System.Windows.Forms.TabPage();
 
-   //            extraCellTable tabelka = new extraCellTable();
+              
+                karty.Add(karta);
+                filesTab.Controls.Add(karta);
 
-            extraCellTable tabelka = new extraCellTable();
+                extraCellTable tabelka = new extraCellTable();
 
-            karta.Controls.Add(tabelka);
+                karta.Controls.Add(tabelka);
 
-            tabelka.Size = new System.Drawing.Size(552, 270);
-            tabelka.Location = new System.Drawing.Point(3, 3);
+                tabelka.Size = new System.Drawing.Size(552, 270);
+                tabelka.Location = new System.Drawing.Point(3, 3);
 
-
-            
-            tabelka.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            tabelka.Dock = System.Windows.Forms.DockStyle.Fill;
-            tabelka.Location = new System.Drawing.Point(3, 3);
-            tabelka.RowHeadersWidth = 50;
-            tabelka.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            tabelka.Size = new System.Drawing.Size(552, 270);
-
-
-            tabelki.Add(tabelka);
-
-            tabelka.DataSource = new ExtraCellEngine().toDataTable();
+                tabelka.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+                tabelka.Dock = System.Windows.Forms.DockStyle.Fill;
+                tabelka.Location = new System.Drawing.Point(3, 3);
+                tabelka.RowHeadersWidth = 50;
+                tabelka.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                tabelka.Size = new System.Drawing.Size(552, 270);
 
 
-            dataGridView1.DataSource = ece.toDataTable();
-     
+                tabelki.Add(tabelka);
+
+                tabelka.DataSource = new ExtraCellEngine().toDataTable();
 
 
-            karta.Padding = new System.Windows.Forms.Padding(3);
+                dataGridView1.DataSource = ece.toDataTable();
 
-            karta.Text = openFileDialog1.FileName;
-            karta.UseVisualStyleBackColor = true;
+                karta.Padding = new System.Windows.Forms.Padding(3);
 
-            //Operacje po otwarciu pliku
+                // Nazwa wyswietlana na karcie 
+
+                karta.Text = new  FileInfo( openFileDialog1.FileName).Name;
+                karta.UseVisualStyleBackColor = true;
+
+                //Operacje po otwarciu pliku
+            }
+
+           
         }
 
         private void zamknijToolStripMenuItem_Click(object sender, EventArgs e)
