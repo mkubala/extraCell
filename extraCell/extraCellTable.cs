@@ -26,9 +26,44 @@ namespace extraCell
         {
             ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            GridColor = Color.BlueViolet;
+            
+            CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
+            BorderStyle = BorderStyle.Fixed3D;
 
         }
 
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            DoubleBuffered = true;
+            base.OnPaint(e);
+
+            this.Update();
+            
+            // e.Graphics.DrawRectangle(System.Drawing.Pens.Black, base.Cell
+            Pen _pen = new Pen(Color.Yellow, 3);
+            Rectangle ramka;
+
+            
+
+            if (CurrentCell != null)
+            {
+
+         //       Debug.Print(String.Format("Aktualna komorka: {0}{1}", CurrentCell.RowIndex, CurrentCell.ColumnIndex));
+
+
+       //         Point Punkt = new Point();
+
+                ramka = GetCellDisplayRectangle(CurrentCell.ColumnIndex, CurrentCell.RowIndex, false);
+/*
+                Punkt.X = (CurrentCell.ColumnIndex +1) * RowHe ;
+                Punkt.Y = (CurrentCell.RowIndex +1) * CurrentCell.Size.Height ;
+                */
+                e.Graphics.DrawRectangle(_pen, new Rectangle( ramka.Location , CurrentCell.Size));
+            }
+            Debug.Print("OnPaint");
+        }
         protected override void OnCellMouseMove(DataGridViewCellMouseEventArgs e)
         {
             if (e.ColumnIndex > -1 && e.RowIndex > -1)

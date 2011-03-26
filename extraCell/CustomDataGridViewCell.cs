@@ -16,9 +16,9 @@ namespace extraCell
             _style = new DataGridViewAdvancedBorderStyle();
             
             _style.Bottom = DataGridViewAdvancedCellBorderStyle.None;
-            _style.Top = DataGridViewAdvancedCellBorderStyle.None;
-            _style.Left = DataGridViewAdvancedCellBorderStyle.Single;
-            _style.Right = DataGridViewAdvancedCellBorderStyle.Single;
+            _style.Top = DataGridViewAdvancedCellBorderStyle.InsetDouble;
+            _style.Left =  DataGridViewAdvancedCellBorderStyle.InsetDouble;
+            _style.Right = DataGridViewAdvancedCellBorderStyle.InsetDouble;
         }
 
         public DataGridViewAdvancedBorderStyle AdvancedBorderStyle

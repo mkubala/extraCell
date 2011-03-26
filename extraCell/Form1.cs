@@ -196,6 +196,11 @@ namespace extraCell
             this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style = styl;
         }
 
+        private void dataGridView1_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
 
  
 
