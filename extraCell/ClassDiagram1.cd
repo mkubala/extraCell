@@ -3,14 +3,14 @@
   <Class Name="extraCell.Form1">
     <Position X="3.5" Y="0.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>ARqwCI0CACABIAAAAGCRSFACRwgYAAAAAHQFCTADRjE=</HashCode>
+      <HashCode>ARqwCI1CACAhKQAAIGiRSVACRwgYAAAEAHwFCTADYjE=</HashCode>
       <FileName>Form1.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="extraCell.extraCellTable">
     <Position X="0.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAAAAAAAAAAgAIAAQAAAAEAAgAAAAhBAAAAAAAAAA=</HashCode>
       <FileName>extraCellTable.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -29,6 +29,54 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Formula.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="extraCell.Cell" Collapsed="true">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAQEAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="extraCell.CustomDataGridViewCell" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAACAAAAAAAACAIAAA=</HashCode>
+      <FileName>CustomDataGridViewCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="extraCell.DataGridViewCustomColumn" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomDataGridViewCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="extraCell.ExtraCellEngine" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAEAAAAIAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExtraCellEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="extraCell.Program" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="extraCell.Properties.Resources" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="extraCell.Properties.Settings" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAIAAAAAABAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Settings.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

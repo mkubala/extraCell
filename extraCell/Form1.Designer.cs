@@ -61,20 +61,20 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.filesTab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new extraCell.extraCellTable();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.extraCellTable1 = new extraCell.extraCellTable();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new extraCell.extraCellTable();
-            this.extraCellTable1 = new extraCell.extraCellTable();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.filesTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.extraCellTable1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -330,6 +330,23 @@
             this.tabPage1.Text = "plik1.xml";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Engine = null;
+            this.dataGridView1.GridColor = System.Drawing.Color.BlueViolet;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 50;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView1.Size = new System.Drawing.Size(552, 270);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
+            this.dataGridView1.CurrentCellChanged += new System.EventHandler(this.dataGridView1_CurrentCellChanged);
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.extraCellTable1);
@@ -340,6 +357,20 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "plik2.xml";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // extraCellTable1
+            // 
+            this.extraCellTable1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.extraCellTable1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.extraCellTable1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.extraCellTable1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.extraCellTable1.Engine = null;
+            this.extraCellTable1.GridColor = System.Drawing.Color.BlueViolet;
+            this.extraCellTable1.Location = new System.Drawing.Point(3, 3);
+            this.extraCellTable1.Name = "extraCellTable1";
+            this.extraCellTable1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.extraCellTable1.Size = new System.Drawing.Size(552, 270);
+            this.extraCellTable1.TabIndex = 0;
             // 
             // button1
             // 
@@ -360,37 +391,6 @@
             this.button2.Text = "Kolor tła";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Engine = null;
-            this.dataGridView1.GridColor = System.Drawing.Color.BlueViolet;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 50;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.Size = new System.Drawing.Size(552, 270);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
-            this.dataGridView1.Paint += new System.Windows.Forms.PaintEventHandler(this.dataGridView1_Paint);
-            // 
-            // extraCellTable1
-            // 
-            this.extraCellTable1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.extraCellTable1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.extraCellTable1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.extraCellTable1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.extraCellTable1.Engine = null;
-            this.extraCellTable1.GridColor = System.Drawing.Color.BlueViolet;
-            this.extraCellTable1.Location = new System.Drawing.Point(3, 3);
-            this.extraCellTable1.Name = "extraCellTable1";
-            this.extraCellTable1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.extraCellTable1.Size = new System.Drawing.Size(552, 270);
-            this.extraCellTable1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -414,8 +414,8 @@
             this.panel1.ResumeLayout(false);
             this.filesTab.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.extraCellTable1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Drawing;
@@ -11,8 +8,6 @@ namespace extraCell
     class extraCellTable : DataGridView
     {
         private System.Data.DataTable _Engine;
-
-
 
         public System.Data.DataTable Engine
         {
@@ -26,7 +21,7 @@ namespace extraCell
             ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             GridColor = Color.BlueViolet;
-            
+
             CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
             BorderStyle = BorderStyle.Fixed3D;
 
@@ -34,21 +29,63 @@ namespace extraCell
         protected override void OnCellEnter(DataGridViewCellEventArgs e)
         {
             base.OnCellEnter(e);
-            
+
             Paint += new PaintEventHandler(extraCellTable_Paint);
-            
+
+        }
+
+        protected override void OnCellPainting(DataGridViewCellPaintingEventArgs e)
+        {
+            base.OnCellPainting(e);
+            Debug.Print(DateTime.Now.ToLongTimeString() + "OnCellPainting");
         }
 
         void extraCellTable_Paint(object sender, PaintEventArgs e)
         {
-            Pen _pen = new Pen(Color.Aquamarine, 3);
+            Pen _pen = new Pen(Color.Black, 3);
             Rectangle ramka;
 
+            // Wspolrzedne punktow
+            Point LeftUpper = new Point(int.MaxValue, int.MaxValue);
+            Point RightLower = new Point(0, 0);
 
             if (CurrentCell != null)
             {
+                int i = 0;
 
-                       Debug.Print(String.Format("Aktualna komorka: {0}{1}", CurrentCell.RowIndex, CurrentCell.ColumnIndex));
+                foreach (DataGridViewCell cell in this.SelectedCells)
+                {
+
+                    i++;
+                    int x = cell.ColumnIndex;
+                    int y = cell.RowIndex;
+
+                    if (x <= LeftUpper.X && y <= LeftUpper.Y)
+                    {
+                        LeftUpper.X = x;
+                        LeftUpper.Y = y;
+                    }
+                    if (x >= RightLower.X && y >= RightLower.Y)
+                    {
+                        RightLower.X = x;
+                        RightLower.Y = y;
+                    }
+
+                    Debug.Print(String.Format("Komorka nr: {0} {1}{2}", i, x, y));
+                    cell.Value = String.Format("Komorka nr: {0} {1}{2}", i, x, y);
+
+
+
+                    //       WspKom.Add(new Point(cell.RowIndex, cell.ColumnIndex));
+                }
+                this[LeftUpper.X, LeftUpper.Y].Value = ("Komorka LeftUpper");
+                this[RightLower.X, RightLower.Y].Value = ("Komorka RightLower");
+
+                //    Invalidate(false);
+
+
+
+                Debug.Print(String.Format("Aktualna komorka: {0}{1}", CurrentCell.RowIndex, CurrentCell.ColumnIndex));
 
 
                 //         Point Punkt = new Point();
@@ -60,8 +97,10 @@ namespace extraCell
                                 */
 
                 e.Graphics.DrawRectangle(_pen, new Rectangle(ramka.Location, CurrentCell.Size));
+
             }
-            Debug.Print("OnPaint");     
+            Debug.Print("OnPaint");
+        
         }
 
         protected override void OnPaint(PaintEventArgs e)

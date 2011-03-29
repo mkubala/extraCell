@@ -41,6 +41,46 @@ namespace extraCell
           
 
       //      dataGridView1.DataSource = ece.toDataTable();
+            /***************************************************************
+             * Sztuczne dodanie karty */
+            System.Windows.Forms.TabPage karta = new System.Windows.Forms.TabPage();
+
+
+            karty.Add(karta);
+            filesTab.Controls.Add(karta);
+
+            extraCellTable tabelka = new extraCellTable();
+
+            karta.Controls.Add(tabelka);
+
+            tabelka.Size = new System.Drawing.Size(552, 270);
+            tabelka.Location = new System.Drawing.Point(3, 3);
+
+            tabelka.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            tabelka.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabelka.Location = new System.Drawing.Point(3, 3);
+            tabelka.RowHeadersWidth = 50;
+            tabelka.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            tabelka.Size = new System.Drawing.Size(552, 270);
+
+
+            tabelki.Add(tabelka);
+
+            tabelka.DataSource = new ExtraCellEngine().toDataTable();
+
+
+            dataGridView1.DataSource = ece.toDataTable();
+
+            karta.Padding = new System.Windows.Forms.Padding(3);
+
+            // Nazwa wyswietlana na karcie 
+            // Skraca do nazwy pliku - zamiast pelnej sciezki
+
+            karta.Text = "Artificial";
+            karta.UseVisualStyleBackColor = true;
+
+            /***************************************************************
+            * Sztuczne dodanie karty - KONIEC*/
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -94,6 +134,7 @@ namespace extraCell
                 karta.Padding = new System.Windows.Forms.Padding(3);
 
                 // Nazwa wyswietlana na karcie 
+                // Skraca do nazwy pliku - zamiast pelnej sciezki
 
                 karta.Text = new  FileInfo( openFileDialog1.FileName).Name;
                 karta.UseVisualStyleBackColor = true;
@@ -202,10 +243,23 @@ namespace extraCell
             this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style = styl;
         }
 
+
+
+        private void dataGridView1_MultiSelectChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("Przeciąganie");
+        }
+
         private void dataGridView1_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
+
+        private void dataGridView1_CurrentCellChanged(object sender, EventArgs e)
+        {
+            Debug.Print(DateTime.Now.ToShortDateString() + " zmiana");
+        }
+
 
 
  
