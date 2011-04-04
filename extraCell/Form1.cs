@@ -16,6 +16,10 @@ namespace extraCell
         private ExtraCellEngine ece;
         private List <TabPage> karty = new List <TabPage>();
         private List<extraCellTable> tabelki = new List<extraCellTable>();
+//         private void AddTab(string title);
+        //Licznik nowych plikow 
+        private byte NewCount = 1;
+
 
         public Form1()
         {
@@ -43,16 +47,32 @@ namespace extraCell
       //      dataGridView1.DataSource = ece.toDataTable();
             /***************************************************************
              * Sztuczne dodanie karty */
+            AddTab("Artificial");
+            /***************************************************************
+            * Sztuczne dodanie karty - KONIEC*/
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            IsMdiContainer = true;
+        }
+
+        //Dodaje nowa karte i tabelke
+        private void AddTab(string title)
+        {
             System.Windows.Forms.TabPage karta = new System.Windows.Forms.TabPage();
 
 
             karty.Add(karta);
             filesTab.Controls.Add(karta);
 
+            //
             extraCellTable tabelka = new extraCellTable();
+
 
             karta.Controls.Add(tabelka);
 
+            
             tabelka.Size = new System.Drawing.Size(552, 270);
             tabelka.Location = new System.Drawing.Point(3, 3);
 
@@ -66,27 +86,16 @@ namespace extraCell
 
             tabelki.Add(tabelka);
 
-            tabelka.DataSource = new ExtraCellEngine().toDataTable();
-
-
-            dataGridView1.DataSource = ece.toDataTable();
+         //  tabelka.DataSource = new ExtraCellEngine().toDataTable();
 
             karta.Padding = new System.Windows.Forms.Padding(3);
 
             // Nazwa wyswietlana na karcie 
-            // Skraca do nazwy pliku - zamiast pelnej sciezki
-
-            karta.Text = "Artificial";
+            
+            karta.Text = title;
             karta.UseVisualStyleBackColor = true;
-
-            /***************************************************************
-            * Sztuczne dodanie karty - KONIEC*/
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            IsMdiContainer = true;
-        }
 
         private void otworzToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -98,51 +107,13 @@ namespace extraCell
             // Process open file dialog box results
             if (result == DialogResult.OK)
             {
-                // Open document
-                string filename = openFileDialog1.FileName;
-
-                // Dodanie karty
-
-                System.Windows.Forms.TabPage karta = new System.Windows.Forms.TabPage();
-
-              
-                karty.Add(karta);
-                filesTab.Controls.Add(karta);
-
-                extraCellTable tabelka = new extraCellTable();
-
-                karta.Controls.Add(tabelka);
-
-                tabelka.Size = new System.Drawing.Size(552, 270);
-                tabelka.Location = new System.Drawing.Point(3, 3);
-
-                tabelka.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                tabelka.Dock = System.Windows.Forms.DockStyle.Fill;
-                tabelka.Location = new System.Drawing.Point(3, 3);
-                tabelka.RowHeadersWidth = 50;
-                tabelka.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-                tabelka.Size = new System.Drawing.Size(552, 270);
-
-
-                tabelki.Add(tabelka);
-
-                tabelka.DataSource = new ExtraCellEngine().toDataTable();
-
-
-                dataGridView1.DataSource = ece.toDataTable();
-
-                karta.Padding = new System.Windows.Forms.Padding(3);
-
                 // Nazwa wyswietlana na karcie 
                 // Skraca do nazwy pliku - zamiast pelnej sciezki
 
-                karta.Text = new  FileInfo( openFileDialog1.FileName).Name;
-                karta.UseVisualStyleBackColor = true;
-
+                AddTab(new FileInfo(openFileDialog1.FileName).Name);
+                
                 //Operacje po otwarciu pliku
             }
-
-           
         }
 
         private void zamknijToolStripMenuItem_Click(object sender, EventArgs e)
@@ -194,9 +165,11 @@ namespace extraCell
         {
             colorDialog1.ShowDialog();
 
-            for (int i = 0; i < (dataGridView1.SelectedCells.Count); i++)
+            extraCellTable tabelka = (extraCellTable)filesTab.SelectedTab.Controls[0];
+
+            for (int i = 0; i < (tabelka.SelectedCells.Count); i++)
             {
-                dataGridView1.SelectedCells[i].Style.ForeColor = colorDialog1.Color;
+                tabelka.SelectedCells[i].Style.ForeColor = colorDialog1.Color;
             }
         }
 
@@ -204,9 +177,13 @@ namespace extraCell
         {
             fontDialog1.ShowDialog();
 
-            for (int i = 0; i < (dataGridView1.SelectedCells.Count); i++)
+            extraCellTable tabelka = (extraCellTable)filesTab.SelectedTab.Controls[0];
+
+      //      Debug.Print(this.ToString()+ " nazwa aktywnej zakladki: " + filesTab.SelectedTab.Text);
+
+            for (int i = 0; i < (tabelka.SelectedCells.Count); i++)
             {
-                dataGridView1.SelectedCells[i].Style.Font = fontDialog1.Font;
+                tabelka.SelectedCells[i].Style.Font = fontDialog1.Font;
             }
         }
 
@@ -216,15 +193,18 @@ namespace extraCell
 
             backgroundColorDialog.ShowDialog();
 
-            for (int i = 0; i < (dataGridView1.SelectedCells.Count); i++)
+            extraCellTable tabelka = (extraCellTable)filesTab.SelectedTab.Controls[0];
+
+            for (int i = 0; i < (tabelka.SelectedCells.Count); i++)
             {
-                dataGridView1.SelectedCells[i].Style.BackColor = backgroundColorDialog.Color;
+                tabelka.SelectedCells[i].Style.BackColor = backgroundColorDialog.Color;
             }
         }
 
         private void NowyStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            AddTab("Niezapisany"+NewCount.ToString());
+            NewCount++;
         }
 
         private void ZapiszStripMenuItem_Click(object sender, EventArgs e)
@@ -235,12 +215,6 @@ namespace extraCell
         private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             Debug.WriteLine("Zaznaczona komorka " + DateTime.Now.ToLongTimeString());
-
-           DataGridViewCellStyle styl =  new DataGridViewCellStyle();
-
-            
-
-            this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style = styl;
         }
 
 
