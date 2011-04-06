@@ -46,9 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cell.cs" />
+    <Compile Include="domain\Cell.cs" />
     <Compile Include="CustomDataGridViewCell.cs" />
-    <Compile Include="ExtraCellEngine.cs" />
+    <Compile Include="domain\ExtraCellEngine.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="extraCellTable.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -58,7 +60,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formula.cs" />
+    <Compile Include="domain\Formula.cs" />
+    <Compile Include="helpers\Helpers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
