@@ -62,6 +62,7 @@
     </Compile>
     <Compile Include="formula\Formula.cs" />
     <Compile Include="formula\functions\about.cs" />
+    <Compile Include="formula\functions\argtest.cs" />
     <Compile Include="formula\IFormula.cs" />
     <Compile Include="helpers\Helpers.cs" />
     <Compile Include="Program.cs" />

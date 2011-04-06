@@ -18,18 +18,20 @@ namespace extraCell.domain
             addRow();
             
             // przykladowe dane (akurat testowałem translacje alfanumeryczna na indeksy)
-            setCell(0, 0, new Cell("formula", helpers.Helpers.getColumnNumber("A").ToString()));
-            setCell(1, 0, new Cell("formula", helpers.Helpers.getColumnNumber("B").ToString()));
-            setCell(2, 0, new Cell("formula", helpers.Helpers.getColumnNumber("C").ToString()));
-            setCell(4, 0, new Cell("formula", helpers.Helpers.getColumnNumber("e").ToString()));
+            setCell(0, 0, helpers.Helpers.getColumnNumber("A").ToString());
+            setCell(1, 0, helpers.Helpers.getColumnNumber("B").ToString());
+            setCell(2, 0, helpers.Helpers.getColumnNumber("C").ToString());
+            setCell(3, 0, "=\"Witaj Świecie!\"");
+            setCell(4, 0, "=argtest(Lipa, Świerk, Brzoza)");
 
             String alphaCol = "AB";
             int intCol = helpers.Helpers.getColumnNumber(alphaCol);
-            setCell(intCol, 0, new Cell("formula", intCol));
+            setCell(intCol, 0, new Cell("", intCol));
 
             setCell(5, 0, getCell(alphaCol+"0"));
 
-            setCell(6, 0, "=about(marian)");
+            setCell(6, 0, "=about()");
+            setCell(7, 0, "=\"Hello World\"");
 
         }
 

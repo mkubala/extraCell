@@ -200,6 +200,23 @@ namespace extraCell
             
         }
 
+        
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            // Jakies moje proby - poki co bardzo niestabilnie, nie mam glowy by grzebac w UI, nie chce tez wchodzic michalowi w parade. Chcialem ino sprawdzic czy bydzie furgoć jak ptok abo eye of dy sztajger.
+            /*Cell cell = ece.getCell(e.ColumnIndex, e.RowIndex);
+            dataGridView1[e.ColumnIndex, e.RowIndex].Value = new Cell("test", cell.formula);*/
+        }
+
+        private void dataGridView1_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            // Jakies moje proby - poki co bardzo niestabilnie, nie mam glowy by grzebac w UI, nie chce tez wchodzic michalowi w parade. Chcialem ino sprawdzic czy bydzie furgoć jak ptok abo eye of dy sztajger.
+           /* Cell cell = ece.getCell(e.ColumnIndex, e.RowIndex);
+            Cell tmp = (Cell) dataGridView1[e.ColumnIndex, e.RowIndex].Value;
+            ece.setCell(e.ColumnIndex, e.RowIndex, tmp.formula);
+            dataGridView1[e.ColumnIndex, e.RowIndex].Value = ece.getCell(e.ColumnIndex, e.RowIndex);*/
+        }
+
 
  
 
