@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace extraCell.formula
 {
     class Formula
     {
-        public bool Validate()
+        public bool isValidate()
         {
             return false;
         }
 
-        public bool Evaluate()
+        public bool isEvaluate()
         {
             return false;
         }
@@ -29,7 +30,18 @@ namespace extraCell.formula
                 if (f.Success)
                 {
                     String func = f.Groups["function"].Value.ToString();
-                    return "użyto " + func;
+                    Type p = System.Type.GetType("extraCell.formula.functions." + func.ToLower());
+                    if (typeof(extraCell.formula.IFormula).IsAssignableFrom(p))
+                    {
+                        IFormula obj = (IFormula) Activator.CreateInstance(p);
+                        MethodInfo methodInfo = p.GetMethod("run");
+                        return (String)methodInfo.Invoke(obj, new Object[] { f.Groups["args"].Value.ToString() });
+                    }
+                    else
+                    {
+                        return "BŁĄD: nieznana funkcja";
+                    }
+                    
                 }
                 else
                 {

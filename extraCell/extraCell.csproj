@@ -61,6 +61,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="formula\Formula.cs" />
+    <Compile Include="formula\functions\about.cs" />
+    <Compile Include="formula\IFormula.cs" />
     <Compile Include="helpers\Helpers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

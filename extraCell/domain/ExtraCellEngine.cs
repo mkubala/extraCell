@@ -29,7 +29,7 @@ namespace extraCell.domain
 
             setCell(5, 0, getCell(alphaCol+"0"));
 
-            setCell(6, 0, "=test(marian)");
+            setCell(6, 0, "=about(marian)");
 
         }
 
