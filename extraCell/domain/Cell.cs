@@ -7,8 +7,8 @@ namespace extraCell.domain
 {
     class Cell
     {
-        private String formula { get; set; }
-        private String result { get; set; }
+        public String formula { get; set; }
+        public String result { get; set;  }
 
         public Cell() { }
         public Cell(String formula, String result)
