@@ -3,7 +3,7 @@
   <Class Name="extraCell.Form1">
     <Position X="3.5" Y="0.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>ARqwCI1CACAhKQEAIGiRSVACTwgYAAAEAHwFCTADYjE=</HashCode>
+      <HashCode>/z+4CI1C8C/tPzf//2iRSZjD/z8YAMDEP/z/fzADYvE=</HashCode>
       <FileName>Form1.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -36,25 +36,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Formula.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="extraCell.domain.extraCellTable">
-    <Position X="0.5" Y="4.25" Width="2.25" />
-    <NestedTypes>
-      <Class Name="extraCell.domain.extraCellTable.DataGridViewTextBoxCustomCell" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>domain\extraCellTable.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-      <Class Name="extraCell.domain.extraCellTable.DataGridViewTextBoxCustomCellColumn" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>domain\extraCellTable.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-    </NestedTypes>
-    <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAgAIAAQCAAAEAAgAAAAhBAAAAAAAABA=</HashCode>
-      <FileName>domain\extraCellTable.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

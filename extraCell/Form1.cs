@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
-using extraCell.domain;
+using extraCell.view;
 using extraCell.formula;
 
 namespace extraCell
@@ -27,10 +27,6 @@ namespace extraCell
         {
             InitializeComponent();
 
-            ece = new ExtraCellEngine();
-
-
-            dataGridView1.DataSource = ece ;
 
             // Wylaczenie sortowania
 /*

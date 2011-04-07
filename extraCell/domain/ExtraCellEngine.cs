@@ -6,7 +6,7 @@ using System.Text;
 using extraCell.formula;
 using extraCell;
 
-namespace extraCell.domain
+namespace extraCell.view
 {
     class ExtraCellEngine : DataTable
     {
@@ -57,7 +57,7 @@ namespace extraCell.domain
 
         public void addColumn()
         {
-            this.Columns.Add(helpers.Helpers.getColumnName(Columns.Count+1), System.Type.GetType("extraCell.domain.Cell"));
+            this.Columns.Add(helpers.Helpers.getColumnName(Columns.Count+1), System.Type.GetType("extraCell.view.Cell"));
         }
 
         public void addRow()

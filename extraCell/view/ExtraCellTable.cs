@@ -7,7 +7,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
 
-namespace extraCell.domain
+namespace extraCell.view
 {
     class extraCellTable : DataGridView
     {
