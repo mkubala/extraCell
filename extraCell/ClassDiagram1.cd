@@ -3,24 +3,31 @@
   <Class Name="extraCell.Form1">
     <Position X="3.5" Y="0.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>ARqwCI0CACABIAAAAGCRSFACRwgYAAAAAHQFCTADRjE=</HashCode>
+      <HashCode>ARqwCI1CACAhKQEAIGiRSVACTwgYAAAEAHwFCTADYjE=</HashCode>
       <FileName>Form1.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="extraCell.extraCellTable">
-    <Position X="0.5" Y="4.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>extraCellTable.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="System.Windows.Forms.DataGridView" Collapsed="true" HideInheritanceLine="true">
+  <Class Name="System.Windows.Forms.DataGridView" HideInheritanceLine="true">
     <Position X="0.5" Y="3.25" Width="2" />
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
       <Compartment Name="Events" Collapsed="true" />
     </Compartments>
+    <NestedTypes>
+      <Class Name="System.Windows.Forms.DataGridView.DataGridViewAccessibleObject" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="System.Windows.Forms.DataGridView.DataGridViewControlCollection" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="System.Windows.Forms.DataGridView.HitTestInfo" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="System.Windows.Forms.DataGridView.DataGridViewTopRowAccessibleObject" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
     <TypeIdentifier />
     <Lollipop Position="0.846" />
   </Class>
@@ -29,6 +36,25 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Formula.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="extraCell.domain.extraCellTable">
+    <Position X="0.5" Y="4.25" Width="2.25" />
+    <NestedTypes>
+      <Class Name="extraCell.domain.extraCellTable.DataGridViewTextBoxCustomCell" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>domain\extraCellTable.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="extraCell.domain.extraCellTable.DataGridViewTextBoxCustomCellColumn" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>domain\extraCellTable.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAgAIAAQCAAAEAAgAAAAhBAAAAAAAABA=</HashCode>
+      <FileName>domain\extraCellTable.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

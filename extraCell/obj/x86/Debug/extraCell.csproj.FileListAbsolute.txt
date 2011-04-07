@@ -25,3 +25,13 @@ C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\extraCell.Form1.resou
 C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\extraCell.Properties.Resources.resources
 C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\git\master\extraCell\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\git\master\extraCell\obj\x86\Debug\extraCell.Form1.resources
+C:\git\master\extraCell\obj\x86\Debug\extraCell.Properties.Resources.resources
+C:\git\master\extraCell\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\git\master\extraCell\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\git\master\extraCell\bin\Debug\extraCell.exe.config
+C:\git\master\extraCell\bin\Debug\extraCell.exe
+C:\git\master\extraCell\bin\Debug\extraCell.pdb
+C:\git\master\extraCell\obj\x86\Debug\extraCell.exe
+C:\git\master\extraCell\obj\x86\Debug\extraCell.pdb

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using extraCell.formula;
+using extraCell;
 
 namespace extraCell.domain
 {
