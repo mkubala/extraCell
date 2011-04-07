@@ -27,11 +27,14 @@ namespace extraCell.domain
             ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             GridColor = Color.BlueViolet;
+            AutoGenerateColumns = false;
+            RowHeadersVisible = true;
+            
 
-            DataTable dt = new DataTable();
+         //   DataTable dt = new DataTable();
             LetterCounter lettcount = new LetterCounter();
 
-            dt.Columns.Add();
+       //     dt.Columns.Add();
 
             for (int i = 0; i < 255; i++)
             {
@@ -41,8 +44,19 @@ namespace extraCell.domain
 
                 c.HeaderText = lettcount.ToString();
                 this.Columns.Add(c);
+
+                
+
+                // Nie dziala!
+                this.Rows.Add(1);
+                
+                this.Rows[i].HeaderCell.Value = i;
+
+                c.DataGridView.Rows[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft ;
+                c.DataGridView.Rows[i].HeaderCell.Style.BackColor = Color.Azure;
+
                 lettcount.Increment();
-                dt.Rows.Add(" ");
+             //  dt.Rows.Add(" ");
             }
 
           //  this.DataSource = dt;
@@ -51,12 +65,19 @@ namespace extraCell.domain
 
             for (int i = 0; i < 255; i++)
             {
-                this.Rows.Add();
+                this.Rows.Add(1);
                 this.Rows[i].HeaderCell.Value = i;
             }
 
             Debug.Print("Ilosc wierszy: " + this.Rows.Count.ToString());
            
+        }
+
+        protected  override  void OnCellFormatting( DataGridViewCellFormattingEventArgs e)
+        {
+            this.Rows[e.RowIndex].HeaderCell.Value = (e.RowIndex + 1).ToString();
+            this.Rows[e.RowIndex].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            this.Rows[e.RowIndex].HeaderCell.Style.BackColor = Color.Azure;
         }
 
         /**************************************************************************/
