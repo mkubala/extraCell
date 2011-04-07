@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
 
+using extraCell.domain;
+
 namespace extraCell
 {
     public partial class Form1 : Form
@@ -24,7 +26,7 @@ namespace extraCell
             ece = new ExtraCellEngine();
 
 
-            dataGridView1.DataSource = ece.toDataTable();
+            dataGridView1.DataSource = ece;
 
             // Wylaczenie sortowania
 /*
@@ -33,14 +35,6 @@ namespace extraCell
                 kol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             }
             */
-            dataGridView1.DataSource = null;
-
-             DataGridViewCustomColumn col = new DataGridViewCustomColumn();
-            dataGridView1.Columns.Add(col);
-            
-          
-
-      //      dataGridView1.DataSource = ece.toDataTable();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -86,10 +80,9 @@ namespace extraCell
 
                 tabelki.Add(tabelka);
 
-                tabelka.DataSource = new ExtraCellEngine().toDataTable();
+                tabelka.DataSource = new ExtraCellEngine();
 
-
-                dataGridView1.DataSource = ece.toDataTable();
+                dataGridView1.DataSource = ece;
 
                 karta.Padding = new System.Windows.Forms.Padding(3);
 
