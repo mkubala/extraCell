@@ -43,7 +43,7 @@ namespace extraCell.domain
             //        RowHeadersVisible = true;
 
             //   DataTable dt = new DataTable();
-            LetterCounter lettcount = new LetterCounter();
+       //     LetterCounter lettcount = new LetterCounter();
 
             //     dt.Columns.Add();
 
@@ -54,22 +54,25 @@ namespace extraCell.domain
                 DataGridViewTextBoxCustomCellColumn c = new DataGridViewTextBoxCustomCellColumn();
                 c.SortMode = DataGridViewColumnSortMode.NotSortable;
                 c.Width = 45;
-              //  c.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                //  c.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
 
-                c.HeaderText = lettcount.ToString();
+                //getColumnName
+
+                //c.HeaderText = lettcount.ToString();
+                c.HeaderText = helpers.Helpers.getColumnName(i+1);
                 this.Columns.Add(c);
                 this.Rows.Add(1);
 
 
                 // Nie dziala!
-           //     this.Rows.Add(1);
+                //     this.Rows.Add(1);
 
-          //      this.Rows[i].HeaderCell.Value = i;
+                //      this.Rows[i].HeaderCell.Value = i;
 
-         //       c.DataGridView.Rows[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-          //      c.DataGridView.Rows[i].HeaderCell.Style.BackColor = Color.Azure;
+                //       c.DataGridView.Rows[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                //      c.DataGridView.Rows[i].HeaderCell.Style.BackColor = Color.Azure;
 
-                lettcount.Increment();
+              //  lettcount.Increment();
                 //  dt.Rows.Add(" ");
             }
 
