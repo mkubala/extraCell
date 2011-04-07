@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using extraCell.domain;
+using extraCell.formula;
 
 namespace extraCell
 {
@@ -28,7 +30,7 @@ namespace extraCell
             ece = new ExtraCellEngine();
 
 
-            dataGridView1.DataSource = ece.toDataTable();
+            dataGridView1.DataSource = ece ;
 
             // Wylaczenie sortowania
 /*
@@ -37,12 +39,10 @@ namespace extraCell
                 kol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             }
             */
-            dataGridView1.DataSource = null;
+      //      dataGridView1.DataSource = null;
 
-             DataGridViewCustomColumn col = new DataGridViewCustomColumn();
-            dataGridView1.Columns.Add(col);
             
-          
+         
 
       //      dataGridView1.DataSource = ece.toDataTable();
             /***************************************************************
