@@ -5,13 +5,27 @@ using System.Linq;
 using System.Text;
 using extraCell.formula;
 using extraCell;
+using System.Diagnostics;
 
-namespace extraCell.view
+namespace extraCell.domain
 {
-    class ExtraCellEngine : DataTable
+    class ExtraCellEngine : DataTable, IEngine
     {
         public ExtraCellEngine()
         {
+            /* Debug by hwast */
+            addColumn();
+            addRow();
+            addRow();
+            addRow();
+            setCell(0, 0, "1");
+            setCell(0, 1, "9");
+            setCell(0, 2, "3");
+            extraCell.formula.Formula.ece = this;
+
+            Debug.Print(extraCell.formula.Formula.eval("=print(suma(suma(A0:A2),A0))"));
+            /* debug by hwast koniec */
+
             for(int i = 0; i < 65; i++)
                 addColumn();
             
@@ -31,6 +45,8 @@ namespace extraCell.view
             setCell(5, 0, getCell(alphaCol+"0"));
 
             setCell(6, 0, "=about(marian)");
+            extraCell.formula.Formula.ece = this;
+            System.Diagnostics.Debug.Print(extraCell.formula.Formula.eval("=\"test\""));
 
         }
 
@@ -57,7 +73,7 @@ namespace extraCell.view
 
         public void addColumn()
         {
-            this.Columns.Add(helpers.Helpers.getColumnName(Columns.Count+1), System.Type.GetType("extraCell.view.Cell"));
+            this.Columns.Add(helpers.Helpers.getColumnName(Columns.Count+1), System.Type.GetType("extraCell.domain.Cell"));
         }
 
         public void addRow()

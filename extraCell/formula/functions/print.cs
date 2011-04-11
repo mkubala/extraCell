@@ -5,11 +5,11 @@ using System.Text;
 
 namespace extraCell.formula.functions
 {
-    class about : IFunction
+    class print : IFunction
     {
         public Object run(Object[] args)
         {
-            return "by: Marcin Kubala, Michał Urbańczyk, Paweł Ochalik";
+            return "Print() = " + args[0].ToString();
         }
     }
 }

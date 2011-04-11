@@ -10,12 +10,13 @@ using System.Diagnostics;
 using System.IO;
 using extraCell.view;
 using extraCell.formula;
+using extraCell.domain;
 
 namespace extraCell
 {
     public partial class Form1 : Form
     {
-        private ExtraCellEngine ece;
+        private IEngine ece;
         private List <TabPage> karty = new List <TabPage>();
         private List<extraCellTable> tabelki = new List<extraCellTable>();
 //         private void AddTab(string title);
@@ -26,8 +27,6 @@ namespace extraCell
         public Form1()
         {
             InitializeComponent();
-
-
             // Wylaczenie sortowania
 /*
             foreach (DataGridViewColumn kol in this.dataGridView1.Columns)

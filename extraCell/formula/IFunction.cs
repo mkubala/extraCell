@@ -5,8 +5,8 @@ using System.Text;
 
 namespace extraCell.formula
 {
-    interface IFormula
+    interface IFunction
     {
-        String run(String args);
+        Object run(Object[] args);
     }
 }

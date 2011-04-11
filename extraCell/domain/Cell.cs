@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace extraCell.view
+namespace extraCell.domain
 {
     class Cell
     {

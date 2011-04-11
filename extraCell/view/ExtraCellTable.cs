@@ -77,7 +77,7 @@ namespace extraCell.view
             }
 
             //  this.DataSource = dt;
-
+            // this.DataSource = new extraCell.domain.ExtraCellEngine();
 
             /*
             for (int i = 0; i < 255; i++)
@@ -86,7 +86,7 @@ namespace extraCell.view
                 this.Rows[i].HeaderCell.Value = i;
             }
             */
-            Debug.Print("Ilosc wierszy: " + this.Rows.Count.ToString());
+            ////DebugPrint("Ilosc wierszy: " + this.Rows.Count.ToString());
 
         }
 
@@ -259,7 +259,7 @@ namespace extraCell.view
         protected override void OnCellPainting(DataGridViewCellPaintingEventArgs e)
         {
             base.OnCellPainting(e);
-            Debug.Print(DateTime.Now.ToLongTimeString() + "OnCellPainting");
+            ////DebugPrint(DateTime.Now.ToLongTimeString() + "OnCellPainting");
 
 
             /* System.IO.Stream imageStream = this.GetType().Assembly.GetManifestResourceStream("Controls.002-folder_add.png"); checkBox1.Image = Image.FromStream(imageStream);
@@ -269,7 +269,7 @@ namespace extraCell.view
             if (SelectedCells.Count == 1 && e.ColumnIndex != -1 && e.RowIndex != -1)
             {
                 Rows[e.RowIndex].HeaderCell.Style.BackColor = Color.Red;
-                Debug.Print("SelectedCells.Count == 1 && e.ColumnIndex != -1 && e.RowIndex != -1)");
+                ////DebugPrint("SelectedCells.Count == 1 && e.ColumnIndex != -1 && e.RowIndex != -1)");
             }
 
 
@@ -285,7 +285,7 @@ namespace extraCell.view
                 e.Paint(e.ClipBounds, (DataGridViewPaintParts.All & ~DataGridViewPaintParts.Background));
                 e.Handled = true;
 
-                Debug.Print(this.ToString() + " if (e.ColumnIndex == -1))");
+                ////DebugPrint(this.ToString() + " if (e.ColumnIndex == -1))");
 
             }
             else if (this.SelectedColumns.Count > 0 && this.SelectedColumns.Contains(this.Columns[e.ColumnIndex]))
@@ -303,7 +303,7 @@ namespace extraCell.view
                 e.Paint(e.ClipBounds, (DataGridViewPaintParts.All & ~(DataGridViewPaintParts.Background | DataGridViewPaintParts.SelectionBackground)));
                 e.Handled = true;
 
-                Debug.Print(this.ToString() + " this.SelectedRows.Count > 0 && this.SelectedRows.Contains(this.Rows[e.RowIndex])");
+                ////DebugPrint(this.ToString() + " this.SelectedRows.Count > 0 && this.SelectedRows.Contains(this.Rows[e.RowIndex])");
             }
 
 
@@ -318,7 +318,7 @@ namespace extraCell.view
                 e.Paint(e.ClipBounds, (DataGridViewPaintParts.All & ~DataGridViewPaintParts.Background));
                 e.Handled = true;
 
-                Debug.Print(this.ToString() + " if (e.RowIndex == -1)");
+                ////DebugPrint(this.ToString() + " if (e.RowIndex == -1)");
             }
             else if (this.SelectedRows.Count > 0 && this.SelectedRows.Contains(this.Rows[e.RowIndex]))
             {
@@ -335,7 +335,7 @@ namespace extraCell.view
                 e.Paint(e.ClipBounds, (DataGridViewPaintParts.All & ~(DataGridViewPaintParts.Background | DataGridViewPaintParts.SelectionBackground)));
                 e.Handled = true;
 
-                Debug.Print(this.ToString() + " this.SelectedRows.Count > 0 && this.SelectedRows.Contains(this.Rows[e.RowIndex])");
+                ////DebugPrint(this.ToString() + " this.SelectedRows.Count > 0 && this.SelectedRows.Contains(this.Rows[e.RowIndex])");
             }
         }
 
@@ -401,7 +401,7 @@ namespace extraCell.view
                         RightLower.Y = y;
                     }
 
-                    Debug.Print(String.Format("Komorka nr: {0} {1}{2}", i, x, y));
+                    ////DebugPrint(String.Format("Komorka nr: {0} {1}{2}", i, x, y));
                     cell.Value = String.Format("Komorka nr: {0} {1}{2}", i, x, y);
 
 
@@ -415,7 +415,7 @@ namespace extraCell.view
 
 
 
-                Debug.Print(String.Format("Aktualna komorka: {0}{1}", CurrentCell.RowIndex, CurrentCell.ColumnIndex));
+                ////DebugPrint(String.Format("Aktualna komorka: {0}{1}", CurrentCell.RowIndex, CurrentCell.ColumnIndex));
 
 
                 //         Point Punkt = new Point();
@@ -429,7 +429,7 @@ namespace extraCell.view
                 e.Graphics.DrawRectangle(_pen, new Rectangle(ramka.Location, CurrentCell.Size));
 
             }
-            Debug.Print(DateTime.Now.ToLongTimeString() + " OnPaint extraCellTable_Paint");
+            //DebugPrint(DateTime.Now.ToLongTimeString() + " OnPaint extraCellTable_Paint");
 
             // Paint -= new PaintEventHandler(extraCellTable_Paint);
 
@@ -483,7 +483,7 @@ namespace extraCell.view
                         RightLower.Y = y;
                     }
 
-                    Debug.Print(String.Format("Komorka nr: {0} {1}{2}", i, x, y));
+                    ////DebugPrint(String.Format("Komorka nr: {0} {1}{2}", i, x, y));
                     cell.Value = String.Format("Komorka nr: {0} {1}{2}", i, x, y);
 
 
@@ -497,7 +497,7 @@ namespace extraCell.view
 
 
 
-                Debug.Print(String.Format("Aktualna komorka: {0}{1}", CurrentCell.RowIndex, CurrentCell.ColumnIndex));
+                ////DebugPrint(String.Format("Aktualna komorka: {0}{1}", CurrentCell.RowIndex, CurrentCell.ColumnIndex));
 
 
                 //         Point Punkt = new Point();
@@ -511,7 +511,7 @@ namespace extraCell.view
                 e.Graphics.DrawRectangle(_pen, new Rectangle(ramka.Location, CurrentCell.Size));
 
             }
-            Debug.Print(DateTime.Now.ToLongTimeString() + " OnPaint extraCellTable_Paint");
+            //DebugPrint(DateTime.Now.ToLongTimeString() + " OnPaint extraCellTable_Paint");
 
             e.Graphics.Flush();
 
