@@ -14,7 +14,7 @@ namespace extraCell.domain
         public ExtraCellEngine()
         {
             /* Debug by hwast */
-            addColumn();
+            /*addColumn();
             addRow();
             addRow();
             addRow();
@@ -23,10 +23,10 @@ namespace extraCell.domain
             setCell(0, 2, "3");
             extraCell.formula.Formula.ece = this;
 
-            Debug.Print(extraCell.formula.Formula.eval("=print(suma(suma(A0:A2),A0))"));
+            Debug.Print(extraCell.formula.Formula.eval("=print(suma(suma(A0:A2),A0))"));*/
             /* debug by hwast koniec */
 
-            for(int i = 0; i < 65; i++)
+            /*for(int i = 0; i < 65; i++)
                 addColumn();
             
             addRow();
@@ -47,7 +47,7 @@ namespace extraCell.domain
             setCell(6, 0, "=about(marian)");
             extraCell.formula.Formula.ece = this;
             System.Diagnostics.Debug.Print(extraCell.formula.Formula.eval("=\"test\""));
-
+            */
         }
 
         public Cell getCell(int col, int row)

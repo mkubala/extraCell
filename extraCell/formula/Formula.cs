@@ -12,23 +12,12 @@ namespace extraCell.formula
 {
     class Formula
     {
-        public static ExtraCellEngine ece { set; get; }
+        public static IEngine ece { set; get; }
         
-        //czy ten kod komuś w ogóle jest potrzebny?
-        /*public bool isValidate()
-        {
-            return false;
-        }
-
-        public bool isEvaluate()
-        {
-            return false;
-        }*/
-
         public static String eval(String formula)
         {
             Debug.Print("EVAL");
-            Regex re = new Regex("^=(?<formula>.+)");
+            Regex re = new Regex("^=(?<formula>.+)$");
             Match m = re.Match(formula);
             if (m.Success)
             {
@@ -46,7 +35,7 @@ namespace extraCell.formula
             Regex re = null;
             Match m = null;
 
-            re = new Regex("^(?<function>[A-Z_]+)\\((?<args>.*)\\)$", RegexOptions.IgnoreCase);
+            re = new Regex("^(?<function>[a-zA-Z_]+)\\((?<args>.*)\\)$", RegexOptions.IgnoreCase);
             m = re.Match(formula);
             if (m.Success)
                 return evalFunction(m);
@@ -61,6 +50,11 @@ namespace extraCell.formula
             if (m.Success)
                 return evalAddr(m);
 
+            re = new Regex("[0-9]+", RegexOptions.IgnorePatternWhitespace);
+            m = re.Match(formula);
+            if (m.Success)
+                return formula.Trim();
+
             return "Nie znaleziono wzorca dla " + formula;
         }
 
@@ -74,7 +68,7 @@ namespace extraCell.formula
                 string args = m.Groups["args"].Value.ToString();
 
                 if (args.Length > 0)
-                    foreach (String arg in args.Split(','))
+                    foreach (String arg in args.Split(',')) // split zawodzi, potrzeba 'mądrego' regexpa, który zatroszczy się o nawiazy
                         argList.AddLast(proceedFormula(arg.Trim()));
 
                 IFunction obj = (IFunction)Activator.CreateInstance(p);

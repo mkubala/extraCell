@@ -14,6 +14,7 @@ namespace extraCell.view
         private System.Data.DataTable _Engine;
         private bool CellEntered = false;
 
+        private extraCell.domain.IEngine ece;
 
         private bool ColumnClicked = false, RowClicked = false;
 
@@ -34,7 +35,7 @@ namespace extraCell.view
 
             // RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             GridColor = Color.Coral;
-            AutoGenerateColumns = false;
+            //AutoGenerateColumns = false;
             this.AllowUserToAddRows = false;
 
             EnableHeadersVisualStyles = true;
@@ -49,7 +50,7 @@ namespace extraCell.view
 
             // AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            for (int i = 0; i < 50; i++)
+/*            for (int i = 0; i < 50; i++)
             {
                 DataGridViewTextBoxCustomCellColumn c = new DataGridViewTextBoxCustomCellColumn();
                 c.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -75,8 +76,25 @@ namespace extraCell.view
               //  lettcount.Increment();
                 //  dt.Rows.Add(" ");
             }
+            */
 
-            //  this.DataSource = dt;
+            /* hwast debug START */
+            ece = new extraCell.domain.ExtraCellEngine();
+            extraCell.formula.Formula.ece = ece;
+            this.DataSource = ece;
+
+            ece.addRow();
+            ece.addRow();
+            ece.addRow();
+
+            ece.addColumn();
+
+            ece.setCell(0, 1, "3");
+            ece.setCell(0, 2, "3");
+            
+            ece.setCell(0, 0, "=suma(suma(suma(A1:A2),3),0)");
+            /* hwast debug FINISH */
+
             // this.DataSource = new extraCell.domain.ExtraCellEngine();
 
             /*
