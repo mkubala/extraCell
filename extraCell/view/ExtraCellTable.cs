@@ -86,13 +86,15 @@ namespace extraCell.view
             ece.addRow();
             ece.addRow();
             ece.addRow();
+            ece.addRow();
 
             ece.addColumn();
 
             ece.setCell(0, 1, "3");
             ece.setCell(0, 2, "3");
+            ece.setCell(0, 3, "3");
             
-            ece.setCell(0, 0, "=suma(suma(suma(A1:A2),3),0)");
+            ece.setCell(0, 0, "=suma(2,suma(1,suma(0.5,0.5)),8, suma(A2:A4,2))");
             /* hwast debug FINISH */
 
             // this.DataSource = new extraCell.domain.ExtraCellEngine();

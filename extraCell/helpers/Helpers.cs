@@ -40,7 +40,7 @@ namespace extraCell.helpers
 
             if (m.Success)
             {
-                return new int[]{ getColumnNumber(m.Groups["col"].Value), Convert.ToInt32(m.Groups["row"].Value) };
+                return new int[]{ getColumnNumber(m.Groups["col"].Value), Convert.ToInt32(m.Groups["row"].Value) - 1 };
             }
             else
             {

@@ -14,8 +14,9 @@ namespace extraCell.formula.functions
             foreach (Object arg in args)
                 if (arg.ToString().Length > 0)
                 {
+                    System.Diagnostics.Debug.WriteLine("suma args = " + arg.ToString());
                     foreach (String s in arg.ToString().Split(','))
-                        res += Convert.ToDouble(s.Trim());
+                        res += Convert.ToDouble(s.Trim().Replace('.',','));
                 }
                 else
                 {

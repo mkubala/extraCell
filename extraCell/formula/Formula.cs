@@ -67,10 +67,26 @@ namespace extraCell.formula
                 LinkedList<Object> argList = new LinkedList<Object>();
                 string args = m.Groups["args"].Value.ToString();
 
-                if (args.Length > 0)
-                    foreach (String arg in args.Split(',')) // split zawodzi, potrzeba 'mądrego' regexpa, który zatroszczy się o nawiazy
-                        argList.AddLast(proceedFormula(arg.Trim()));
+                System.Diagnostics.Debug.WriteLine("Formula.evalFunction args = " + args);
 
+                StringBuilder tmp = new StringBuilder();
+                int cnt = 0;
+                if (args.Length > 0)
+                {
+                    Regex regOpen = new Regex(@"\(", RegexOptions.Compiled);
+                    Regex regClose = new Regex(@"\)", RegexOptions.Compiled);
+                    foreach (string arg in args.Split(','))
+                    {
+                        cnt += regOpen.Matches(arg).Count;
+                        cnt -= regClose.Matches(arg).Count;
+                        tmp.Append(arg.Trim());
+                        tmp.Append(',');
+                        if(cnt != 0) continue;
+                        System.Diagnostics.Debug.WriteLine("proceed formula args = " + tmp.ToString().TrimEnd(','));
+                        argList.AddLast(proceedFormula(tmp.ToString().TrimEnd(',')));
+                        tmp = new StringBuilder();
+                    }
+                }
                 IFunction obj = (IFunction)Activator.CreateInstance(p);
                 return obj.run(argList.ToArray());
             }
@@ -86,9 +102,9 @@ namespace extraCell.formula
         private static Object evalAddrRange(Match m)
         {
             int colStart = helpers.Helpers.getColumnNumber(m.Groups["colStart"].Value);
-            int rowStart = Convert.ToInt32(m.Groups["rowStart"].Value);
+            int rowStart = Convert.ToInt32(m.Groups["rowStart"].Value) - 1;
             int width = helpers.Helpers.getColumnNumber(m.Groups["colEnd"].Value) - colStart + 1;
-            int height = Convert.ToInt32(m.Groups["rowEnd"].Value) - rowStart + 1;
+            int height = Convert.ToInt32(m.Groups["rowEnd"].Value) - rowStart;
 
             Debug.Print("width: " + width + ", height: " + height);
 
