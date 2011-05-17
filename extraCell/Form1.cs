@@ -44,7 +44,7 @@ namespace extraCell
       //      dataGridView1.DataSource = ece.toDataTable();
             /***************************************************************
              * Sztuczne dodanie karty */
-//            AddTab("Artificial");
+            AddTab("Artificial");
             /***************************************************************
             * Sztuczne dodanie karty - KONIEC*/
         }
@@ -66,12 +66,16 @@ namespace extraCell
             System.Windows.Forms.TabPage karta = new System.Windows.Forms.TabPage();
 
             extraCellTable tabelka = new extraCellTable();
-            tabelka.ece = new ExtraCellEngine("tabelka");
-            
+            tabelka.ece = new ExtraCellEngine("arkusz");
+            tabelka.DataSource = tabelka.ece;
+
             if(filePath.Trim().Length > 0)
                 tabelka.ece.importXML(filePath);
 
-            tabelka.DataSource = tabelka.ece;
+            tabelka.ece.addColumn();
+            tabelka.ece.addRow();
+
+            tabelka.ece.setCell(0, 0, "=about(\"xx\")");
 
             karta.Controls.Add(tabelka);
 
@@ -226,10 +230,10 @@ namespace extraCell
                     MessageBox.Show("Nie udało się zapisać pliku.\n" + ex.Message, "Błąd");
                     return;
                 }
-                MessageBox.Show("Plik " + new FileInfo(saveFileDialog1.FileName).Name + " został pomyślnie zapisany.", "Sukces");
+                string name = new FileInfo(saveFileDialog1.FileName).Name;
+                karty[filesTab.SelectedIndex].Text = name;
 
-                //Operacje po zapisaniu pliku
-                //Debug.WriteLine("Zapisano plik jako " + saveFileDialog1.FileName + "(zakladka nr " + filesTab.SelectedIndex + ")");
+                MessageBox.Show("Plik " + name + " został pomyślnie zapisany.", "Sukces");
             }
         }
 

@@ -23,10 +23,6 @@ namespace extraCell.formula
             {
                 return (String)proceedFormula(m.Groups["formula"].Value.ToString());
             }
-            else
-            {
-                return formula;
-            }
             return formula;
         }
 

@@ -568,12 +568,12 @@ namespace extraCell.view
             base.OnCellMouseMove(e);
         }
 
-        public object DataSource
+        /*public object DataSource
         {
             get { return base.DataSource; }
             //         set { base.DataSource = new ExtraCellEngine().toDataTable(); _Engine = (System.Data.DataTable)base.DataSource; }
             set { base.DataSource = value; }
-        }
+        }*/
 
 
         void CellMouseMoveCross(object sender, DataGridViewCellMouseEventArgs e)
