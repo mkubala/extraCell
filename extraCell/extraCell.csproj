@@ -127,7 +127,10 @@
     </Compile>
     <Compile Include="formula\Formula.cs" />
     <Compile Include="formula\functions\about.cs" />
+    <Compile Include="formula\functions\iloczyn.cs" />
+    <Compile Include="formula\functions\iloraz.cs" />
     <Compile Include="formula\functions\print.cs" />
+    <Compile Include="formula\functions\roznica.cs" />
     <Compile Include="formula\functions\suma.cs" />
     <Compile Include="formula\IFunction.cs" />
     <Compile Include="helpers\Helpers.cs" />

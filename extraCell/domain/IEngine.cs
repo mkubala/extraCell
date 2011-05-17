@@ -13,5 +13,8 @@ namespace extraCell.domain
         void setCell(int col, int row, String formula);
         void addColumn();
         void addRow();
+
+        void exportXML(string filename);
+        void importXML(string filename);
     }
 }

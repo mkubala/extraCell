@@ -11,7 +11,8 @@ namespace extraCell.domain
 {
     class ExtraCellEngine : DataTable, IEngine
     {
-        public ExtraCellEngine()
+        public ExtraCellEngine() : base("arkusz") {}
+        public ExtraCellEngine(string name) : base(name)
         {
             /* Debug by hwast */
             /*addColumn();
@@ -82,7 +83,16 @@ namespace extraCell.domain
             
             this.Rows.Add(dr);
         }
-     
+
+        public void exportXML(string filename)
+        {
+            this.WriteXml(filename, XmlWriteMode.WriteSchema, true);
+        }
+
+        public void importXML(string filename)
+        {
+            this.ReadXml(filename);
+        }
     }
 
 }

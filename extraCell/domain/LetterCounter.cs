@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/* DEPRECATED!
+ * Use helper class instead of it [mkubala] */
+
 namespace extraCell
 {
     class LetterCounter

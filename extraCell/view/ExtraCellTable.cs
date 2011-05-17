@@ -83,7 +83,7 @@ namespace extraCell.view
             extraCell.formula.Formula.ece = ece;
             this.DataSource = ece;
 
-            ece.addRow();
+            /*ece.addRow();
             ece.addRow();
             ece.addRow();
             ece.addRow();
@@ -95,6 +95,11 @@ namespace extraCell.view
             ece.setCell(0, 3, "3");
             
             ece.setCell(0, 0, "=suma(2,suma(1,suma(0.5,0.5)),8, suma(A2:A4,2))");
+
+            ece.exportXML("test.xml");*/
+            // powyższe linijki lub
+            ece.importXML("test.xml");
+
             /* hwast debug FINISH */
 
             // this.DataSource = new extraCell.domain.ExtraCellEngine();

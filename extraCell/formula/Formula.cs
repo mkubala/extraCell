@@ -35,6 +35,7 @@ namespace extraCell.formula
             Regex re = null;
             Match m = null;
 
+            /* Important! Order of occurrences matters! */
             re = new Regex("^(?<function>[a-zA-Z_]+)\\((?<args>.*)\\)$", RegexOptions.IgnoreCase);
             m = re.Match(formula);
             if (m.Success)

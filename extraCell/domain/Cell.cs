@@ -5,7 +5,7 @@ using System.Text;
 
 namespace extraCell.domain
 {
-    class Cell
+    public class Cell
     {
         public String formula { get; set; }
         public String result { get; set;  }
