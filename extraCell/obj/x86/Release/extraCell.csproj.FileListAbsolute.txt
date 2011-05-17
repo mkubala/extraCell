@@ -26,3 +26,4 @@ C:\git\master\extraCell\obj\x86\Release\GenerateResource.write.1.tlog
 C:\git\master\extraCell\bin\Release\extraCell.exe.config
 C:\git\master\extraCell\bin\Release\extraCell.exe
 C:\git\master\extraCell\bin\Release\extraCell.pdb
+C:\Users\hwastu\git-test\extraCell\extraCell\bin\Release\extraCell.exe.config

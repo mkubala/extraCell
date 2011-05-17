@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Data;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using extraCell.formula;
 using extraCell;
-using System.Diagnostics;
+using System.IO;
+//using System.Diagnostics;
 
 namespace extraCell.domain
 {
@@ -86,13 +85,38 @@ namespace extraCell.domain
 
         public void exportXML(string filename)
         {
-            this.WriteXml(filename, XmlWriteMode.WriteSchema, true);
+            System.Diagnostics.Debug.WriteLine(" -------------------> IN exportXML <------------------");
+            this.WriteXml(filename, XmlWriteMode.WriteSchema);
         }
 
         public void importXML(string filename)
         {
-            this.ReadXml(filename);
+            System.Diagnostics.Debug.WriteLine(" -------------------> IN importXML <------------------");
+            try
+            {
+                //this.ReadXmlSchema(filename);
+                this.ReadXml(filename);
+            }
+            catch (FileNotFoundException e)
+            {
+                throw new Exception("Nie znaleziono pliku " + filename);
+            }
+            catch (FileLoadException e)
+            {
+                throw new FileLoadException("Nie udało się załadować pliku " + filename);
+            }
+            finally
+            {
+                foreach(DataRow row in this.Rows) {
+                    foreach (DataColumn column in this.Columns)
+                    {
+                        System.Diagnostics.Debug.Write("\t" + row[column]);
+                    }
+                    System.Diagnostics.Debug.WriteLine("");
+                }
+            }
         }
+
     }
 
 }

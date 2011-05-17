@@ -25,3 +25,9 @@ C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\extraCell.Form1.resou
 C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\extraCell.Properties.Resources.resources
 C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\hwastu\git-test\extraCell\extraCell\bin\Debug\extraCell.exe.config
+C:\Users\hwastu\git-test\extraCell\extraCell\bin\Debug\extraCell.exe.manifest
+C:\Users\hwastu\git-test\extraCell\extraCell\bin\Debug\extraCell.application
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\extraCell.TrustInfo.xml
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\extraCell.exe.manifest
+C:\Users\hwastu\git-test\extraCell\extraCell\obj\x86\Debug\extraCell.application

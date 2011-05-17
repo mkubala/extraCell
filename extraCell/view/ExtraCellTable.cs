@@ -14,7 +14,7 @@ namespace extraCell.view
         private System.Data.DataTable _Engine;
         private bool CellEntered = false;
 
-        private extraCell.domain.IEngine ece;
+        public extraCell.domain.IEngine ece { get; set; }
 
         private bool ColumnClicked = false, RowClicked = false;
 
@@ -31,7 +31,7 @@ namespace extraCell.view
         public extraCellTable()
             : base()
         {
-            ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
             // RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             GridColor = Color.Coral;
@@ -82,8 +82,8 @@ namespace extraCell.view
             ece = new extraCell.domain.ExtraCellEngine();
             extraCell.formula.Formula.ece = ece;
             this.DataSource = ece;
-
-            /*ece.addRow();
+            
+            ece.addRow();
             ece.addRow();
             ece.addRow();
             ece.addRow();
@@ -91,18 +91,17 @@ namespace extraCell.view
             ece.addColumn();
 
             ece.setCell(0, 1, "3");
-            ece.setCell(0, 2, "3");
+            ece.setCell(0, 2, "9");
             ece.setCell(0, 3, "3");
             
             ece.setCell(0, 0, "=suma(2,suma(1,suma(0.5,0.5)),8, suma(A2:A4,2))");
-
-            ece.exportXML("test.xml");*/
+            
+            ece.exportXML("test.xml");
             // powyższe linijki lub
-            ece.importXML("test.xml");
+            //ece.importXML("..\\Release\\jaha.xcd");
+            //ece.exportXML("test.xml");
 
             /* hwast debug FINISH */
-
-            // this.DataSource = new extraCell.domain.ExtraCellEngine();
 
             /*
             for (int i = 0; i < 255; i++)

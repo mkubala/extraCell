@@ -23,6 +23,8 @@ namespace extraCell
         //Licznik nowych plikow 
         private byte NewCount = 1;
 
+        private const String documentFilter = "ExtraCell Document (*.xcd)|*.xcd|XML document (*.xml)|*.xml|Wszystkie pliki (*.*)|*.*";
+
 
         public Form1()
         {
@@ -42,7 +44,7 @@ namespace extraCell
       //      dataGridView1.DataSource = ece.toDataTable();
             /***************************************************************
              * Sztuczne dodanie karty */
-            AddTab("Artificial");
+//            AddTab("Artificial");
             /***************************************************************
             * Sztuczne dodanie karty - KONIEC*/
         }
@@ -55,19 +57,25 @@ namespace extraCell
         //Dodaje nowa karte i tabelke
         private void AddTab(string title)
         {
+            AddTab(title, "");
+        }
+
+        //Dodaje nowa karte i tabelke
+        private void AddTab(string title, string filePath)
+        {
             System.Windows.Forms.TabPage karta = new System.Windows.Forms.TabPage();
 
-
-            karty.Add(karta);
-            filesTab.Controls.Add(karta);
-
-            //
             extraCellTable tabelka = new extraCellTable();
+            tabelka.ece = new ExtraCellEngine("tabelka");
+            
+            if(filePath.Trim().Length > 0)
+                tabelka.ece.importXML(filePath);
 
+            tabelka.DataSource = tabelka.ece;
 
             karta.Controls.Add(tabelka);
 
-            
+
             tabelka.Size = new System.Drawing.Size(552, 270);
             tabelka.Location = new System.Drawing.Point(3, 3);
 
@@ -78,23 +86,23 @@ namespace extraCell
             tabelka.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             tabelka.Size = new System.Drawing.Size(552, 270);
 
-
-            tabelki.Add(tabelka);
-
-         //  tabelka.DataSource = new ExtraCellEngine().toDataTable();
+            //  tabelka.DataSource = new ExtraCellEngine().toDataTable();
 
             karta.Padding = new System.Windows.Forms.Padding(3);
 
             // Nazwa wyswietlana na karcie 
-            
+
             karta.Text = title;
             karta.UseVisualStyleBackColor = true;
-        }
 
+            tabelki.Add(tabelka);
+            karty.Add(karta);
+            filesTab.Controls.Add(karta);
+        }
 
         private void otworzToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Pliki xml|*.xml|Wszystkie pliki|*.*";
+            openFileDialog1.Filter = documentFilter;
             openFileDialog1.FileName = "";
 
             DialogResult result = openFileDialog1.ShowDialog();
@@ -104,9 +112,7 @@ namespace extraCell
             {
                 // Nazwa wyswietlana na karcie 
                 // Skraca do nazwy pliku - zamiast pelnej sciezki
-
-                AddTab(new FileInfo(openFileDialog1.FileName).Name);
-                
+                AddTab(new FileInfo(openFileDialog1.FileName).Name, openFileDialog1.FileName);
                 //Operacje po otwarciu pliku
             }
         }
@@ -204,7 +210,27 @@ namespace extraCell
 
         private void ZapiszStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+            saveFileDialog1.Filter = documentFilter;
+            saveFileDialog1.RestoreDirectory = true;
 
+            // Process open file dialog box results
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    tabelki[filesTab.SelectedIndex].ece.exportXML(saveFileDialog1.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nie udało się zapisać pliku.\n" + ex.Message, "Błąd");
+                    return;
+                }
+                MessageBox.Show("Plik " + new FileInfo(saveFileDialog1.FileName).Name + " został pomyślnie zapisany.", "Sukces");
+
+                //Operacje po zapisaniu pliku
+                //Debug.WriteLine("Zapisano plik jako " + saveFileDialog1.FileName + "(zakladka nr " + filesTab.SelectedIndex + ")");
+            }
         }
 
         private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)

@@ -60,6 +60,7 @@ namespace extraCell
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.filesTab = new System.Windows.Forms.TabControl();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
@@ -114,7 +115,7 @@ namespace extraCell
             this.dataGridViewTextBoxCustomCellColumn148 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
             this.dataGridViewTextBoxCustomCellColumn149 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
             this.dataGridViewTextBoxCustomCellColumn150 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.filesTab = new System.Windows.Forms.TabControl();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -337,6 +338,15 @@ namespace extraCell
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(566, 302);
             this.panel1.TabIndex = 3;
+            // 
+            // filesTab
+            // 
+            this.filesTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filesTab.Location = new System.Drawing.Point(0, 0);
+            this.filesTab.Name = "filesTab";
+            this.filesTab.SelectedIndex = 0;
+            this.filesTab.Size = new System.Drawing.Size(566, 302);
+            this.filesTab.TabIndex = 0;
             // 
             // button1
             // 
@@ -658,15 +668,6 @@ namespace extraCell
             this.dataGridViewTextBoxCustomCellColumn150.Name = "dataGridViewTextBoxCustomCellColumn150";
             this.dataGridViewTextBoxCustomCellColumn150.Width = 45;
             // 
-            // filesTab
-            // 
-            this.filesTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.filesTab.Location = new System.Drawing.Point(0, 0);
-            this.filesTab.Name = "filesTab";
-            this.filesTab.SelectedIndex = 0;
-            this.filesTab.Size = new System.Drawing.Size(566, 302);
-            this.filesTab.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -776,6 +777,7 @@ namespace extraCell
         private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn148;
         private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn149;
         private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn150;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
    
         
     }

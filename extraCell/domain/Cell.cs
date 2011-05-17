@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace extraCell.domain
 {
     public class Cell
     {
         public String formula { get; set; }
-        public String result { get; set;  }
+
+        public String result { get; set; }
 
         public Cell() { }
+
         public Cell(String formula, String result)
         {
             this.formula = formula;
@@ -34,6 +33,7 @@ namespace extraCell.domain
          */
         public override string ToString()
         {
+            //return extraCell.formula.Formula.eval(this.formula);
             return this.result;
         }
 
