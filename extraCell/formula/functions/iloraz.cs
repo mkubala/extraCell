@@ -11,16 +11,17 @@ namespace extraCell.formula.functions
         public Object run(Object[] args)
         {
             Double res = 0d;
-            foreach (Object arg in args)
-                if (arg.ToString().Length > 0)
-                {
-                    foreach (String s in arg.ToString().Split(','))
-                        res = res / Convert.ToDouble(s.Trim().Replace('.', ','));
-                }
-                else
-                {
-                    return "###";
-                }
+            string[] arr = args[0].ToString().Split(',');
+            if (arr.Length == 2)
+            {
+                for (int i = 0; i < 2; i++)
+                    arr[i] = arr[i].Trim().Replace('.', ',');
+                res = Convert.ToDouble(arr[0]) / Convert.ToDouble(arr[1]);
+            }
+            else
+            {
+                return "###";
+            }
 
             return res.ToString();
         }

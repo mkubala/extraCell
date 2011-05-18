@@ -16,37 +16,18 @@ namespace extraCell
 {
     public partial class Form1 : Form
     {
-        private IEngine ece;
-        private List <TabPage> karty = new List <TabPage>();
-        private List<extraCellTable> tabelki = new List<extraCellTable>();
-//         private void AddTab(string title);
-        //Licznik nowych plikow 
-        private byte NewCount = 1;
 
+        private List<MDIContent> mdiContainer;
         private const String documentFilter = "ExtraCell Document (*.xcd)|*.xcd|XML document (*.xml)|*.xml|Wszystkie pliki (*.*)|*.*";
-
+        private int currentTabNum;
+        private MDIContent currentDocument;
 
         public Form1()
         {
             InitializeComponent();
-            // Wylaczenie sortowania
-/*
-            foreach (DataGridViewColumn kol in this.dataGridView1.Columns)
-            {
-                kol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            }
-            */
-      //      dataGridView1.DataSource = null;
+            mdiContainer = new List<MDIContent>();
 
-            
-         
-
-      //      dataGridView1.DataSource = ece.toDataTable();
-            /***************************************************************
-             * Sztuczne dodanie karty */
-            AddTab("Artificial");
-            /***************************************************************
-            * Sztuczne dodanie karty - KONIEC*/
+            AddTab("");
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -55,53 +36,41 @@ namespace extraCell
         }
 
         //Dodaje nowa karte i tabelke
-        private void AddTab(string title)
+        private void AddTab()
         {
-            AddTab(title, "");
+            AddTab("");
         }
 
         //Dodaje nowa karte i tabelke
-        private void AddTab(string title, string filePath)
+        private void AddTab(string filePath)
         {
-            System.Windows.Forms.TabPage karta = new System.Windows.Forms.TabPage();
+            try
+            {
+                MDIContent mdiContent = new MDIContent(filePath);
+                System.Diagnostics.Debug.WriteLine("after creatre mdi content");
+            
+                ImageList imageList = new ImageList();
 
-            extraCellTable tabelka = new extraCellTable();
-            tabelka.ece = new ExtraCellEngine("arkusz");
-            tabelka.DataSource = tabelka.ece;
+                mdiContent.extraCellTable.inputBox = formulaInputBox;
+                mdiContent.tabPage.ImageIndex = 0;
+                mdiContainer.Add(mdiContent);
 
-            if(filePath.Trim().Length > 0)
-                tabelka.ece.importXML(filePath);
+                Stream stream = System.Reflection.Assembly.GetEntryAssembly().GetManifestResourceStream("extraCell.gfx.close.png");
+                imageList.ImageSize = new Size(16, 16);
+                imageList.Images.Add(Image.FromStream(stream));
+            
+                filesTab.ImageList = imageList;
+                filesTab.Controls.Add(mdiContent.tabPage);
 
-            tabelka.ece.addColumn();
-            tabelka.ece.addRow();
-
-            tabelka.ece.setCell(0, 0, "=about(\"xx\")");
-
-            karta.Controls.Add(tabelka);
-
-
-            tabelka.Size = new System.Drawing.Size(552, 270);
-            tabelka.Location = new System.Drawing.Point(3, 3);
-
-            tabelka.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            tabelka.Dock = System.Windows.Forms.DockStyle.Fill;
-            tabelka.Location = new System.Drawing.Point(3, 3);
-            tabelka.RowHeadersWidth = 50;
-            tabelka.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            tabelka.Size = new System.Drawing.Size(552, 270);
-
-            //  tabelka.DataSource = new ExtraCellEngine().toDataTable();
-
-            karta.Padding = new System.Windows.Forms.Padding(3);
-
-            // Nazwa wyswietlana na karcie 
-
-            karta.Text = title;
-            karta.UseVisualStyleBackColor = true;
-
-            tabelki.Add(tabelka);
-            karty.Add(karta);
-            filesTab.Controls.Add(karta);
+                filesTab.SelectTab(mdiContainer.Count - 1);
+                currentTabNum = filesTab.SelectedIndex;
+                currentDocument = mdiContainer[currentTabNum];
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         private void otworzToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,19 +80,13 @@ namespace extraCell
 
             DialogResult result = openFileDialog1.ShowDialog();
 
-            // Process open file dialog box results
             if (result == DialogResult.OK)
-            {
-                // Nazwa wyswietlana na karcie 
-                // Skraca do nazwy pliku - zamiast pelnej sciezki
-                AddTab(new FileInfo(openFileDialog1.FileName).Name, openFileDialog1.FileName);
-                //Operacje po otwarciu pliku
-            }
+                AddTab(openFileDialog1.FileName);
         }
 
         private void zamknijToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            closeTab();
         }
 
         private void drukujToolStripMenuItem_Click(object sender, EventArgs e)
@@ -161,16 +124,11 @@ namespace extraCell
 
         }
 
-        private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             colorDialog1.ShowDialog();
 
-            extraCellTable tabelka = (extraCellTable)filesTab.SelectedTab.Controls[0];
+            ExtraCellTable tabelka = (ExtraCellTable)filesTab.SelectedTab.Controls[0];
 
             for (int i = 0; i < (tabelka.SelectedCells.Count); i++)
             {
@@ -182,7 +140,7 @@ namespace extraCell
         {
             fontDialog1.ShowDialog();
 
-            extraCellTable tabelka = (extraCellTable)filesTab.SelectedTab.Controls[0];
+            ExtraCellTable tabelka = (ExtraCellTable)filesTab.SelectedTab.Controls[0];
 
       //      Debug.Print(this.ToString()+ " nazwa aktywnej zakladki: " + filesTab.SelectedTab.Text);
 
@@ -198,7 +156,7 @@ namespace extraCell
 
             backgroundColorDialog.ShowDialog();
 
-            extraCellTable tabelka = (extraCellTable)filesTab.SelectedTab.Controls[0];
+            ExtraCellTable tabelka = (ExtraCellTable)filesTab.SelectedTab.Controls[0];
 
             for (int i = 0; i < (tabelka.SelectedCells.Count); i++)
             {
@@ -208,61 +166,116 @@ namespace extraCell
 
         private void NowyStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddTab("Niezapisany"+NewCount.ToString());
-            NewCount++;
+            AddTab();
         }
 
         private void ZapiszStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            saveFile();
+        }
+
+        private bool saveFile()
+        {
             saveFileDialog1.Filter = documentFilter;
             saveFileDialog1.RestoreDirectory = true;
 
-            // Process open file dialog box results
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    tabelki[filesTab.SelectedIndex].ece.exportXML(saveFileDialog1.FileName);
+                    mdiContainer[filesTab.SelectedIndex].extraCellTable.ece.exportXML(saveFileDialog1.FileName);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Nie udało się zapisać pliku.\n" + ex.Message, "Błąd");
-                    return;
+                    return false;
                 }
                 string name = new FileInfo(saveFileDialog1.FileName).Name;
-                karty[filesTab.SelectedIndex].Text = name;
+                mdiContainer[filesTab.SelectedIndex].tabPage.Text = name;
 
-                MessageBox.Show("Plik " + name + " został pomyślnie zapisany.", "Sukces");
+                return true;
+            }
+            return false;
+        }
+
+        private void calculate()
+        {
+            Point p = currentDocument.extraCellTable.CurrentCellAddress;
+            currentDocument.extraCellTable.ece.setCell(p.X, p.Y, formulaInputBox.Text.Trim());
+        }
+
+        private void obliczButton_Click(object sender, EventArgs e)
+        {
+            calculate();
+        }
+
+        private void filesTab_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (filesTab.TabCount == 0) return;
+            currentTabNum = filesTab.SelectedIndex;
+            currentDocument = mdiContainer[currentTabNum];
+            Point p = currentDocument.extraCellTable.CurrentCellAddress;
+            Cell c = currentDocument.extraCellTable.ece.getCell(p.X, p.Y);
+            formulaInputBox.Text = c.formula;
+        }
+
+        private void filesTab_MouseClick(object sender, MouseEventArgs e)
+        {
+            Rectangle tabRect;
+            tabRect = filesTab.GetTabRect(filesTab.SelectedIndex);
+
+            if (filesTab.SelectedIndex == currentTabNum && e.X >= tabRect.Left+4 && e.X <= tabRect.Left + 20)
+            {
+                closeTab();
             }
         }
 
-        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            Debug.WriteLine("Zaznaczona komorka " + DateTime.Now.ToLongTimeString());
+        private void closeTab() {
+            if (askOnExit())
+            {
+                mdiContainer.RemoveAt(filesTab.SelectedIndex);
+                filesTab.SelectedTab.Dispose();
+            }
         }
 
+        /* Zapytanie o wyjście i zapis + jego obsługa */
+        private bool askOnExit() {
+            currentDocument = mdiContainer[filesTab.SelectedIndex];
+            DialogResult dialogResult = MessageBox.Show(
+                "Czy na pewno chcesz zamknąć ten dokument?", 
+                "Zamykanie karty", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question
+            );
+            if (dialogResult.Equals(DialogResult.No))
+            {
+                return false;
+            }
+            else if (currentDocument.extraCellTable.changed)
+            {
+                dialogResult = MessageBox.Show(
+                    "Dokument " + currentDocument.documentName + " nie został zapisany. Czy chcesz zapisać zmiany?", 
+                    "Zapisz zmiany", 
+                    MessageBoxButtons.YesNoCancel, 
+                    MessageBoxIcon.Question
+                );
 
-
-        private void dataGridView1_MultiSelectChanged(object sender, EventArgs e)
-        {
-            MessageBox.Show("Przeciąganie");
+                if (dialogResult.Equals(DialogResult.Cancel))
+                    return false;
+                else if (dialogResult.Equals(DialogResult.Yes) && (currentDocument.documentPath == null || currentDocument.documentPath.Trim().Length == 0))
+                    return saveFile();
+                else if (dialogResult.Equals(DialogResult.Yes))
+                    currentDocument.saveDocument(currentDocument.documentPath);
+                return true;
+            }
+            return true;
         }
 
-        private void dataGridView1_Paint(object sender, PaintEventArgs e)
+        private void formulaInputBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (e.KeyChar == (Char)13)
+                calculate();
         }
-
-        private void dataGridView1_CurrentCellChanged(object sender, EventArgs e)
-        {
-            Debug.Print(DateTime.Now.ToShortDateString() + " zmiana");
-        }
-
-
-
- 
-
 
     }
 }

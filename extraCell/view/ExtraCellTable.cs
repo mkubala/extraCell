@@ -9,10 +9,12 @@ using System.Reflection;
 
 namespace extraCell.view
 {
-    class extraCellTable : DataGridView
+    class ExtraCellTable : DataGridView
     {
-        private System.Data.DataTable _Engine;
-        private bool CellEntered = false;
+//        private System.Data.DataTable _Engine;
+//        private bool CellEntered = false;
+        public bool changed { get; set; }
+        public TextBox inputBox { get; set; }
 
         public extraCell.domain.IEngine ece { get; set; }
 
@@ -22,147 +24,58 @@ namespace extraCell.view
         public DataGridViewSelectedCellCollection LastSelectedCells;
         public Point LastCellAddress;
 
-        public System.Data.DataTable Engine
-        {
-            get { return _Engine; }
-            set { _Engine = value; }
-        }
 
-        public extraCellTable()
+        public ExtraCellTable()
             : base()
         {
+            changed = false;
+            inputBox = new TextBox();
             //ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-
             // RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            GridColor = Color.Coral;
-            //AutoGenerateColumns = false;
+//            GridColor = Color.Coral;
             this.AllowUserToAddRows = false;
 
             EnableHeadersVisualStyles = true;
             ColumnHeadersDefaultCellStyle.BackColor = Color.Blue;
 
-            //        RowHeadersVisible = true;
-
-            //   DataTable dt = new DataTable();
-       //     LetterCounter lettcount = new LetterCounter();
-
-            //     dt.Columns.Add();
-
-            // AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-/*            for (int i = 0; i < 50; i++)
-            {
-                DataGridViewTextBoxCustomCellColumn c = new DataGridViewTextBoxCustomCellColumn();
-                c.SortMode = DataGridViewColumnSortMode.NotSortable;
-                c.Width = 45;
-                //  c.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-
-                //getColumnName
-
-                //c.HeaderText = lettcount.ToString();
-                c.HeaderText = helpers.Helpers.getColumnName(i+1);
-                this.Columns.Add(c);
-                this.Rows.Add(1);
-
-
-                // Nie dziala!
-                //     this.Rows.Add(1);
-
-                //      this.Rows[i].HeaderCell.Value = i;
-
-                //       c.DataGridView.Rows[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                //      c.DataGridView.Rows[i].HeaderCell.Style.BackColor = Color.Azure;
-
-              //  lettcount.Increment();
-                //  dt.Rows.Add(" ");
-            }
-            */
-
-            /* hwast debug START */
             ece = new extraCell.domain.ExtraCellEngine();
-            extraCell.formula.Formula.ece = ece;
             this.DataSource = ece;
-            
-            ece.addRow();
-            ece.addRow();
-            ece.addRow();
-            ece.addRow();
 
-            ece.addColumn();
+            /* przeniesione z Form1.cs/AddTab() */
+            this.Size = new System.Drawing.Size(552, 270);
+            this.Location = new System.Drawing.Point(3, 3);
+            this.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Location = new System.Drawing.Point(3, 3);
+            this.RowHeadersWidth = 50;
+            this.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.Size = new System.Drawing.Size(552, 270);
 
-            ece.setCell(0, 1, "3");
-            ece.setCell(0, 2, "9");
-            ece.setCell(0, 3, "3");
-            
-            ece.setCell(0, 0, "=suma(2,suma(1,suma(0.5,0.5)),8, suma(A2:A4,2))");
-            
-            ece.exportXML("test.xml");
-            // powyższe linijki lub
-            //ece.importXML("..\\Release\\jaha.xcd");
-            //ece.exportXML("test.xml");
-
-            /* hwast debug FINISH */
-
-            /*
-            for (int i = 0; i < 255; i++)
+            /*for (int i = 0; i < 255; i++)
             {
-                this.Rows.Add(1);
-                this.Rows[i].HeaderCell.Value = i;
-            }
-            */
-            ////DebugPrint("Ilosc wierszy: " + this.Rows.Count.ToString());
-
+                ece.addColumn();
+                ece.addRow();
+            }*/
         }
 
-        /*
-        protected  override  void OnCellFormatting( DataGridViewCellFormattingEventArgs e)
-        {
-            this.Rows[e.RowIndex].HeaderCell.Value = (e.RowIndex + 1).ToString();
-            this.Rows[e.RowIndex].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            this.Rows[e.RowIndex].HeaderCell.Style.BackColor = Color.Azure;
-        }
-        */
+
         /*
          * Zrodlo : http://www.danielsoper.com/programming/DataGridViewNumberedRows.aspx
          */
-
         // Numerowanie wierszy
         protected override void OnRowPostPaint(DataGridViewRowPostPaintEventArgs e)
-        { //this method overrides the DataGridView's RowPostPaint event 
-            //in order to automatically draw numbers on the row header cells
-            //and to automatically adjust the width of the column containing
-            //the row header cells so that it can accommodate the new row
-            //numbers,
-
-            //store a string representation of the row number in 'strRowNumber'
+        {
             string strRowNumber = (e.RowIndex + 1).ToString();
-
-            //prepend leading zeros to the string if necessary to improve
-            //appearance. For example, if there are ten rows in the grid,
-            //row seven will be numbered as "07" instead of "7". Similarly, if 
-            //there are 100 rows in the grid, row seven will be numbered as "007".
-            //    while (strRowNumber.Length < this.RowCount.ToString().Length) strRowNumber = "0" + strRowNumber;
-
-            //determine the display size of the row number string using
-            //the DataGridView's current font.
             SizeF size = e.Graphics.MeasureString(strRowNumber, this.Font);
-
-            //adjust the width of the column that contains the row header cells 
-            //if necessary
-            if (this.RowHeadersWidth < (int)(size.Width + 5)) this.RowHeadersWidth = (int)(size.Width + 5);
-
-            //this brush will be used to draw the row number string on the
-            //row header cell using the system's current ControlText color
             Brush b = SystemBrushes.ControlText;
 
-            //draw the row number string on the current row header cell using
-            //the brush defined above and the DataGridView's default font
+            if (this.RowHeadersWidth < (int)(size.Width + 5)) 
+                this.RowHeadersWidth = (int)(size.Width + 5);
+
             e.Graphics.DrawString(strRowNumber, this.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + ((e.RowBounds.Height - size.Height) / 2));
 
-            //call the base object's OnRowPostPaint method
             base.OnRowPostPaint(e);
-        } //end OnRowPostPaint method
-
+        }
 
 
         /**************************************************************************/
@@ -204,7 +117,7 @@ namespace extraCell.view
                     Pen _Pen = new Pen(Color.Black);
                     _Pen.Width = 2;
                     graphics.DrawRectangle(_Pen, newRect);
-
+        
                     /*
                     
                     _Pen.Width = 2;
@@ -217,37 +130,37 @@ namespace extraCell.view
                     graphics.DrawRectangle(_Pen, new Rectangle(cellBounds.X + cellBounds.Width - 5, cellBounds.Y + cellBounds.Height - 5, 15, 15));
                      */
                     //   entered = false;
+                        }
+                    }
+
+
+
+                    protected override void OnEnter(int rowIndex, bool throughMouseClick)
+                    {
+                        base.OnEnter(rowIndex, throughMouseClick);
+                        entered = true;
+                    }
+
+                    protected override void OnLeave(int rowIndex, bool throughMouseClick)
+                    {
+                        base.OnLeave(rowIndex, throughMouseClick);
+                        entered = false;
+                        this.DataGridView.InvalidateCell(this);
+                    }
+
+                    // Force the cell to repaint itself when the mouse pointer enters it.
+                    protected override void OnMouseEnter(int rowIndex)
+                    {
+                        this.DataGridView.InvalidateCell(this);
+                    }
+
+                    // Force the cell to repaint itself when the mouse pointer leaves it.
+                    protected override void OnMouseLeave(int rowIndex)
+                    {
+                        this.DataGridView.InvalidateCell(this);
+                    }
+
                 }
-            }
-
-
-
-            protected override void OnEnter(int rowIndex, bool throughMouseClick)
-            {
-                base.OnEnter(rowIndex, throughMouseClick);
-                entered = true;
-            }
-
-            protected override void OnLeave(int rowIndex, bool throughMouseClick)
-            {
-                base.OnLeave(rowIndex, throughMouseClick);
-                entered = false;
-                this.DataGridView.InvalidateCell(this);
-            }
-
-            // Force the cell to repaint itself when the mouse pointer enters it.
-            protected override void OnMouseEnter(int rowIndex)
-            {
-                this.DataGridView.InvalidateCell(this);
-            }
-
-            // Force the cell to repaint itself when the mouse pointer leaves it.
-            protected override void OnMouseLeave(int rowIndex)
-            {
-                this.DataGridView.InvalidateCell(this);
-            }
-
-        }
 
         public class DataGridViewTextBoxCustomCellColumn : DataGridViewColumn
         {
@@ -265,20 +178,23 @@ namespace extraCell.view
         protected override void OnCellEnter(DataGridViewCellEventArgs e)
         {
             base.OnCellEnter(e);
-            //   this.InvalidateCell(e.ColumnIndex, e.RowIndex);
 
+            //this.InvalidateCell(e.ColumnIndex, e.RowIndex);
+
+            inputBox.Text = ece.getCell(CurrentCellAddress.X, CurrentCellAddress.Y).formula.ToString();
 
             return;
 
-            PaintEventHandler t = new PaintEventHandler(extraCellTable_Paint);
+/*            PaintEventHandler t = new PaintEventHandler(extraCellTable_Paint);
             if (!CellEntered)
             {
 
                 Paint += t;
                 CellEntered = true;
-            }
+            }*/
 
         }
+
 
         protected override void OnCellPainting(DataGridViewCellPaintingEventArgs e)
         {
@@ -330,7 +246,6 @@ namespace extraCell.view
                 ////DebugPrint(this.ToString() + " this.SelectedRows.Count > 0 && this.SelectedRows.Contains(this.Rows[e.RowIndex])");
             }
 
-
             if (e.RowIndex == -1)
             {
                 System.IO.Stream imageStream = this.GetType().Assembly.GetManifestResourceStream("extraCell.gfx.background.png");
@@ -368,21 +283,20 @@ namespace extraCell.view
 
         protected override void OnColumnHeaderMouseClick(DataGridViewCellMouseEventArgs e)
         {
-
-            SelectionMode = DataGridViewSelectionMode.ColumnHeaderSelect;
+            // rzuca wyjątkami :(
+            //SelectionMode = DataGridViewSelectionMode.ColumnHeaderSelect;
         }
 
         protected override void OnRowHeaderMouseClick(DataGridViewCellMouseEventArgs e)
         {
-
-            SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+            // rzuca wyjątkami :(
+            //SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
         }
-
 
         void extraCellTable_Paint(object sender, PaintEventArgs e)
         {
             return;
-
+/*
             Pen _pen = new Pen(Color.Black, 3);
             Rectangle ramka;
 
@@ -397,7 +311,7 @@ namespace extraCell.view
 
             if (LastCellAddress == null) LastCellAddress = CurrentCellAddress;
 
-            if (CurrentCell != null && true  /* ( LastCellAddress.X != CurrentCellAddress.X || LastCellAddress.Y != CurrentCellAddress.Y ) */)
+            if (CurrentCell != null && true */ /* ( LastCellAddress.X != CurrentCellAddress.X || LastCellAddress.Y != CurrentCellAddress.Y ) *//*)
             {
                 LastCellAddress = CurrentCellAddress;
                 int i = 0;
@@ -444,19 +358,19 @@ namespace extraCell.view
 
                 //         Point Punkt = new Point();
 
-                ramka = GetCellDisplayRectangle(CurrentCell.ColumnIndex, CurrentCell.RowIndex, false);
+                ramka = GetCellDisplayRectangle(CurrentCell.ColumnIndex, CurrentCell.RowIndex, false); */
                 /*
                                 Punkt.X = (CurrentCell.ColumnIndex +1) * RowHe ;
                                 Punkt.Y = (CurrentCell.RowIndex +1) * CurrentCell.Size.Height ;
                                 */
-
+            /*
                 e.Graphics.DrawRectangle(_pen, new Rectangle(ramka.Location, CurrentCell.Size));
 
             }
             //DebugPrint(DateTime.Now.ToLongTimeString() + " OnPaint extraCellTable_Paint");
 
             // Paint -= new PaintEventHandler(extraCellTable_Paint);
-
+            */
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -464,7 +378,7 @@ namespace extraCell.view
             base.OnPaint(e);
 
             return;
-
+            /*
             // e.Graphics.DrawRectangle(System.Drawing.Pens.Black, base.Cell
             Pen _pen = new Pen(Color.Black, 3);
             Rectangle ramka;
@@ -526,12 +440,12 @@ namespace extraCell.view
 
                 //         Point Punkt = new Point();
 
-                ramka = GetCellDisplayRectangle(CurrentCell.ColumnIndex, CurrentCell.RowIndex, false);
+                ramka = GetCellDisplayRectangle(CurrentCell.ColumnIndex, CurrentCell.RowIndex, false);*/
                 /*
                                 Punkt.X = (CurrentCell.ColumnIndex +1) * RowHe ;
                                 Punkt.Y = (CurrentCell.RowIndex +1) * CurrentCell.Size.Height ;
                                 */
-
+            /*
                 e.Graphics.DrawRectangle(_pen, new Rectangle(ramka.Location, CurrentCell.Size));
 
             }
@@ -540,10 +454,10 @@ namespace extraCell.view
             e.Graphics.Flush();
 
             ramka = GetCellDisplayRectangle(CurrentCell.ColumnIndex, CurrentCell.RowIndex, false);
-            e.Graphics.DrawRectangle(_pen, new Rectangle(ramka.Location, CurrentCell.Size));
+            e.Graphics.DrawRectangle(_pen, new Rectangle(ramka.Location, CurrentCell.Size));*/
         }
 
-        protected override void OnCellMouseMove(DataGridViewCellMouseEventArgs e)
+        /*protected override void OnCellMouseMove(DataGridViewCellMouseEventArgs e)
         {
             if (e.ColumnIndex > -1 && e.RowIndex > -1)
             {
@@ -566,17 +480,9 @@ namespace extraCell.view
 
             }
             base.OnCellMouseMove(e);
-        }
-
-        /*public object DataSource
-        {
-            get { return base.DataSource; }
-            //         set { base.DataSource = new ExtraCellEngine().toDataTable(); _Engine = (System.Data.DataTable)base.DataSource; }
-            set { base.DataSource = value; }
         }*/
 
-
-        void CellMouseMoveCross(object sender, DataGridViewCellMouseEventArgs e)
+        /*void CellMouseMoveCross(object sender, DataGridViewCellMouseEventArgs e)
         {
 
             if (e.ColumnIndex > -1 && e.RowIndex > -1)
@@ -600,9 +506,29 @@ namespace extraCell.view
 
             }
 
+        }*/
+
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExtraCellTable));
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ExtraCellTable
+            // 
+            resources.ApplyResources(this, "$this");
+            this.CausesValidation = false;
+            this.ShowEditingIcon = false;
+            this.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.ExtraCellTable_CellStateChanged);
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
-
+        private void ExtraCellTable_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
+        {
+            changed = true;
+        }
 
     }
 }

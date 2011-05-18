@@ -10,16 +10,16 @@ namespace extraCell.formula.functions
     {
         public Object run(Object[] args)
         {
-            Double res = 0d;
+            Double res = 1d;
             foreach (Object arg in args)
                 if (arg.ToString().Length > 0)
                 {
                     foreach (String s in arg.ToString().Split(','))
-                        res *= Convert.ToDouble(s.Trim().Replace('.', ','));
+                        res = res * Convert.ToDouble(s.Trim().Replace('.', ','));
                 }
                 else
                 {
-                    return "###";
+                    return 0d;
                 }
 
             return res.ToString();

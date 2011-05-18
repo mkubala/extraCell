@@ -118,7 +118,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="domain\IEngine.cs" />
-    <Compile Include="domain\LetterCounter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +138,7 @@
     <Compile Include="view\ExtraCellTable.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="view\MDIContent.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +152,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="view\ExtraCellTable.pl-PL.resx">
+      <DependentUpon>ExtraCellTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ExtraCellTable.resx">
+      <DependentUpon>ExtraCellTable.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\app.manifest" />
@@ -199,7 +205,9 @@
   <ItemGroup>
     <EmbeddedResource Include="gfx\background4.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="gfx\close.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

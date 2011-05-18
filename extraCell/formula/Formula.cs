@@ -12,11 +12,17 @@ namespace extraCell.formula
 {
     class Formula
     {
-        public static IEngine ece { set; get; }
+        private IEngine ece { set; get; }
+
+        public Formula() { }
         
-        public static String eval(String formula)
+        public Formula(IEngine e) 
         {
-            Debug.Print("EVAL");
+            this.ece = e;
+        }
+        
+        public String eval(String formula)
+        {
             Regex re = new Regex("^=(?<formula>.+)$");
             Match m = re.Match(formula);
             if (m.Success)
@@ -26,28 +32,33 @@ namespace extraCell.formula
             return formula;
         }
 
-        private static Object proceedFormula(String formula)
+        private Object proceedFormula(String formula)
         {
             Regex re = null;
             Match m = null;
 
+            re = new Regex(@"^[a-zA-Z_0-9]+[\+\-\*/][a-zA-Z_0-9]+", RegexOptions.IgnorePatternWhitespace);
+            m = re.Match(formula);
+            if (m.Success)
+                return evalAlgebra(m);
+
             /* Important! Order of occurrences matters! */
-            re = new Regex("^(?<function>[a-zA-Z_]+)\\((?<args>.*)\\)$", RegexOptions.IgnoreCase);
+            re = new Regex(@"^(?<function>[a-zA-Z_]+)\((?<args>.*)\)$", RegexOptions.IgnoreCase);
             m = re.Match(formula);
             if (m.Success)
                 return evalFunction(m);
 
-            re = new Regex("(?<colStart>[A-Z]+)(?<rowStart>[0-9]+):(?<colEnd>[A-Z]+)(?<rowEnd>[0-9]+)", RegexOptions.IgnoreCase);
+            re = new Regex(@"(?<colStart>[A-Z]+)(?<rowStart>[0-9]+):(?<colEnd>[A-Z]+)(?<rowEnd>[0-9]+)", RegexOptions.IgnoreCase);
             m = re.Match(formula);
             if(m.Success)
                 return evalAddrRange(m);
 
-            re = new Regex("(?<col>[A-Z]+)(?<row>[0-9]+)", RegexOptions.IgnoreCase);
+            re = new Regex(@"(?<col>[A-Z]+)(?<row>[0-9]+)", RegexOptions.IgnoreCase);
             m = re.Match(formula);
             if (m.Success)
                 return evalAddr(m);
 
-            re = new Regex("[0-9]+", RegexOptions.IgnorePatternWhitespace);
+            re = new Regex(@"[0-9]+", RegexOptions.IgnorePatternWhitespace);
             m = re.Match(formula);
             if (m.Success)
                 return formula.Trim();
@@ -55,16 +66,19 @@ namespace extraCell.formula
             return "Nie znaleziono wzorca dla " + formula;
         }
 
-        private static Object evalFunction(Match m) {
+        private Object evalAlgebra(Match m)
+        {
+            return "Algebra coming soon"; //temporary
+        }
+
+        private Object evalFunction(Match m) {
             String func = m.Groups["function"].Value.ToString();
             Type p = System.Type.GetType("extraCell.formula.functions." + func.ToLower());
 
             if (typeof(extraCell.formula.IFunction).IsAssignableFrom(p))
             {
-                LinkedList<Object> argList = new LinkedList<Object>();
+                /*LinkedList<Object> argList = new LinkedList<Object>();
                 string args = m.Groups["args"].Value.ToString();
-
-                System.Diagnostics.Debug.WriteLine("Formula.evalFunction args = " + args);
 
                 StringBuilder tmp = new StringBuilder();
                 int cnt = 0;
@@ -79,13 +93,19 @@ namespace extraCell.formula
                         tmp.Append(arg.Trim());
                         tmp.Append(',');
                         if(cnt != 0) continue;
-                        System.Diagnostics.Debug.WriteLine("proceed formula args = " + tmp.ToString().TrimEnd(','));
                         argList.AddLast(proceedFormula(tmp.ToString().TrimEnd(',')));
                         tmp = new StringBuilder();
                     }
+                }*/
+                try
+                {
+                    IFunction obj = (IFunction)Activator.CreateInstance(p);
+                    return obj.run(getArgs(m).ToArray());
                 }
-                IFunction obj = (IFunction)Activator.CreateInstance(p);
-                return obj.run(argList.ToArray());
+                catch (Exception)
+                {
+                    return "###";
+                }
             }
             else
             {
@@ -96,14 +116,12 @@ namespace extraCell.formula
             }
         }
 
-        private static Object evalAddrRange(Match m)
+        private Object evalAddrRange(Match m)
         {
             int colStart = helpers.Helpers.getColumnNumber(m.Groups["colStart"].Value);
             int rowStart = Convert.ToInt32(m.Groups["rowStart"].Value) - 1;
             int width = helpers.Helpers.getColumnNumber(m.Groups["colEnd"].Value) - colStart + 1;
             int height = Convert.ToInt32(m.Groups["rowEnd"].Value) - rowStart;
-
-            Debug.Print("width: " + width + ", height: " + height);
 
             StringBuilder res = new StringBuilder("");
 
@@ -116,17 +134,47 @@ namespace extraCell.formula
                 }
             }
 
-            Debug.Print(res.ToString().TrimEnd(','));
-
             return res.ToString().TrimEnd(',');
         }
 
-        private static Object evalAddr(Match m)
+        private Object evalAddr(Match m)
         {
             int col = helpers.Helpers.getColumnNumber(m.Groups["col"].Value);
             int row = Convert.ToInt32(m.Groups["row"].Value);
-            return ece.getCell(col, row).result.ToString();
+            try
+            {
+                return ece.getCell(col, row).result.ToString();
+            }
+            catch (NullReferenceException)
+            {
+                return "###";
+            }
         }
 
+        /* this functions returning collection of arguments passed to a function */
+        private LinkedList<Object> getArgs(Match m)
+        {
+            LinkedList<Object> argList = new LinkedList<Object>();
+            string args = m.Groups["args"].Value.ToString();
+
+            StringBuilder tmp = new StringBuilder();
+            int cnt = 0;
+            if (args.Length > 0)
+            {
+                Regex regOpen = new Regex(@"\(", RegexOptions.Compiled);
+                Regex regClose = new Regex(@"\)", RegexOptions.Compiled);
+                foreach (string arg in args.Split(','))
+                {
+                    cnt += regOpen.Matches(arg).Count;
+                    cnt -= regClose.Matches(arg).Count;
+                    tmp.Append(arg.Trim());
+                    tmp.Append(',');
+                    if (cnt != 0) continue;
+                    argList.AddLast(proceedFormula(tmp.ToString().TrimEnd(',')));
+                    tmp = new StringBuilder();
+                }
+            }
+            return argList;
+        }
     }
 }

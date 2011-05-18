@@ -65,57 +65,9 @@ namespace extraCell
             this.button1 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxCustomCellColumn101 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn102 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn103 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn104 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn105 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn106 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn107 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn108 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn109 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn110 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn111 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn112 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn113 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn114 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn115 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn116 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn117 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn118 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn119 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn120 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn121 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn122 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn123 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn124 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn125 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn126 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn127 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn128 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn129 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn130 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn131 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn132 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn133 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn134 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn135 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn136 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn137 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn138 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn139 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn140 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn141 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn142 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn143 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn144 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn145 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn146 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn147 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn148 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn149 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
-            this.dataGridViewTextBoxCustomCellColumn150 = new extraCell.view.extraCellTable.DataGridViewTextBoxCustomCellColumn();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.formulaInputBox = new System.Windows.Forms.TextBox();
+            this.obliczButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -347,10 +299,12 @@ namespace extraCell
             this.filesTab.SelectedIndex = 0;
             this.filesTab.Size = new System.Drawing.Size(566, 302);
             this.filesTab.TabIndex = 0;
+            this.filesTab.SelectedIndexChanged += new System.EventHandler(this.filesTab_SelectedIndexChanged);
+            this.filesTab.MouseClick += new System.Windows.Forms.MouseEventHandler(this.filesTab_MouseClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(184, 25);
+            this.button1.Location = new System.Drawing.Point(12, 24);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(82, 41);
             this.button1.TabIndex = 4;
@@ -360,7 +314,7 @@ namespace extraCell
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(282, 24);
+            this.button2.Location = new System.Drawing.Point(100, 24);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 42);
             this.button2.TabIndex = 5;
@@ -368,311 +322,31 @@ namespace extraCell
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // dataGridViewTextBoxCustomCellColumn101
-            // 
-            this.dataGridViewTextBoxCustomCellColumn101.HeaderText = "A";
-            this.dataGridViewTextBoxCustomCellColumn101.Name = "dataGridViewTextBoxCustomCellColumn101";
-            this.dataGridViewTextBoxCustomCellColumn101.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn102
-            // 
-            this.dataGridViewTextBoxCustomCellColumn102.HeaderText = "B";
-            this.dataGridViewTextBoxCustomCellColumn102.Name = "dataGridViewTextBoxCustomCellColumn102";
-            this.dataGridViewTextBoxCustomCellColumn102.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn103
-            // 
-            this.dataGridViewTextBoxCustomCellColumn103.HeaderText = "C";
-            this.dataGridViewTextBoxCustomCellColumn103.Name = "dataGridViewTextBoxCustomCellColumn103";
-            this.dataGridViewTextBoxCustomCellColumn103.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn104
-            // 
-            this.dataGridViewTextBoxCustomCellColumn104.HeaderText = "D";
-            this.dataGridViewTextBoxCustomCellColumn104.Name = "dataGridViewTextBoxCustomCellColumn104";
-            this.dataGridViewTextBoxCustomCellColumn104.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn105
-            // 
-            this.dataGridViewTextBoxCustomCellColumn105.HeaderText = "E";
-            this.dataGridViewTextBoxCustomCellColumn105.Name = "dataGridViewTextBoxCustomCellColumn105";
-            this.dataGridViewTextBoxCustomCellColumn105.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn106
-            // 
-            this.dataGridViewTextBoxCustomCellColumn106.HeaderText = "F";
-            this.dataGridViewTextBoxCustomCellColumn106.Name = "dataGridViewTextBoxCustomCellColumn106";
-            this.dataGridViewTextBoxCustomCellColumn106.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn107
-            // 
-            this.dataGridViewTextBoxCustomCellColumn107.HeaderText = "G";
-            this.dataGridViewTextBoxCustomCellColumn107.Name = "dataGridViewTextBoxCustomCellColumn107";
-            this.dataGridViewTextBoxCustomCellColumn107.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn108
-            // 
-            this.dataGridViewTextBoxCustomCellColumn108.HeaderText = "H";
-            this.dataGridViewTextBoxCustomCellColumn108.Name = "dataGridViewTextBoxCustomCellColumn108";
-            this.dataGridViewTextBoxCustomCellColumn108.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn109
-            // 
-            this.dataGridViewTextBoxCustomCellColumn109.HeaderText = "I";
-            this.dataGridViewTextBoxCustomCellColumn109.Name = "dataGridViewTextBoxCustomCellColumn109";
-            this.dataGridViewTextBoxCustomCellColumn109.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn110
-            // 
-            this.dataGridViewTextBoxCustomCellColumn110.HeaderText = "J";
-            this.dataGridViewTextBoxCustomCellColumn110.Name = "dataGridViewTextBoxCustomCellColumn110";
-            this.dataGridViewTextBoxCustomCellColumn110.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn111
-            // 
-            this.dataGridViewTextBoxCustomCellColumn111.HeaderText = "K";
-            this.dataGridViewTextBoxCustomCellColumn111.Name = "dataGridViewTextBoxCustomCellColumn111";
-            this.dataGridViewTextBoxCustomCellColumn111.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn112
-            // 
-            this.dataGridViewTextBoxCustomCellColumn112.HeaderText = "L";
-            this.dataGridViewTextBoxCustomCellColumn112.Name = "dataGridViewTextBoxCustomCellColumn112";
-            this.dataGridViewTextBoxCustomCellColumn112.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn113
-            // 
-            this.dataGridViewTextBoxCustomCellColumn113.HeaderText = "M";
-            this.dataGridViewTextBoxCustomCellColumn113.Name = "dataGridViewTextBoxCustomCellColumn113";
-            this.dataGridViewTextBoxCustomCellColumn113.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn114
-            // 
-            this.dataGridViewTextBoxCustomCellColumn114.HeaderText = "N";
-            this.dataGridViewTextBoxCustomCellColumn114.Name = "dataGridViewTextBoxCustomCellColumn114";
-            this.dataGridViewTextBoxCustomCellColumn114.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn115
-            // 
-            this.dataGridViewTextBoxCustomCellColumn115.HeaderText = "O";
-            this.dataGridViewTextBoxCustomCellColumn115.Name = "dataGridViewTextBoxCustomCellColumn115";
-            this.dataGridViewTextBoxCustomCellColumn115.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn116
-            // 
-            this.dataGridViewTextBoxCustomCellColumn116.HeaderText = "P";
-            this.dataGridViewTextBoxCustomCellColumn116.Name = "dataGridViewTextBoxCustomCellColumn116";
-            this.dataGridViewTextBoxCustomCellColumn116.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn117
-            // 
-            this.dataGridViewTextBoxCustomCellColumn117.HeaderText = "Q";
-            this.dataGridViewTextBoxCustomCellColumn117.Name = "dataGridViewTextBoxCustomCellColumn117";
-            this.dataGridViewTextBoxCustomCellColumn117.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn118
-            // 
-            this.dataGridViewTextBoxCustomCellColumn118.HeaderText = "R";
-            this.dataGridViewTextBoxCustomCellColumn118.Name = "dataGridViewTextBoxCustomCellColumn118";
-            this.dataGridViewTextBoxCustomCellColumn118.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn119
-            // 
-            this.dataGridViewTextBoxCustomCellColumn119.HeaderText = "S";
-            this.dataGridViewTextBoxCustomCellColumn119.Name = "dataGridViewTextBoxCustomCellColumn119";
-            this.dataGridViewTextBoxCustomCellColumn119.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn120
-            // 
-            this.dataGridViewTextBoxCustomCellColumn120.HeaderText = "T";
-            this.dataGridViewTextBoxCustomCellColumn120.Name = "dataGridViewTextBoxCustomCellColumn120";
-            this.dataGridViewTextBoxCustomCellColumn120.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn121
-            // 
-            this.dataGridViewTextBoxCustomCellColumn121.HeaderText = "U";
-            this.dataGridViewTextBoxCustomCellColumn121.Name = "dataGridViewTextBoxCustomCellColumn121";
-            this.dataGridViewTextBoxCustomCellColumn121.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn122
-            // 
-            this.dataGridViewTextBoxCustomCellColumn122.HeaderText = "V";
-            this.dataGridViewTextBoxCustomCellColumn122.Name = "dataGridViewTextBoxCustomCellColumn122";
-            this.dataGridViewTextBoxCustomCellColumn122.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn123
-            // 
-            this.dataGridViewTextBoxCustomCellColumn123.HeaderText = "W";
-            this.dataGridViewTextBoxCustomCellColumn123.Name = "dataGridViewTextBoxCustomCellColumn123";
-            this.dataGridViewTextBoxCustomCellColumn123.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn124
-            // 
-            this.dataGridViewTextBoxCustomCellColumn124.HeaderText = "X";
-            this.dataGridViewTextBoxCustomCellColumn124.Name = "dataGridViewTextBoxCustomCellColumn124";
-            this.dataGridViewTextBoxCustomCellColumn124.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn125
-            // 
-            this.dataGridViewTextBoxCustomCellColumn125.HeaderText = "Y";
-            this.dataGridViewTextBoxCustomCellColumn125.Name = "dataGridViewTextBoxCustomCellColumn125";
-            this.dataGridViewTextBoxCustomCellColumn125.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn126
-            // 
-            this.dataGridViewTextBoxCustomCellColumn126.HeaderText = "Z";
-            this.dataGridViewTextBoxCustomCellColumn126.Name = "dataGridViewTextBoxCustomCellColumn126";
-            this.dataGridViewTextBoxCustomCellColumn126.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn127
-            // 
-            this.dataGridViewTextBoxCustomCellColumn127.HeaderText = "AA";
-            this.dataGridViewTextBoxCustomCellColumn127.Name = "dataGridViewTextBoxCustomCellColumn127";
-            this.dataGridViewTextBoxCustomCellColumn127.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn128
-            // 
-            this.dataGridViewTextBoxCustomCellColumn128.HeaderText = "AB";
-            this.dataGridViewTextBoxCustomCellColumn128.Name = "dataGridViewTextBoxCustomCellColumn128";
-            this.dataGridViewTextBoxCustomCellColumn128.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn129
-            // 
-            this.dataGridViewTextBoxCustomCellColumn129.HeaderText = "AC";
-            this.dataGridViewTextBoxCustomCellColumn129.Name = "dataGridViewTextBoxCustomCellColumn129";
-            this.dataGridViewTextBoxCustomCellColumn129.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn130
-            // 
-            this.dataGridViewTextBoxCustomCellColumn130.HeaderText = "AD";
-            this.dataGridViewTextBoxCustomCellColumn130.Name = "dataGridViewTextBoxCustomCellColumn130";
-            this.dataGridViewTextBoxCustomCellColumn130.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn131
-            // 
-            this.dataGridViewTextBoxCustomCellColumn131.HeaderText = "AE";
-            this.dataGridViewTextBoxCustomCellColumn131.Name = "dataGridViewTextBoxCustomCellColumn131";
-            this.dataGridViewTextBoxCustomCellColumn131.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn132
-            // 
-            this.dataGridViewTextBoxCustomCellColumn132.HeaderText = "AF";
-            this.dataGridViewTextBoxCustomCellColumn132.Name = "dataGridViewTextBoxCustomCellColumn132";
-            this.dataGridViewTextBoxCustomCellColumn132.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn133
-            // 
-            this.dataGridViewTextBoxCustomCellColumn133.HeaderText = "AG";
-            this.dataGridViewTextBoxCustomCellColumn133.Name = "dataGridViewTextBoxCustomCellColumn133";
-            this.dataGridViewTextBoxCustomCellColumn133.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn134
-            // 
-            this.dataGridViewTextBoxCustomCellColumn134.HeaderText = "AH";
-            this.dataGridViewTextBoxCustomCellColumn134.Name = "dataGridViewTextBoxCustomCellColumn134";
-            this.dataGridViewTextBoxCustomCellColumn134.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn135
-            // 
-            this.dataGridViewTextBoxCustomCellColumn135.HeaderText = "AI";
-            this.dataGridViewTextBoxCustomCellColumn135.Name = "dataGridViewTextBoxCustomCellColumn135";
-            this.dataGridViewTextBoxCustomCellColumn135.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn136
-            // 
-            this.dataGridViewTextBoxCustomCellColumn136.HeaderText = "AJ";
-            this.dataGridViewTextBoxCustomCellColumn136.Name = "dataGridViewTextBoxCustomCellColumn136";
-            this.dataGridViewTextBoxCustomCellColumn136.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn137
-            // 
-            this.dataGridViewTextBoxCustomCellColumn137.HeaderText = "AK";
-            this.dataGridViewTextBoxCustomCellColumn137.Name = "dataGridViewTextBoxCustomCellColumn137";
-            this.dataGridViewTextBoxCustomCellColumn137.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn138
-            // 
-            this.dataGridViewTextBoxCustomCellColumn138.HeaderText = "AL";
-            this.dataGridViewTextBoxCustomCellColumn138.Name = "dataGridViewTextBoxCustomCellColumn138";
-            this.dataGridViewTextBoxCustomCellColumn138.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn139
-            // 
-            this.dataGridViewTextBoxCustomCellColumn139.HeaderText = "AM";
-            this.dataGridViewTextBoxCustomCellColumn139.Name = "dataGridViewTextBoxCustomCellColumn139";
-            this.dataGridViewTextBoxCustomCellColumn139.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn140
-            // 
-            this.dataGridViewTextBoxCustomCellColumn140.HeaderText = "AN";
-            this.dataGridViewTextBoxCustomCellColumn140.Name = "dataGridViewTextBoxCustomCellColumn140";
-            this.dataGridViewTextBoxCustomCellColumn140.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn141
-            // 
-            this.dataGridViewTextBoxCustomCellColumn141.HeaderText = "AO";
-            this.dataGridViewTextBoxCustomCellColumn141.Name = "dataGridViewTextBoxCustomCellColumn141";
-            this.dataGridViewTextBoxCustomCellColumn141.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn142
-            // 
-            this.dataGridViewTextBoxCustomCellColumn142.HeaderText = "AP";
-            this.dataGridViewTextBoxCustomCellColumn142.Name = "dataGridViewTextBoxCustomCellColumn142";
-            this.dataGridViewTextBoxCustomCellColumn142.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn143
-            // 
-            this.dataGridViewTextBoxCustomCellColumn143.HeaderText = "AQ";
-            this.dataGridViewTextBoxCustomCellColumn143.Name = "dataGridViewTextBoxCustomCellColumn143";
-            this.dataGridViewTextBoxCustomCellColumn143.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn144
-            // 
-            this.dataGridViewTextBoxCustomCellColumn144.HeaderText = "AR";
-            this.dataGridViewTextBoxCustomCellColumn144.Name = "dataGridViewTextBoxCustomCellColumn144";
-            this.dataGridViewTextBoxCustomCellColumn144.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn145
-            // 
-            this.dataGridViewTextBoxCustomCellColumn145.HeaderText = "AS";
-            this.dataGridViewTextBoxCustomCellColumn145.Name = "dataGridViewTextBoxCustomCellColumn145";
-            this.dataGridViewTextBoxCustomCellColumn145.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn146
-            // 
-            this.dataGridViewTextBoxCustomCellColumn146.HeaderText = "AT";
-            this.dataGridViewTextBoxCustomCellColumn146.Name = "dataGridViewTextBoxCustomCellColumn146";
-            this.dataGridViewTextBoxCustomCellColumn146.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn147
-            // 
-            this.dataGridViewTextBoxCustomCellColumn147.HeaderText = "AU";
-            this.dataGridViewTextBoxCustomCellColumn147.Name = "dataGridViewTextBoxCustomCellColumn147";
-            this.dataGridViewTextBoxCustomCellColumn147.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn148
-            // 
-            this.dataGridViewTextBoxCustomCellColumn148.HeaderText = "AV";
-            this.dataGridViewTextBoxCustomCellColumn148.Name = "dataGridViewTextBoxCustomCellColumn148";
-            this.dataGridViewTextBoxCustomCellColumn148.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn149
-            // 
-            this.dataGridViewTextBoxCustomCellColumn149.HeaderText = "AW";
-            this.dataGridViewTextBoxCustomCellColumn149.Name = "dataGridViewTextBoxCustomCellColumn149";
-            this.dataGridViewTextBoxCustomCellColumn149.Width = 45;
-            // 
-            // dataGridViewTextBoxCustomCellColumn150
-            // 
-            this.dataGridViewTextBoxCustomCellColumn150.HeaderText = "AX";
-            this.dataGridViewTextBoxCustomCellColumn150.Name = "dataGridViewTextBoxCustomCellColumn150";
-            this.dataGridViewTextBoxCustomCellColumn150.Width = 45;
+            // formulaInputBox
+            // 
+            this.formulaInputBox.Location = new System.Drawing.Point(181, 45);
+            this.formulaInputBox.Name = "formulaInputBox";
+            this.formulaInputBox.Size = new System.Drawing.Size(292, 20);
+            this.formulaInputBox.TabIndex = 6;
+            this.formulaInputBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.formulaInputBox_KeyPress);
+            // 
+            // obliczButton
+            // 
+            this.obliczButton.Location = new System.Drawing.Point(479, 45);
+            this.obliczButton.Name = "obliczButton";
+            this.obliczButton.Size = new System.Drawing.Size(75, 23);
+            this.obliczButton.TabIndex = 7;
+            this.obliczButton.Text = "Oblicz";
+            this.obliczButton.UseVisualStyleBackColor = true;
+            this.obliczButton.Click += new System.EventHandler(this.obliczButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 396);
+            this.Controls.Add(this.obliczButton);
+            this.Controls.Add(this.formulaInputBox);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
@@ -727,57 +401,59 @@ namespace extraCell
         private System.Windows.Forms.ToolStripMenuItem NowyStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ZapiszStripMenuItem;
         private System.Windows.Forms.TabControl filesTab;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn101;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn102;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn103;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn104;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn105;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn106;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn107;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn108;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn109;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn110;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn111;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn112;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn113;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn114;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn115;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn116;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn117;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn118;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn119;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn120;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn121;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn122;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn123;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn124;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn125;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn126;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn127;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn128;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn129;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn130;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn131;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn132;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn133;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn134;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn135;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn136;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn137;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn138;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn139;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn140;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn141;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn142;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn143;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn144;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn145;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn146;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn147;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn148;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn149;
-        private extraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn150;
+        /*private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn101;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn102;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn103;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn104;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn105;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn106;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn107;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn108;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn109;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn110;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn111;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn112;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn113;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn114;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn115;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn116;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn117;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn118;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn119;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn120;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn121;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn122;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn123;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn124;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn125;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn126;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn127;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn128;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn129;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn130;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn131;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn132;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn133;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn134;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn135;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn136;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn137;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn138;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn139;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn140;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn141;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn142;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn143;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn144;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn145;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn146;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn147;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn148;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn149;
+        private ExtraCellTable.DataGridViewTextBoxCustomCellColumn dataGridViewTextBoxCustomCellColumn150;*/
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.TextBox formulaInputBox;
+        private System.Windows.Forms.Button obliczButton;
    
         
     }

@@ -5,7 +5,6 @@ namespace extraCell.domain
     public class Cell
     {
         public String formula { get; set; }
-
         public String result { get; set; }
 
         public Cell() { }

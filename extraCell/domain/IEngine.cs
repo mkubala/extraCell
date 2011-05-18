@@ -16,5 +16,6 @@ namespace extraCell.domain
 
         void exportXML(string filename);
         void importXML(string filename);
+        void fill();
     }
 }
