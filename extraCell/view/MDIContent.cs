@@ -42,7 +42,6 @@ namespace extraCell.view
             loadDocument(path);
 
             extraCellTable.ece.fill();
-
         }
 
         public int getDocumentsCount()
@@ -76,6 +75,9 @@ namespace extraCell.view
 
         public void saveDocument(string filePath)
         {
+            /*DataGridViewCellStyle style = new DataGridViewCellStyle();
+            style.BackColor = System.Drawing.Color.BlanchedAlmond;
+            extraCellTable.Rows[0].Cells[0].Style = style;*/
             extraCellTable.ece.exportXML(filePath.Trim());
             extraCellTable.changed = false;
         }

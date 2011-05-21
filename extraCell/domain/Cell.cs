@@ -1,13 +1,24 @@
 ﻿using System;
+using System.Windows.Forms;
+using System.Drawing;
+using System.ComponentModel;
 
 namespace extraCell.domain
 {
+    [TypeConverter(typeof(CellClassConverter))]
     public class Cell
     {
         public String formula { get; set; }
         public String result { get; set; }
+        //public DataGridViewCellStyle style { get; set; }
 
         public Cell() { }
+
+        public Cell(string value)
+        {
+            this.formula = value;
+            this.result = value;
+        }
 
         public Cell(String formula, String result)
         {
@@ -32,7 +43,6 @@ namespace extraCell.domain
          */
         public override string ToString()
         {
-            //return extraCell.formula.Formula.eval(this.formula);
             return this.result;
         }
 

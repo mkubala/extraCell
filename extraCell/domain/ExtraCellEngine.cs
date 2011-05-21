@@ -4,6 +4,8 @@ using System.Text;
 using extraCell.formula;
 using extraCell;
 using System.IO;
+using System.Drawing;
+using System.Collections.Generic;
 
 namespace extraCell.domain
 {
@@ -11,8 +13,13 @@ namespace extraCell.domain
     {
         private Formula formulaProc;
 
-        public ExtraCellEngine() : base("arkusz") { formulaProc = new Formula(this); }
-        public ExtraCellEngine(string name) : base(name) { formulaProc = new Formula(this); }
+        public ExtraCellEngine() : base("arkusz") { initialize(); }
+        public ExtraCellEngine(string name) : base(name) { initialize(); }
+
+        private void initialize()
+        {
+            formulaProc = new Formula(this);
+        }
 
         public Cell getCell(int col, int row)
         {
@@ -58,16 +65,15 @@ namespace extraCell.domain
 
         public void exportXML(string filename)
         {
-            WriteXml(filename, XmlWriteMode.WriteSchema);
+            //WriteXml(filename, XmlWriteMode.WriteSchema);
+            WriteXml(filename, false);
         }
 
         public void importXML(string filename)
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("before load");
                 ReadXml(filename);
-                System.Diagnostics.Debug.WriteLine("after load");
             }
             catch (FileNotFoundException)
             {
@@ -81,6 +87,20 @@ namespace extraCell.domain
             {
                 throw new InvalidOperationException("To nie jest prawidłowy dokument programu eXtraCell!");
             }
+        }
+
+        public LinkedList<Point> search(string expression)
+        {
+            LinkedList<Point> res = new LinkedList<Point>();
+            for(int i = 0; i < Columns.Count; i++) 
+            {
+                for(int j = 0; j < Rows.Count; j++) 
+                {
+                    if (((Cell)this.Rows[j][i]).result.ToUpper().Contains(expression.ToUpper()))
+                        res.AddLast(new Point(i, j));
+                }
+            }
+            return res;
         }
 
         public void fill() 
