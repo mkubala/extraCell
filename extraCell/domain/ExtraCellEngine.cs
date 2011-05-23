@@ -6,12 +6,14 @@ using extraCell;
 using System.IO;
 using System.Drawing;
 using System.Collections.Generic;
+using extraCell.helpers;
+using System.Text.RegularExpressions;
 
 namespace extraCell.domain
 {
-    class ExtraCellEngine : DataTable, IEngine
+    public class ExtraCellEngine : DataTable, IEngine
     {
-        private Formula formulaProc;
+        public Formula formulaProc {set; get; }
 
         public ExtraCellEngine() : base("arkusz") { initialize(); }
         public ExtraCellEngine(string name) : base(name) { initialize(); }
@@ -21,24 +23,36 @@ namespace extraCell.domain
             formulaProc = new Formula(this);
         }
 
+        public Formula getFormula()
+        {
+            return formulaProc;
+        }
+
         public Cell getCell(int col, int row)
+        {
+            return getCell(col, row, true);
+        }
+
+        public Cell getCell(int col, int row, bool create)
         {
             try
             {
-                if (!typeof(extraCell.domain.Cell).IsAssignableFrom(Rows[row][col].GetType()))
+                if (create && !typeof(extraCell.domain.Cell).IsAssignableFrom(Rows[row][col].GetType()))
                     setCell(col, row, "");
+                else if (!create && !typeof(extraCell.domain.Cell).IsAssignableFrom(Rows[row][col].GetType()))
+                    return null;
                 return (Cell)this.Rows[row][col];
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                System.Diagnostics.Debug.WriteLine("getCell FAIL, col = " + col + ", row = " + row);
+                System.Diagnostics.Debug.WriteLine(e.GetType().FullName + ": " + e.Message + "getCell FAIL, col = " + col + ", row = " + row);
                 return new Cell();
             }
         }
 
         public Cell getCell(String str)
         {
-            int[] coords = helpers.Helpers.getCoords(str);
+            int[] coords = Helpers.getCoords(str);
             return getCell(coords[0], coords[1]);
         }
 
@@ -54,7 +68,7 @@ namespace extraCell.domain
 
         public void addColumn()
         {
-            this.Columns.Add(helpers.Helpers.getColumnName(Columns.Count+1), System.Type.GetType("extraCell.domain.Cell"));
+            this.Columns.Add(Helpers.getColumnName(Columns.Count+1), System.Type.GetType("extraCell.domain.Cell"));
         }
 
         public void addRow()
@@ -65,8 +79,8 @@ namespace extraCell.domain
 
         public void exportXML(string filename)
         {
-            //WriteXml(filename, XmlWriteMode.WriteSchema);
-            WriteXml(filename, false);
+            WriteXml(filename, XmlWriteMode.WriteSchema);
+            //WriteXml(filename, false);
         }
 
         public void importXML(string filename)
@@ -89,26 +103,39 @@ namespace extraCell.domain
             }
         }
 
-        public LinkedList<Point> search(string expression)
-        {
-            LinkedList<Point> res = new LinkedList<Point>();
-            for(int i = 0; i < Columns.Count; i++) 
-            {
-                for(int j = 0; j < Rows.Count; j++) 
-                {
-                    if (((Cell)this.Rows[j][i]).result.ToUpper().Contains(expression.ToUpper()))
-                        res.AddLast(new Point(i, j));
-                }
-            }
-            return res;
-        }
-
         public void fill() 
         {
             while (Rows.Count <= 255)
                 addRow();
             while (Columns.Count <= 255)
                 addColumn();
+        }
+
+        public LinkedList<int[]> search(string query, RegexOptions options)
+        {
+            LinkedList<int[]> res = new LinkedList<int[]>();
+
+            Regex reg = new Regex(query, options);
+            Match m;
+            Cell cell;
+
+            for(int i = 0; i < Columns.Count; i++)
+            {
+                for (int j = 0; j < Rows.Count; j++)
+                {
+                    cell = getCell(i, j, false);
+                    if (cell != null && cell.result != null && cell.result.Trim().Length != 0)
+                    {
+                        m = reg.Match(cell.result);
+                        if (m.Success)
+                        {
+                            res.AddLast(new int[] { i, j });
+                        }
+                    }
+                }
+            }
+
+            return res;
         }
 
     }

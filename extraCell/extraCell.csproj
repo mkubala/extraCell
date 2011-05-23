@@ -114,16 +114,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="domain\Cell.cs" />
-    <Compile Include="domain\CellClassConverter.cs" />
+    <Compile Include="helpers\Converters.cs" />
     <Compile Include="domain\ExtraCellEngine.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="domain\IEngine.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="view\ExtraCellCustomCell.cs" />
+    <Compile Include="view\ExtraCellStyle.cs" />
+    <Compile Include="view\SearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="view\SearchForm.Designer.cs">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\UIMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\UIMain.Designer.cs">
+      <DependentUpon>UIMain.cs</DependentUpon>
     </Compile>
     <Compile Include="formula\Formula.cs" />
     <Compile Include="formula\functions\about.cs" />
@@ -140,14 +148,11 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="view\MDIContent.cs" />
-    <Compile Include="view\searchForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\searchForm.Designer.cs">
-      <DependentUpon>searchForm.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="view\SearchForm.resx">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\UIMain.resx">
+      <DependentUpon>UIMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -164,9 +169,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\ExtraCellTable.resx">
       <DependentUpon>ExtraCellTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\searchForm.resx">
-      <DependentUpon>searchForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />

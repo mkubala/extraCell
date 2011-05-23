@@ -6,12 +6,16 @@ using System.Data;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
+using System.Text;
+
+using extraCell.domain;
 
 namespace extraCell.view
 {
-    class ExtraCellTable : DataGridView
+    public class ExtraCellTable : DataGridView
     {
         public bool changed { get; set; }
+        public bool isEditing { get; set; }
         public TextBox inputBox { get; set; }
         public extraCell.domain.IEngine ece { get; set; }
 
@@ -36,6 +40,8 @@ namespace extraCell.view
             this.RowHeadersWidth = 50;
             this.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.Size = new System.Drawing.Size(552, 270);
+
+            InitializeComponent();
         }
 
         // Numerowanie wierszy
@@ -53,25 +59,29 @@ namespace extraCell.view
             base.OnRowPostPaint(e);
         }
 
-        protected override void OnCellEnter(DataGridViewCellEventArgs e)
+/*        protected override void OnCellEnter(DataGridViewCellEventArgs e)
         {
             base.OnCellEnter(e);
             inputBox.Text = ece.getCell(CurrentCellAddress.X, CurrentCellAddress.Y).formula.ToString();
-        }
+        }*/
 
         protected override void OnColumnHeaderMouseClick(DataGridViewCellMouseEventArgs e)
         {
-            Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
-/*            ClearSelection();
-            SetSelectedColumnCore(e.ColumnIndex, true);*/
             SelectionMode = DataGridViewSelectionMode.ColumnHeaderSelect;
+            base.OnColumnHeaderMouseClick(e);
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnRowHeaderMouseClick(DataGridViewCellMouseEventArgs e)
+        {
+            SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+            base.OnRowHeaderMouseClick(e);
+        }
+
+        /*protected override void OnPaint(PaintEventArgs e)
         {
             DoubleBuffered = true;
             base.OnPaint(e);
-        }
+        }*/
 
         private void InitializeComponent()
         {
@@ -93,8 +103,41 @@ namespace extraCell.view
         private void ExtraCellTable_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
             changed = true;
-            MessageBox.Show("Hello");
         }
+
+        protected override void OnColumnAdded(DataGridViewColumnEventArgs e)
+        {
+            e.Column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            e.Column.CellTemplate = new ExtraCellCustomCell();
+            base.OnColumnAdded(e);
+        }
+
+        protected override void OnCellBeginEdit(DataGridViewCellCancelEventArgs e)
+        {
+            isEditing = true;
+            Rows[e.RowIndex].Cells[e.ColumnIndex].Value = this.ece.getCell(e.ColumnIndex, e.RowIndex).formula;
+            base.OnCellBeginEdit(e);
+        }
+
+        protected override void OnCellEndEdit(DataGridViewCellEventArgs e)
+        {
+            isEditing = false;
+            this.ece.getCell(e.ColumnIndex, e.RowIndex).result = ece.getFormula().eval(Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+            base.OnCellEndEdit(e);
+        }
+
+        /*protected override void OnCellStyleChanged(DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show("style changed");
+            //ece.getCell(e.ColumnIndex, e.RowIndex).backColor = CurrentCell.Style.BackColor;
+            base.OnCellStyleChanged(e);
+        }*/
+
+        /*
+        private void ExtraCellTable_CellStyleChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show("style changed (action listener)");
+        }*/
 
     }
 }

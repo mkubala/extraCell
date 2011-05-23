@@ -8,6 +8,8 @@ namespace extraCell.helpers
 {
     class Helpers
     {
+        public static extraCell.UIMain mainWindow { get; set; }
+
         public static int getColumnNumber(String str)
         {
             int len = str.Length, pos = 0 , num = 0;

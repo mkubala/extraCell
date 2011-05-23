@@ -10,9 +10,9 @@ using extraCell.domain;
 
 namespace extraCell.formula
 {
-    class Formula
+    public class Formula
     {
-        private IEngine ece { set; get; }
+        public IEngine ece { set; get; }
 
         public Formula() { }
         
@@ -63,7 +63,7 @@ namespace extraCell.formula
             if (m.Success)
                 return formula.Trim();
 
-            return "Nie znaleziono wzorca dla " + formula;
+            return "=" + formula;
         }
 
         private Object evalAlgebra(Match m)

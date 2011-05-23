@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace extraCell.domain
 {
-    interface IEngine
+    public interface IEngine
     {
+        formula.Formula getFormula();
         Cell getCell(int col, int row);
         Cell getCell(String str);
         void setCell(int col, int row, Cell value);
@@ -17,5 +19,7 @@ namespace extraCell.domain
         void exportXML(string filename);
         void importXML(string filename);
         void fill();
+
+        LinkedList<int[]> search(string query, RegexOptions options);
     }
 }

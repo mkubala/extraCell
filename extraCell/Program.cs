@@ -15,7 +15,9 @@ namespace extraCell
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            UIMain main = new UIMain();
+            extraCell.helpers.Helpers.mainWindow = main;
+            Application.Run(main);
         }
     }
 }

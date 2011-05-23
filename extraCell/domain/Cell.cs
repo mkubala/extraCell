@@ -2,6 +2,9 @@
 using System.Windows.Forms;
 using System.Drawing;
 using System.ComponentModel;
+using System.Xml;
+using System.Xml.Serialization;
+using extraCell.helpers;
 
 namespace extraCell.domain
 {
@@ -10,14 +13,16 @@ namespace extraCell.domain
     {
         public String formula { get; set; }
         public String result { get; set; }
-        //public DataGridViewCellStyle style { get; set; }
+
+//        public extraCell.view.ExtraCellStyle style { get; set; }
+        public int backColor {get; set; }
 
         public Cell() { }
 
         public Cell(string value)
         {
             this.formula = value;
-            this.result = value;
+            this.result = Helpers.mainWindow.getFormula().eval(value);
         }
 
         public Cell(String formula, String result)

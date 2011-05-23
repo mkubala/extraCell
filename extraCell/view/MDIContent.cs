@@ -8,7 +8,7 @@ using extraCell.domain;
 
 namespace extraCell.view
 {
-    class MDIContent
+    public class MDIContent
     {
         private static int documentsCount;
         public string documentPath { set; get; }
@@ -41,7 +41,11 @@ namespace extraCell.view
 
             loadDocument(path);
 
+            System.Diagnostics.Debug.WriteLine("before fill");
             extraCellTable.ece.fill();
+            System.Diagnostics.Debug.WriteLine("after fill");
+
+            extraCellTable.Focus();
         }
 
         public int getDocumentsCount()
