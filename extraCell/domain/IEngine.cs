@@ -8,7 +8,7 @@ namespace extraCell.domain
 {
     public interface IEngine
     {
-        formula.Formula getFormula();
+//        formula.Formula getFormula();
         Cell getCell(int col, int row);
         Cell getCell(String str);
         void setCell(int col, int row, Cell value);

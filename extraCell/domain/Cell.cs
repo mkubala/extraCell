@@ -22,7 +22,7 @@ namespace extraCell.domain
         public Cell(string value)
         {
             this.formula = value;
-            this.result = Helpers.mainWindow.getFormula().eval(value);
+            this.result = Helpers.getActiveDocument().getFormula().eval(value);
         }
 
         public Cell(String formula, String result)

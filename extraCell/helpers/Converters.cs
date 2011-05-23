@@ -24,8 +24,8 @@ namespace extraCell.helpers
         public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
         {
             String result = value.ToString();
-            if(!Helpers.mainWindow.getCurrentDoc().extraCellTable.isEditing)
-                result = Helpers.mainWindow.getFormula().eval(value.ToString());
+            if(!Helpers.getActiveDocument().extraCellTable.isEditing)
+                result = Helpers.getActiveDocument().getFormula().eval(value.ToString());
             return new Cell(value.ToString(), result);
         }
     }

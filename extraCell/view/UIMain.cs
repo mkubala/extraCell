@@ -16,16 +16,29 @@ namespace extraCell
 {
     public partial class UIMain : Form
     {
+        private Form parent;
         private List<MDIContent> mdiContainer;
         private const String documentFilter = "ExtraCell Document (*.xcd)|*.xcd|XML document (*.xml)|*.xml|Wszystkie pliki (*.*)|*.*";
 
-        public UIMain()
+        private static int documentsCount;
+        public string documentPath { set; get; }
+        public string documentName { set; get; }
+        public ExtraCellTable extraCellTable { set; get; }
+        public TabPage tabPage { set; get; }
+        public int currentRow { get; set; }
+        public int currentCol { get; set; }
+
+
+        //private static SearchForm searchForm = new SearchForm();
+
+        public UIMain(Form parent, string path)
         {
             InitializeComponent();
-            mdiContainer = new List<MDIContent>();
-            setEditOptions(false);
+            this.parent = parent;
+//            mdiContainer = new List<MDIContent>();
+//            setEditOptions(false);
 
-//            AddTab("");
+            AddTab(path);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -39,21 +52,24 @@ namespace extraCell
             AddTab("");
         }
 
+        private ToolStripTextBox getFormulaInput()
+        {
+            return ((MDIUI)parent).formulaInput;
+        }
+
         //Dodaje nowa karte i tabelke
         private void AddTab(string filePath)
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("before load");
                 MDIContent mdiContent = new MDIContent(filePath);
-                System.Diagnostics.Debug.WriteLine("after load");
 
                 ImageList imageList = new ImageList();
                 Stream stream = System.Reflection.Assembly.GetEntryAssembly().GetManifestResourceStream("extraCell.gfx.close.png");
                 imageList.ImageSize = new Size(16, 16);
                 imageList.Images.Add(Image.FromStream(stream));
 
-                mdiContent.extraCellTable.inputBox = formulaInputBox;
+                mdiContent.extraCellTable.inputBox = getFormulaInput();
                 mdiContent.tabPage.ImageIndex = 0;
                 mdiContainer.Add(mdiContent);
             
@@ -78,7 +94,7 @@ namespace extraCell
 
         public Formula getFormula()
         {
-            return getCurrentDoc().extraCellTable.ece.getFormula();
+            return getCurrentDoc().extraCellTable.ece.formulaProc;
         }
 
         private void otworzToolStripMenuItem_Click(object sender, EventArgs e)
@@ -202,7 +218,7 @@ namespace extraCell
         {
             getCurrentDoc().extraCellTable.isEditing = false;
             Point p = getCurrentDoc().extraCellTable.CurrentCellAddress;
-            getCurrentDoc().extraCellTable.ece.setCell(p.X, p.Y, formulaInputBox.Text.Trim());
+            getCurrentDoc().extraCellTable.ece.setCell(p.X, p.Y, getFormulaInput().Text.Trim());
         }
 
         private void obliczButton_Click(object sender, EventArgs e)
@@ -215,14 +231,14 @@ namespace extraCell
             if (filesTab.TabCount == 0) return;
             Point p = getCurrentDoc().extraCellTable.CurrentCellAddress;
             Cell c = getCurrentDoc().extraCellTable.ece.getCell(p.X, p.Y);
-            formulaInputBox.Text = c.formula;
+            getFormulaInput().Text = c.formula;
         }
 
         private void filesTab_MouseClick(object sender, MouseEventArgs e)
         {
             Rectangle tabRect = filesTab.GetTabRect(filesTab.SelectedIndex);
 
-            if (/*filesTab.SelectedIndex == currentTabNum &&*/ e.X >= tabRect.Left+4 && e.X <= tabRect.Left + 20)
+            if (e.X >= tabRect.Left+4 && e.X <= tabRect.Left + 20)
             {
                 getCurrentDoc().extraCellTable.isEditing = false;
                 closeTab();
@@ -232,7 +248,6 @@ namespace extraCell
         private void closeTab() {
             if (askOnExit())
             {
-                //mdiContainer.RemoveAt(filesTab.SelectedIndex);
                 mdiContainer.Remove(getCurrentDoc());
                 filesTab.SelectedTab.Dispose();
                 if (mdiContainer.Count < 1)
@@ -274,11 +289,11 @@ namespace extraCell
 
         private void setEditOptions(bool enable)
         {
-            znajdźToolStripMenuItem.Enabled = enable;
+        /*    znajdzToolStripMenuItem.Enabled = enable;
             ZapiszStripMenuItem.Enabled = enable;
             formatToolStripMenuItem.Enabled = enable;
             edycjaToolStripMenuItem.Enabled = enable;
-            drukujToolStripMenuItem.Enabled = enable;
+            drukujToolStripMenuItem.Enabled = enable;*/
         }
 
         private void formulaInputBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -289,7 +304,18 @@ namespace extraCell
 
         private void znajdźToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //searchForm.setMDIContent(getCurrentDoc());
             SearchForm searchForm = new SearchForm(getCurrentDoc());
+            searchForm.MdiParent = this;
+            ActivateMdiChild(searchForm);
+            //searchForm.Show();
+            //searchForm.ControlBox = true;
+            //this.ActivateMdiChild(searchForm);
+            //searchForm.Visible = true;
+            
+            searchForm.Focus();
+
+//            this.Enabled = false;
             searchForm.Visible = true;
             searchForm.Activate();
         }
@@ -297,7 +323,7 @@ namespace extraCell
         private void formulaInputBox_TextChanged(object sender, EventArgs e)
         {
             getCurrentDoc().extraCellTable.isEditing = true;
-            getCurrentDoc().extraCellTable.CurrentCell.Value = this.formulaInputBox.Text;
+            getCurrentDoc().extraCellTable.CurrentCell.Value = getFormulaInput().Text;
         }
 
         private void beginEdit(object sender, EventArgs e)
@@ -313,6 +339,11 @@ namespace extraCell
         private void oProgramieToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Autorzy:\n- Marcin Kubala\n- Michał Urbańczyk\n- Paweł Ochalik", "O programie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void filesTab_Selected(object sender, TabControlEventArgs e)
+        {
+
         }
     }
 }

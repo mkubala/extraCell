@@ -16,14 +16,15 @@ namespace extraCell.view
     {
         public bool changed { get; set; }
         public bool isEditing { get; set; }
-        public TextBox inputBox { get; set; }
-        public extraCell.domain.IEngine ece { get; set; }
+        public ToolStripTextBox inputBox { get; set; }
+        public extraCell.domain.ExtraCellEngine ece { get; set; }
 
         public ExtraCellTable()
             : base()
         {
             changed = false;
-            inputBox = new TextBox();
+            inputBox = new ToolStripTextBox();
+            isEditing = false;
 
             EnableHeadersVisualStyles = true;
             ColumnHeadersDefaultCellStyle.BackColor = Color.Blue;
@@ -59,12 +60,6 @@ namespace extraCell.view
             base.OnRowPostPaint(e);
         }
 
-/*        protected override void OnCellEnter(DataGridViewCellEventArgs e)
-        {
-            base.OnCellEnter(e);
-            inputBox.Text = ece.getCell(CurrentCellAddress.X, CurrentCellAddress.Y).formula.ToString();
-        }*/
-
         protected override void OnColumnHeaderMouseClick(DataGridViewCellMouseEventArgs e)
         {
             SelectionMode = DataGridViewSelectionMode.ColumnHeaderSelect;
@@ -76,13 +71,7 @@ namespace extraCell.view
             SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
             base.OnRowHeaderMouseClick(e);
         }
-
-        /*protected override void OnPaint(PaintEventArgs e)
-        {
-            DoubleBuffered = true;
-            base.OnPaint(e);
-        }*/
-
+        
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExtraCellTable));
@@ -94,21 +83,39 @@ namespace extraCell.view
             resources.ApplyResources(this, "$this");
             this.CausesValidation = false;
             this.ShowEditingIcon = false;
+            this.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExtraCellTable_CellEnter);
             this.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.ExtraCellTable_CellStateChanged);
+            this.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExtraCellTable_CellValueChanged);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ExtraCellTable_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
         }
 
+        private void ExtraCellTable_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!isEditing && (e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Delete))
+                CurrentRow.Cells[CurrentCellAddress.X].Value = "";
+        }
+
         private void ExtraCellTable_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
             changed = true;
+            //if(isEditing)
+                //inputBox.Text = CurrentCell.Value.ToString();
+        }
+
+        protected override void OnCellStateChanged(DataGridViewCellStateChangedEventArgs e)
+        {
+            if(isEditing)
+                inputBox.Text = CurrentCell.Value.ToString();
+            base.OnCellStateChanged(e);
         }
 
         protected override void OnColumnAdded(DataGridViewColumnEventArgs e)
         {
             e.Column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            e.Column.CellTemplate = new ExtraCellCustomCell();
+            //e.Column.CellTemplate = new ExtraCellCustomCell();
             base.OnColumnAdded(e);
         }
 
@@ -122,22 +129,19 @@ namespace extraCell.view
         protected override void OnCellEndEdit(DataGridViewCellEventArgs e)
         {
             isEditing = false;
-            this.ece.getCell(e.ColumnIndex, e.RowIndex).result = ece.getFormula().eval(Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+            this.ece.getCell(e.ColumnIndex, e.RowIndex).result = ece.formulaProc.eval(Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
             base.OnCellEndEdit(e);
         }
 
-        /*protected override void OnCellStyleChanged(DataGridViewCellEventArgs e)
+        private void ExtraCellTable_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("style changed");
-            //ece.getCell(e.ColumnIndex, e.RowIndex).backColor = CurrentCell.Style.BackColor;
-            base.OnCellStyleChanged(e);
-        }*/
+            //inputBox.Text = CurrentCell.Value.ToString();
+        }
 
-        /*
-        private void ExtraCellTable_CellStyleChanged(object sender, DataGridViewCellEventArgs e)
+        private void ExtraCellTable_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("style changed (action listener)");
-        }*/
-
+            inputBox.Text = ece.getCell(CurrentCellAddress.X, CurrentCellAddress.Y).formula;
+        }
+        
     }
 }

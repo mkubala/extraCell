@@ -8,7 +8,7 @@ namespace extraCell.helpers
 {
     class Helpers
     {
-        public static extraCell.UIMain mainWindow { get; set; }
+        public static extraCell.view.MDIUI mainWindow { get; set; }
 
         public static int getColumnNumber(String str)
         {
@@ -50,5 +50,16 @@ namespace extraCell.helpers
                 return new int[] { -1, -1 };
             }
         }
+
+        public static extraCell.view.DocumentForm getActiveDocument()
+        {
+            return ((extraCell.view.DocumentForm)mainWindow.ActiveMdiChild);
+        }
+
+        public static void debug(string msg)
+        {
+            System.Diagnostics.Debug.WriteLine(msg);
+        }
+    
     }
 }

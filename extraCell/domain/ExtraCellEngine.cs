@@ -23,11 +23,6 @@ namespace extraCell.domain
             formulaProc = new Formula(this);
         }
 
-        public Formula getFormula()
-        {
-            return formulaProc;
-        }
-
         public Cell getCell(int col, int row)
         {
             return getCell(col, row, true);
@@ -119,11 +114,11 @@ namespace extraCell.domain
             Match m;
             Cell cell;
 
-            for(int i = 0; i < Columns.Count; i++)
+            for(int i = 0; i < Rows.Count; i++)
             {
-                for (int j = 0; j < Rows.Count; j++)
+                for (int j = 0; j < Columns.Count; j++)
                 {
-                    cell = getCell(i, j, false);
+                    cell = getCell(j, i, false);
                     if (cell != null && cell.result != null && cell.result.Trim().Length != 0)
                     {
                         m = reg.Match(cell.result);

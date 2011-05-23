@@ -119,8 +119,20 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="domain\IEngine.cs" />
+    <Compile Include="view\DocumentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\DocumentForm.Designer.cs">
+      <DependentUpon>DocumentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\ExtraCellCustomCell.cs" />
     <Compile Include="view\ExtraCellStyle.cs" />
+    <Compile Include="view\MDIUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\MDIUI.Designer.cs">
+      <DependentUpon>MDIUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\SearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +160,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="view\MDIContent.cs" />
+    <EmbeddedResource Include="view\DocumentForm.resx">
+      <DependentUpon>DocumentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\MDIUI.resx">
+      <DependentUpon>MDIUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </EmbeddedResource>

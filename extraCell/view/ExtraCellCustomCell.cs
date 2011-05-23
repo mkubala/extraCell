@@ -64,16 +64,13 @@ namespace extraCell.view
         protected override void OnEnter(int rowIndex, bool throughMouseClick)
         {
             entered = true;
-/*            if (helpers.Helpers.mainWindow.getCurrentDoc().extraCellTable.isEditing)
-                Value = helpers.Helpers.mainWindow.getCurrentDoc().extraCellTable.ece.getCell(ColumnIndex, RowIndex).result;*/
             base.OnEnter(rowIndex, throughMouseClick);
-            
         }
         
         protected override void OnDoubleClick(DataGridViewCellEventArgs e)
         {
-            if (helpers.Helpers.mainWindow.getCurrentDoc().extraCellTable.isEditing)
-                this.Value = helpers.Helpers.mainWindow.getCurrentDoc().extraCellTable.ece.getCell(e.ColumnIndex, e.RowIndex).formula;
+            if (helpers.Helpers.getActiveDocument().extraCellTable.isEditing)
+                this.Value = helpers.Helpers.getActiveDocument().extraCellTable.ece.getCell(e.ColumnIndex, e.RowIndex).formula;
             base.OnDoubleClick(e);
         }
 
@@ -81,31 +78,17 @@ namespace extraCell.view
         {
             base.OnLeave(rowIndex, throughMouseClick);
             entered = false;
-//            helpers.Helpers.mainWindow.getCurrentDoc().extraCellTable.ece.setCell(ColumnIndex, rowIndex, new extraCell.domain.Cell(this.Value.ToString()));
             this.DataGridView.InvalidateCell(this);
         }
 
-        // Force the cell to repaint itself when the mouse pointer enters it.
         protected override void OnMouseEnter(int rowIndex)
         {
             this.DataGridView.InvalidateCell(this);
         }
 
-        // Force the cell to repaint itself when the mouse pointer leaves it.
         protected override void OnMouseLeave(int rowIndex)
         {
             this.DataGridView.InvalidateCell(this);
         }
-
-        /*protected override void OnClick(DataGridViewCellEventArgs e)
-        {
-            //DO NOTHING (disable base class event handler)
-        }*/
-
-        /*protected override void OnDoubleClick(DataGridViewCellEventArgs e)
-        {
-            base.OnDoubleClick(e);
-        }*/
-
     }
 }

@@ -41,10 +41,8 @@ namespace extraCell.view
 
             loadDocument(path);
 
-            System.Diagnostics.Debug.WriteLine("before fill");
             extraCellTable.ece.fill();
-            System.Diagnostics.Debug.WriteLine("after fill");
-
+            extraCellTable.changed = false;
             extraCellTable.Focus();
         }
 

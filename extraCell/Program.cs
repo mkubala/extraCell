@@ -15,7 +15,7 @@ namespace extraCell
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            UIMain main = new UIMain();
+            extraCell.view.MDIUI main = new extraCell.view.MDIUI();
             extraCell.helpers.Helpers.mainWindow = main;
             Application.Run(main);
         }

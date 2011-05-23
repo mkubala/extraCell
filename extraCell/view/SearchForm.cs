@@ -13,11 +13,10 @@ namespace extraCell.view
     public partial class SearchForm : Form
     {
         private MDIContent mdiContent;
+        private LinkedList<int[]> res;
+        private int currentIndex = 0;
 
-        public SearchForm()
-        {
-            InitializeComponent();
-        }
+        public SearchForm() { InitializeComponent(); }
 
         public SearchForm(MDIContent mdiContent)
         {
@@ -25,39 +24,69 @@ namespace extraCell.view
             InitializeComponent();
         }
 
-        private void szukajButton_Click(object sender, EventArgs e)
-        {
-            RegexOptions options;
-            if (!wielkoscZnakowCheck.Checked) options = RegexOptions.IgnoreCase;
-            if(caleWyrazyCheck.Checked) options = options | RegexOptions.ExplicitCapture;
+        public void setMDIContent(MDIContent mdi) {
+            mdiContent = mdi;
+        }
 
-            LinkedList<int[]> res = mdiContent.extraCellTable.ece.search(searchQueryInputBox.Text.ToString(), options);
+        private void szukaj()
+        {
+            RegexOptions options = RegexOptions.None;
+
+            if (!wielkoscZnakowCheck.Checked)
+                options = options | RegexOptions.IgnoreCase;
+
+            if (caleWyrazyCheck.Checked)
+                options = options | RegexOptions.ExplicitCapture;
+
+            res = mdiContent.extraCellTable.ece.search(searchQueryInputBox.Text.ToString(), options);
             if (res.Count > 0)
             {
                 setResultOptions(true);
-                mdiContent.extraCellTable.CurrentCell = mdiContent.extraCellTable.Rows[res.First.Value[1]].Cells[res.First.Value[0]];
+                selectCell();
             }
             else
             {
                 setResultOptions(false);
                 MessageBox.Show("Nie znaleziono żadnych komórek");
             }
-               
+        }
+
+        private void szukajButton_Click(object sender, EventArgs e)
+        {
+            szukaj();               
+        }
+
+        private void selectCell()
+        {
+            int col = (int) res.ElementAt<int[]>(currentIndex).GetValue(1);
+            int row = (int) res.ElementAt<int[]>(currentIndex).GetValue(0);
+            mdiContent.extraCellTable.CurrentCell = mdiContent.extraCellTable.Rows[row].Cells[col];
         }
 
         private void setResultOptions(Boolean enabled)
         {
-
+            nastepnyButton.Enabled = enabled;
+            poprzedniButton.Enabled = enabled;
         }
 
         private void poprzedniButton_Click(object sender, EventArgs e)
         {
-
+            if (currentIndex == 0) currentIndex = res.Count - 1;
+            else currentIndex--;
+            selectCell();
         }
 
         private void nastepnyButton_Click(object sender, EventArgs e)
         {
+            if (currentIndex == res.Count - 1) currentIndex = 0;
+            else currentIndex++;
+            selectCell();
+        }
 
+        private void searchQueryInputBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+                szukaj();
         }
 
     }

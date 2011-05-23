@@ -33,8 +33,8 @@
             this.nastepnyButton = new System.Windows.Forms.Button();
             this.poprzedniButton = new System.Windows.Forms.Button();
             this.opcjeGroupBox = new System.Windows.Forms.GroupBox();
-            this.wielkoscZnakowCheck = new System.Windows.Forms.CheckBox();
             this.caleWyrazyCheck = new System.Windows.Forms.CheckBox();
+            this.wielkoscZnakowCheck = new System.Windows.Forms.CheckBox();
             this.opcjeGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,6 +45,7 @@
             this.searchQueryInputBox.Name = "searchQueryInputBox";
             this.searchQueryInputBox.Size = new System.Drawing.Size(201, 20);
             this.searchQueryInputBox.TabIndex = 0;
+            this.searchQueryInputBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchQueryInputBox_KeyPress);
             // 
             // szukajButton
             // 
@@ -58,20 +59,22 @@
             // 
             // nastepnyButton
             // 
+            this.nastepnyButton.Enabled = false;
             this.nastepnyButton.Location = new System.Drawing.Point(219, 48);
             this.nastepnyButton.Name = "nastepnyButton";
             this.nastepnyButton.Size = new System.Drawing.Size(75, 23);
-            this.nastepnyButton.TabIndex = 2;
+            this.nastepnyButton.TabIndex = 3;
             this.nastepnyButton.Text = "Następny";
             this.nastepnyButton.UseVisualStyleBackColor = true;
             this.nastepnyButton.Click += new System.EventHandler(this.nastepnyButton_Click);
             // 
             // poprzedniButton
             // 
+            this.poprzedniButton.Enabled = false;
             this.poprzedniButton.Location = new System.Drawing.Point(219, 77);
             this.poprzedniButton.Name = "poprzedniButton";
             this.poprzedniButton.Size = new System.Drawing.Size(75, 23);
-            this.poprzedniButton.TabIndex = 3;
+            this.poprzedniButton.TabIndex = 4;
             this.poprzedniButton.Text = "Poprzedni";
             this.poprzedniButton.UseVisualStyleBackColor = true;
             this.poprzedniButton.Click += new System.EventHandler(this.poprzedniButton_Click);
@@ -83,9 +86,19 @@
             this.opcjeGroupBox.Location = new System.Drawing.Point(13, 39);
             this.opcjeGroupBox.Name = "opcjeGroupBox";
             this.opcjeGroupBox.Size = new System.Drawing.Size(200, 67);
-            this.opcjeGroupBox.TabIndex = 4;
+            this.opcjeGroupBox.TabIndex = 2;
             this.opcjeGroupBox.TabStop = false;
             this.opcjeGroupBox.Text = "Opcje wyszukiwania";
+            // 
+            // caleWyrazyCheck
+            // 
+            this.caleWyrazyCheck.AutoSize = true;
+            this.caleWyrazyCheck.Location = new System.Drawing.Point(7, 44);
+            this.caleWyrazyCheck.Name = "caleWyrazyCheck";
+            this.caleWyrazyCheck.Size = new System.Drawing.Size(168, 17);
+            this.caleWyrazyCheck.TabIndex = 1;
+            this.caleWyrazyCheck.Text = "Uwzględniaj tylko całe wyrazy";
+            this.caleWyrazyCheck.UseVisualStyleBackColor = true;
             // 
             // wielkoscZnakowCheck
             // 
@@ -97,16 +110,6 @@
             this.wielkoscZnakowCheck.TabIndex = 0;
             this.wielkoscZnakowCheck.Text = "Uwzględniaj wielkość znaków";
             this.wielkoscZnakowCheck.UseVisualStyleBackColor = true;
-            // 
-            // caleWyrazyCheck
-            // 
-            this.caleWyrazyCheck.AutoSize = true;
-            this.caleWyrazyCheck.Location = new System.Drawing.Point(7, 44);
-            this.caleWyrazyCheck.Name = "caleWyrazyCheck";
-            this.caleWyrazyCheck.Size = new System.Drawing.Size(168, 17);
-            this.caleWyrazyCheck.TabIndex = 1;
-            this.caleWyrazyCheck.Text = "Uwzględniaj tylko całe wyrazy";
-            this.caleWyrazyCheck.UseVisualStyleBackColor = true;
             // 
             // SearchForm
             // 
