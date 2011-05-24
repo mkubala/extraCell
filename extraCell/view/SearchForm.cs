@@ -12,20 +12,16 @@ namespace extraCell.view
 {
     public partial class SearchForm : Form
     {
-        private MDIContent mdiContent;
+        internal ExtraCellTable extraCellTable { get; set; }
         private LinkedList<int[]> res;
         private int currentIndex = 0;
 
         public SearchForm() { InitializeComponent(); }
 
-        public SearchForm(MDIContent mdiContent)
+        public SearchForm(ExtraCellTable ect)
         {
-            this.mdiContent = mdiContent;
+            extraCellTable = ect;
             InitializeComponent();
-        }
-
-        public void setMDIContent(MDIContent mdi) {
-            mdiContent = mdi;
         }
 
         private void szukaj()
@@ -38,7 +34,7 @@ namespace extraCell.view
             if (caleWyrazyCheck.Checked)
                 options = options | RegexOptions.ExplicitCapture;
 
-            res = mdiContent.extraCellTable.ece.search(searchQueryInputBox.Text.ToString(), options);
+            res = extraCellTable.ece.search(searchQueryInputBox.Text.ToString(), options);
             if (res.Count > 0)
             {
                 setResultOptions(true);
@@ -60,7 +56,7 @@ namespace extraCell.view
         {
             int col = (int) res.ElementAt<int[]>(currentIndex).GetValue(1);
             int row = (int) res.ElementAt<int[]>(currentIndex).GetValue(0);
-            mdiContent.extraCellTable.CurrentCell = mdiContent.extraCellTable.Rows[row].Cells[col];
+            extraCellTable.CurrentCell = extraCellTable.Rows[row].Cells[col];
         }
 
         private void setResultOptions(Boolean enabled)
@@ -88,6 +84,6 @@ namespace extraCell.view
             if (e.KeyChar == (char)13)
                 szukaj();
         }
-
+        
     }
 }

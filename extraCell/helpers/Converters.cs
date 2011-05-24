@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel;
 using extraCell.helpers;
 using extraCell.domain;
+using System.Windows.Forms;
 
 namespace extraCell.helpers
 {
@@ -24,8 +25,8 @@ namespace extraCell.helpers
         public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
         {
             String result = value.ToString();
-            if(!Helpers.getActiveDocument().extraCellTable.isEditing)
-                result = Helpers.getActiveDocument().getFormula().eval(value.ToString());
+            if (!((extraCell.view.MDIUI)Application.OpenForms[0]).activeDocument.extraCellTable.isEditing)
+                result = ((extraCell.view.MDIUI)Application.OpenForms[0]).activeDocument.extraCellTable.ece.eval(value.ToString());
             return new Cell(value.ToString(), result);
         }
     }

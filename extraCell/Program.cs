@@ -15,9 +15,7 @@ namespace extraCell
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            extraCell.view.MDIUI main = new extraCell.view.MDIUI();
-            extraCell.helpers.Helpers.mainWindow = main;
-            Application.Run(main);
+            Application.Run(new extraCell.view.MDIUI());
         }
     }
 }

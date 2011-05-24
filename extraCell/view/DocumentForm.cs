@@ -15,8 +15,8 @@ namespace extraCell.view
 {
     public partial class DocumentForm : Form
     {
-        private string documentPath;
-        private string documentName;
+        internal string documentPath { get; set;}
+        internal string documentName { get; set; }
         private static int documentsCount;
         private MDIUI parent;
         public ExtraCellTable extraCellTable { get; set; }
@@ -36,11 +36,9 @@ namespace extraCell.view
             parent = p;
             InitializeComponent();
 
-            Helpers.debug("before set inputbox");
             extraCellTable = new ExtraCellTable();
-            extraCellTable.inputBox = parent.formulaInput;
-
-            Helpers.debug("after set inputbox");
+            extraCellTable.inputBox = parent.formulaInput.TextBox;
+            extraCellTable.addressBox = parent.addressInput;
 
             documentsCount++;
             
@@ -52,9 +50,7 @@ namespace extraCell.view
 
                 if (fileInfo.Exists)
                 {
-                    Helpers.debug("before import");
                     extraCellTable.ece.importXML(path);
-                    Helpers.debug("after import");
                     documentPath = path;
                     documentName = fileInfo.Name;
                 }
@@ -67,17 +63,61 @@ namespace extraCell.view
             
             this.Text = documentName;
 
-            Helpers.debug("before fill");
             extraCellTable.ece.fill();
-            Helpers.debug("after fill");
-            extraCellTable.changed = false;
             extraCellTable.Focus();
             Controls.Add(extraCellTable);
         }
 
-        public extraCell.formula.Formula getFormula()
+        private bool saveFileAs()
         {
-            return extraCellTable.ece.formulaProc;
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = MDIUI.documentFilter;
+            saveFileDialog.RestoreDirectory = true;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string name = new System.IO.FileInfo(saveFileDialog.FileName).Name;
+                Text = name;
+                return saveFile(saveFileDialog.FileName);
+            }
+            return false;
         }
+
+        internal bool saveFile()
+        {
+            if (documentPath.Length > 0 && new System.IO.FileInfo(documentPath).Exists)
+                return saveFile(documentPath);
+            else
+                return saveFileAs();
+        }
+
+        private bool saveFile(string path)
+        {
+            return extraCellTable.ece.exportXML(path);
+        }
+
+        /* Zapytanie o wyjście row zapis + jego obsługa */
+        private void DocumentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult;
+            if (extraCellTable.ece.isModified)
+            {
+                dialogResult = MessageBox.Show(
+                    "Dokument " + documentName + " został zmieniony, ale nie został zapisany.\nZapisać teraz?",
+                    "Zamykanie dokumentu",
+                    MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button3
+                );
+
+                if (dialogResult.Equals(DialogResult.Cancel))
+                    e.Cancel = true;
+                else if (dialogResult.Equals(DialogResult.Yes) && (documentPath == null || documentPath.Trim().Length == 0))
+                    e.Cancel = !saveFileAs();
+                else if (dialogResult.Equals(DialogResult.Yes))
+                    e.Cancel = !saveFile(documentPath);
+            }
+        }
+
     }
 }

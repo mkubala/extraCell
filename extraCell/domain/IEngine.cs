@@ -16,7 +16,7 @@ namespace extraCell.domain
         void addColumn();
         void addRow();
 
-        void exportXML(string filename);
+        bool exportXML(string filename);
         void importXML(string filename);
         void fill();
 

@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(535, 371);
             this.Name = "DocumentForm";
             this.Text = "Nowy Dokument";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DocumentForm_FormClosing);
             this.ResumeLayout(false);
 
         }

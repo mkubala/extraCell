@@ -69,8 +69,8 @@ namespace extraCell.view
         
         protected override void OnDoubleClick(DataGridViewCellEventArgs e)
         {
-            if (helpers.Helpers.getActiveDocument().extraCellTable.isEditing)
-                this.Value = helpers.Helpers.getActiveDocument().extraCellTable.ece.getCell(e.ColumnIndex, e.RowIndex).formula;
+            if (((ExtraCellTable)DataGridView).isEditing)
+                this.Value = ((ExtraCellTable)DataGridView).ece.getCell(e.ColumnIndex, e.RowIndex).formula;
             base.OnDoubleClick(e);
         }
 
@@ -90,5 +90,6 @@ namespace extraCell.view
         {
             this.DataGridView.InvalidateCell(this);
         }
+
     }
 }

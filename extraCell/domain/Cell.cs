@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Xml;
 using System.Xml.Serialization;
 using extraCell.helpers;
+using System.Collections.Generic;
 
 namespace extraCell.domain
 {
@@ -14,15 +15,12 @@ namespace extraCell.domain
         public String formula { get; set; }
         public String result { get; set; }
 
-//        public extraCell.view.ExtraCellStyle style { get; set; }
-        public int backColor {get; set; }
-
         public Cell() { }
 
         public Cell(string value)
         {
             this.formula = value;
-            this.result = Helpers.getActiveDocument().getFormula().eval(value);
+            this.result = ((extraCell.view.MDIUI)Application.OpenForms[0]).activeDocument.extraCellTable.ece.eval(value);
         }
 
         public Cell(String formula, String result)
