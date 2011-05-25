@@ -29,7 +29,7 @@ namespace extraCell.view
             activeDocument.extraCellTable.ece.setCell(p.X, p.Y, formulaInput.Text.Trim());
         }
 
-        private void setEditOptions(bool enabled)
+        internal void setEditOptions(bool enabled)
         {
             oknaToolStripMenuItem.Enabled = enabled;
             zapiszJakoMenuItem.Enabled = enabled;
@@ -47,6 +47,7 @@ namespace extraCell.view
             czcionkaButton.Enabled = enabled;
             addressInput.Enabled = enabled;
             formulaInput.Enabled = enabled;
+            alignCenterButton.Enabled = enabled;
         }
 
         private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -166,6 +167,11 @@ namespace extraCell.view
         private void zamknijToolStripMenuItem_Click(object sender, EventArgs e)
         {
             activeDocument.Close();
+        }
+
+        private void alignCenterButton_Click(object sender, EventArgs e)
+        {
+            activeDocument.extraCellTable.CurrentCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
     }

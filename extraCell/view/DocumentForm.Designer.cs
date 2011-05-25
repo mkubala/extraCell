@@ -38,6 +38,7 @@
             this.Name = "DocumentForm";
             this.Text = "Nowy Dokument";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DocumentForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DocumentForm_FormClosed);
             this.ResumeLayout(false);
 
         }

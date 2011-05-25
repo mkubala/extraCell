@@ -66,6 +66,7 @@
             this.formulaLabel = new System.Windows.Forms.ToolStripLabel();
             this.formulaInput = new System.Windows.Forms.ToolStripTextBox();
             this.wyjdźToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alignCenterButton = new System.Windows.Forms.ToolStripButton();
             this.mainMenu.SuspendLayout();
             this.editTools.SuspendLayout();
             this.formulaTools.SuspendLayout();
@@ -166,21 +167,21 @@
             // 
             this.wytnijToolStripMenuItem.Name = "wytnijToolStripMenuItem";
             this.wytnijToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.wytnijToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.wytnijToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.wytnijToolStripMenuItem.Text = "Wytnij";
             // 
             // kopiujToolStripMenuItem
             // 
             this.kopiujToolStripMenuItem.Name = "kopiujToolStripMenuItem";
             this.kopiujToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.kopiujToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.kopiujToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.kopiujToolStripMenuItem.Text = "Kopiuj";
             // 
             // wklejToolStripMenuItem
             // 
             this.wklejToolStripMenuItem.Name = "wklejToolStripMenuItem";
             this.wklejToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.wklejToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.wklejToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.wklejToolStripMenuItem.Text = "Wklej";
             // 
             // szukajToolStripMenuItem
@@ -239,7 +240,8 @@
             this.toolStripSeparator3,
             this.tloButton,
             this.kolorButton,
-            this.czcionkaButton});
+            this.czcionkaButton,
+            this.alignCenterButton});
             this.editTools.Location = new System.Drawing.Point(0, 24);
             this.editTools.Name = "editTools";
             this.editTools.Size = new System.Drawing.Size(784, 25);
@@ -390,6 +392,15 @@
             this.wyjdźToolStripMenuItem.Text = "&Wyjdź";
             this.wyjdźToolStripMenuItem.Click += new System.EventHandler(this.wyjdźToolStripMenuItem_Click);
             // 
+            // alignCenterButton
+            // 
+            this.alignCenterButton.Image = ((System.Drawing.Image)(resources.GetObject("alignCenterButton.Image")));
+            this.alignCenterButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.alignCenterButton.Name = "alignCenterButton";
+            this.alignCenterButton.Size = new System.Drawing.Size(135, 22);
+            this.alignCenterButton.Text = "Wyrównaj do środka";
+            this.alignCenterButton.Click += new System.EventHandler(this.alignCenterButton_Click);
+            // 
             // MDIUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -454,5 +465,6 @@
         private System.Windows.Forms.ToolStripButton kolorButton;
         private System.Windows.Forms.ToolStripButton czcionkaButton;
         private System.Windows.Forms.ToolStripMenuItem wyjdźToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton alignCenterButton;
     }
 }

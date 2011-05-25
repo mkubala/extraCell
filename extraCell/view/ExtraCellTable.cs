@@ -28,7 +28,6 @@ namespace extraCell.view
             isEditing = false;
 
             EnableHeadersVisualStyles = true;
-            ColumnHeadersDefaultCellStyle.BackColor = Color.Blue;
 
             ece = new extraCell.domain.ExtraCellEngine();
             this.DataSource = ece;

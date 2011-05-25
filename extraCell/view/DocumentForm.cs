@@ -41,7 +41,12 @@ namespace extraCell.view
             extraCellTable.addressBox = parent.addressInput;
 
             documentsCount++;
-            
+            parent.activeDocument = this;
+
+            extraCellTable.ece.fill();
+//            extraCellTable.Focus();
+            Controls.Add(extraCellTable);
+
             string path = filePath.Trim();
             
             if (path != null && path.Length > 0)
@@ -62,10 +67,6 @@ namespace extraCell.view
             }
             
             this.Text = documentName;
-
-            extraCellTable.ece.fill();
-            extraCellTable.Focus();
-            Controls.Add(extraCellTable);
         }
 
         private bool saveFileAs()
@@ -117,6 +118,13 @@ namespace extraCell.view
                 else if (dialogResult.Equals(DialogResult.Yes))
                     e.Cancel = !saveFile(documentPath);
             }
+        }
+
+        private void DocumentForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            documentsCount--;
+            if (documentsCount <= 0)
+                parent.setEditOptions(false);
         }
 
     }

@@ -6,9 +6,9 @@ using extraCell;
 using System.IO;
 using System.Drawing;
 using System.Collections.Generic;
-using extraCell.helpers;
 using System.Text.RegularExpressions;
 using System.Xml;
+using System.Windows.Forms;
 
 namespace extraCell.domain
 {
@@ -122,6 +122,28 @@ namespace extraCell.domain
 
                     for (int row = 0; row < Rows.Count; row++)
                     {
+                        if (ect.Rows[row].Height != 22)
+                        {
+                            writer.WriteStartElement("row");
+                                writer.WriteAttributeString("id", row.ToString());
+                                writer.WriteAttributeString("height", ect.Rows[row].Height.ToString());
+                            writer.WriteEndElement();
+                        }
+                    }
+
+                    for (int col = 0; col < Columns.Count; col++)
+                    {
+                        if (ect.Columns[col].Width != 100)
+                        {
+                            writer.WriteStartElement("col");
+                                writer.WriteAttributeString("id", col.ToString());
+                                writer.WriteAttributeString("width", ect.Columns[col].Width.ToString());
+                            writer.WriteEndElement();
+                        }
+                    }
+
+                    for (int row = 0; row < Rows.Count; row++)
+                    {
                         for (int col = 0; col < Columns.Count; col++)
                         {
                             cell = getCell(col, row, false);
@@ -130,29 +152,32 @@ namespace extraCell.domain
                                 viewCell = ect.Rows[row].Cells[col];
                                 
                                 writer.WriteStartElement("cell");
+                                    writer.WriteAttributeString("col", col.ToString());
+                                    writer.WriteAttributeString("row", row.ToString());
+                                    writer.WriteAttributeString("formula", cell.formula);
+                                    writer.WriteAttributeString("result", cell.result);
 
-                                writer.WriteElementString("col", col.ToString());
-                                writer.WriteElementString("row", row.ToString());
-                                writer.WriteElementString("formula", cell.formula);
-                                writer.WriteElementString("result", cell.result);
-                                writer.WriteElementString("width", viewCell.Size.Width.ToString());
-                                writer.WriteElementString("height", viewCell.Size.Height.ToString());
+                                    writer.WriteStartElement("style");
+                                        writer.WriteAttributeString("bgcolor", viewCell.Style.BackColor.ToArgb().ToString());
+                                        writer.WriteAttributeString("fgcolor", viewCell.Style.ForeColor.ToArgb().ToString());
+                                        writer.WriteAttributeString("format", viewCell.Style.Format);
+                                        writer.WriteAttributeString("align", viewCell.Style.Alignment.ToString());
 
-                                writer.WriteStartElement("style");
-                                    writer.WriteElementString("bgcolor", viewCell.Style.BackColor.ToArgb().ToString());
-                                    writer.WriteElementString("fgcolor", viewCell.Style.ForeColor.ToArgb().ToString());
-                                    writer.WriteElementString("format", viewCell.Style.Format);
-                                    writer.WriteElementString("align", viewCell.Style.Alignment.ToString());
+                                        if (viewCell.Style.Font != null)
+                                        {
+                                            writer.WriteStartElement("font");
+                                                writer.WriteAttributeString("family", viewCell.Style.Font.FontFamily.Name);
+                                                writer.WriteAttributeString("bold", viewCell.Style.Font.Bold.ToString());
+                                                writer.WriteAttributeString("italic", viewCell.Style.Font.Italic.ToString());
+                                                writer.WriteAttributeString("underline", viewCell.Style.Font.Underline.ToString());
+                                                writer.WriteAttributeString("strikeout", viewCell.Style.Font.Strikeout.ToString());
+                                                writer.WriteAttributeString("size", viewCell.Style.Font.Size.ToString());
+                                                writer.WriteAttributeString("gdicharset", viewCell.Style.Font.GdiCharSet.ToString());
+                                                writer.WriteAttributeString("unit", viewCell.Style.Font.Unit.ToString());
+                                            writer.WriteEndElement();
+                                        }
 
-                                    writer.WriteStartElement("font");
-                                        writer.WriteElementString("family", viewCell.Style.Font.FontFamily.Name);
-                                        writer.WriteElementString("bold", viewCell.Style.Font.Bold.ToString());
-                                        writer.WriteElementString("italic", viewCell.Style.Font.Italic.ToString());
-                                        writer.WriteElementString("underline", viewCell.Style.Font.Underline.ToString());
-                                        writer.WriteElementString("size", viewCell.Style.Font.Size.ToString());
                                     writer.WriteEndElement();
-                                
-                                writer.WriteEndElement();
 
                                 writer.WriteEndElement();
                             }
@@ -165,9 +190,9 @@ namespace extraCell.domain
 
                 isModified = false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                System.Windows.Forms.MessageBox.Show("Nie udało się zapisać pliku.\n" + ex.Message, "Błąd");
+                System.Windows.Forms.MessageBox.Show("Nie udało się zapisać pliku.", "Błąd");
                 return false;
             }
             return true;
@@ -175,10 +200,68 @@ namespace extraCell.domain
 
         public void importXML(string filename)
         {
-            try
-            {
-                ReadXml(filename);
-            }
+            /*try
+            {*/
+                int col = 0;
+                int row = 0;
+                extraCell.view.ExtraCellTable ect = ((extraCell.view.MDIUI)System.Windows.Forms.Application.OpenForms[0]).activeDocument.extraCellTable;
+                System.Windows.Forms.DataGridViewCell viewCell = ect.Rows[0].Cells[0];
+
+                using (XmlReader reader = XmlReader.Create(filename))
+                {
+                    while (reader.Read())
+                    {
+                        if (reader.IsStartElement())
+                        {
+                            switch (reader.Name)
+                            {
+                                case "col":
+                                    ect.Columns[Convert.ToInt32(reader["id"])].Width = Convert.ToInt32(reader["width"]);
+                                    System.Diagnostics.Debug.WriteLine("set col width");
+                                    break;
+                                case "row":
+                                    ect.Rows[Convert.ToInt32(reader["id"])].Height = Convert.ToInt32(reader["height"]);
+                                    System.Diagnostics.Debug.WriteLine("set row height, " + Convert.ToInt32(reader["height"]));
+                                    break;
+                                case "cell":
+                                    col = Convert.ToInt32(reader["col"]);
+                                    row = Convert.ToInt32(reader["row"]);
+                                    setCell(col, row, new Cell(reader["formula"], reader["result"]));
+                                    viewCell = ect.Rows[row].Cells[col];
+                                    break;
+                                case "style":
+                                    viewCell.Style.Format = reader["format"];
+                                    viewCell.Style.BackColor = Color.FromArgb(Convert.ToInt32(reader["bgcolor"]));
+                                    viewCell.Style.ForeColor = Color.FromArgb(Convert.ToInt32(reader["fgcolor"]));
+                                    viewCell.Style.Alignment = (DataGridViewContentAlignment) Enum.Parse(typeof(DataGridViewContentAlignment), reader["align"]);
+                                    break;
+                                case "font":
+                                    FontStyle fs = new FontStyle();
+
+                                    if(Convert.ToBoolean(reader["bold"]))
+                                        fs = fs|FontStyle.Bold;
+                                    if(Convert.ToBoolean(reader["italic"]))
+                                        fs = fs|FontStyle.Italic;
+                                    if(Convert.ToBoolean(reader["regular"]))
+                                        fs = fs|FontStyle.Regular;
+                                    if(Convert.ToBoolean(reader["strikeout"]))
+                                        fs = fs|FontStyle.Strikeout;
+                                    if(Convert.ToBoolean(reader["underline"]))
+                                        fs = fs|FontStyle.Underline;
+
+                                    viewCell.Style.Font = new Font(
+                                        reader["family"], 
+                                        (float)Convert.ToDouble(reader["size"]), 
+                                        fs, 
+                                        (GraphicsUnit) Enum.Parse(typeof(GraphicsUnit), reader["unit"]),
+                                        Convert.ToByte(reader["gdicharset"])
+                                    );
+                                    break;
+                            }
+                        }
+                    }
+                }
+            /*}
             catch (FileNotFoundException)
             {
                 throw new Exception("Nie znaleziono pliku " + filename);
@@ -190,7 +273,7 @@ namespace extraCell.domain
             catch (InvalidOperationException)
             {
                 throw new InvalidOperationException("To nie jest prawidłowy dokument programu eXtraCell!");
-            }
+            }*/
         }
 
         public void fill() 
