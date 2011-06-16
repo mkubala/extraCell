@@ -51,14 +51,15 @@ namespace extraCell.view
             
             if (path != null && path.Length > 0)
             {
-                FileInfo fileInfo = new FileInfo(path);
+                loadDocument(path);
+                /*FileInfo fileInfo = new FileInfo(path);
 
                 if (fileInfo.Exists)
                 {
                     extraCellTable.ece.importXML(path);
                     documentPath = path;
                     documentName = fileInfo.Name;
-                }
+                }*/
             }
             else
             {
@@ -67,6 +68,18 @@ namespace extraCell.view
             }
             
             this.Text = documentName;
+        }
+
+        public void loadDocument(string path)
+        {
+            FileInfo fileInfo = new FileInfo(path);
+
+            if (fileInfo.Exists)
+            {
+                extraCellTable.ece.importXML(path);
+                documentPath = path;
+                documentName = fileInfo.Name;
+            }
         }
 
         private bool saveFileAs()

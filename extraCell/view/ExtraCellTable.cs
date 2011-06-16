@@ -23,7 +23,6 @@ namespace extraCell.view
         public ExtraCellTable()
             : base()
         {
-//            inputBox = new ToolStripTextBox();
             addressBox = new ToolStripTextBox();
             isEditing = false;
 
@@ -32,7 +31,6 @@ namespace extraCell.view
             ece = new extraCell.domain.ExtraCellEngine();
             this.DataSource = ece;
 
-            /* przeniesione z Form1.cs/AddTab() */
             this.Size = new System.Drawing.Size(552, 270);
             this.Location = new System.Drawing.Point(3, 3);
             this.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
@@ -75,16 +73,28 @@ namespace extraCell.view
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExtraCellTable));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // ExtraCellTable
             // 
             resources.ApplyResources(this, "$this");
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.CausesValidation = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DefaultCellStyle = dataGridViewCellStyle2;
             this.ShowEditingIcon = false;
             this.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExtraCellTable_CellEnter);
-            this.CellStyleContentChanged += new System.Windows.Forms.DataGridViewCellStyleContentChangedEventHandler(this.ExtraCellTable_CellStyleContentChanged);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ExtraCellTable_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
@@ -190,10 +200,6 @@ namespace extraCell.view
         {
             inputBox.Text = ece.getCell(CurrentCellAddress.X, CurrentCellAddress.Y).formula;
             addressBox.Text = ece.getColumnName(CurrentCellAddress.X+1)+(CurrentCellAddress.Y+1).ToString();
-        }
-
-        private void ExtraCellTable_CellStyleContentChanged(object sender, DataGridViewCellStyleContentChangedEventArgs e)
-        {
         }
 
     }

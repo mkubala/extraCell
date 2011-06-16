@@ -157,7 +157,7 @@ namespace extraCell.domain
                                     writer.WriteAttributeString("formula", cell.formula);
                                     writer.WriteAttributeString("result", cell.result);
 
-                                    writer.WriteStartElement("style");
+//                                    writer.WriteStartElement("style");
                                         writer.WriteAttributeString("bgcolor", viewCell.Style.BackColor.ToArgb().ToString());
                                         writer.WriteAttributeString("fgcolor", viewCell.Style.ForeColor.ToArgb().ToString());
                                         writer.WriteAttributeString("format", viewCell.Style.Format);
@@ -177,7 +177,7 @@ namespace extraCell.domain
                                             writer.WriteEndElement();
                                         }
 
-                                    writer.WriteEndElement();
+//                                    writer.WriteEndElement();
 
                                 writer.WriteEndElement();
                             }
@@ -200,8 +200,8 @@ namespace extraCell.domain
 
         public void importXML(string filename)
         {
-            /*try
-            {*/
+            try
+            {
                 int col = 0;
                 int row = 0;
                 extraCell.view.ExtraCellTable ect = ((extraCell.view.MDIUI)System.Windows.Forms.Application.OpenForms[0]).activeDocument.extraCellTable;
@@ -216,24 +216,33 @@ namespace extraCell.domain
                             switch (reader.Name)
                             {
                                 case "col":
-                                    ect.Columns[Convert.ToInt32(reader["id"])].Width = Convert.ToInt32(reader["width"]);
-                                    System.Diagnostics.Debug.WriteLine("set col width");
+                                    if (reader["width"] != null)
+                                        ect.Columns[Convert.ToInt32(reader["id"])].Width = Convert.ToInt32(reader["width"]);
                                     break;
                                 case "row":
-                                    ect.Rows[Convert.ToInt32(reader["id"])].Height = Convert.ToInt32(reader["height"]);
-                                    System.Diagnostics.Debug.WriteLine("set row height, " + Convert.ToInt32(reader["height"]));
+                                    if (reader["height"] != null)
+                                        ect.Rows[Convert.ToInt32(reader["id"])].Height = Convert.ToInt32(reader["height"]);
                                     break;
                                 case "cell":
+                                    if (reader["row"] == null || reader["col"] == null)
+                                    {
+                                        throw new Exception("Błąd spójności struktury dokumentu");
+                                        return;
+                                    }
+                                        
                                     col = Convert.ToInt32(reader["col"]);
                                     row = Convert.ToInt32(reader["row"]);
+
                                     setCell(col, row, new Cell(reader["formula"], reader["result"]));
                                     viewCell = ect.Rows[row].Cells[col];
-                                    break;
-                                case "style":
-                                    viewCell.Style.Format = reader["format"];
-                                    viewCell.Style.BackColor = Color.FromArgb(Convert.ToInt32(reader["bgcolor"]));
-                                    viewCell.Style.ForeColor = Color.FromArgb(Convert.ToInt32(reader["fgcolor"]));
-                                    viewCell.Style.Alignment = (DataGridViewContentAlignment) Enum.Parse(typeof(DataGridViewContentAlignment), reader["align"]);
+                                    if (reader["format"] != null)
+                                        viewCell.Style.Format = reader["format"];
+                                    if (reader["bgcolor"] != null)
+                                        viewCell.Style.BackColor = Color.FromArgb(Convert.ToInt32(reader["bgcolor"]));
+                                    if (reader["fgcolor"] != null)
+                                        viewCell.Style.ForeColor = Color.FromArgb(Convert.ToInt32(reader["fgcolor"]));
+                                    if(reader["align"] != null)
+                                        viewCell.Style.Alignment = (DataGridViewContentAlignment) Enum.Parse(typeof(DataGridViewContentAlignment), reader["align"]);
                                     break;
                                 case "font":
                                     FontStyle fs = new FontStyle();
@@ -261,7 +270,7 @@ namespace extraCell.domain
                         }
                     }
                 }
-            /*}
+            }
             catch (FileNotFoundException)
             {
                 throw new Exception("Nie znaleziono pliku " + filename);
@@ -273,7 +282,7 @@ namespace extraCell.domain
             catch (InvalidOperationException)
             {
                 throw new InvalidOperationException("To nie jest prawidłowy dokument programu eXtraCell!");
-            }*/
+            }
         }
 
         public void fill() 

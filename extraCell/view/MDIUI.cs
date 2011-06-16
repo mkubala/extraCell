@@ -55,6 +55,7 @@ namespace extraCell.view
             DocumentForm documentForm = new DocumentForm(this);
             documentForm.MdiParent = this;
             documentForm.Show();
+            documentForm.extraCellTable.Rows[3].Cells[3].Style.BackColor = Color.Green;
         }
 
         private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
@@ -67,9 +68,10 @@ namespace extraCell.view
 
             if (result == DialogResult.OK)
             {
-                DocumentForm documentForm = new DocumentForm(this, openFileDialog.FileName);
+                DocumentForm documentForm = new DocumentForm(this);
                 documentForm.MdiParent = this;
                 documentForm.Show();
+                documentForm.loadDocument(openFileDialog.FileName);
             }
         }
 
