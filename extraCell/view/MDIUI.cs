@@ -33,11 +33,11 @@ namespace extraCell.view
         {
             oknaToolStripMenuItem.Enabled = enabled;
             zapiszJakoMenuItem.Enabled = enabled;
-            zapiszToolStripMenuItem.Enabled = enabled;
-            zamknijToolStripMenuItem.Enabled = enabled;
+            zapiszMenuItem.Enabled = enabled;
+            zamknijMenuItem.Enabled = enabled;
             edycjaToolStripMenuItem.Enabled = enabled;
             szukajToolStripMenuItem.Enabled = enabled;
-            saveToolStripButton.Enabled = enabled;
+            zapiszButton.Enabled = enabled;
             printToolStripButton.Enabled = enabled;
             cutToolStripButton.Enabled = enabled;
             copyToolStripButton.Enabled = enabled;
@@ -48,14 +48,13 @@ namespace extraCell.view
             addressInput.Enabled = enabled;
             formulaInput.Enabled = enabled;
             alignCenterButton.Enabled = enabled;
+            zapiszJakoButton.Enabled = enabled;
+            zapiszWszystkoButton.Enabled = enabled;
         }
 
         private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DocumentForm documentForm = new DocumentForm(this);
-            documentForm.MdiParent = this;
-            documentForm.Show();
-            documentForm.extraCellTable.Rows[3].Cells[3].Style.BackColor = Color.Green;
+            newDocumentForm(null);
         }
 
         private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
@@ -67,12 +66,17 @@ namespace extraCell.view
             DialogResult result = openFileDialog.ShowDialog();
 
             if (result == DialogResult.OK)
-            {
-                DocumentForm documentForm = new DocumentForm(this);
-                documentForm.MdiParent = this;
-                documentForm.Show();
-                documentForm.loadDocument(openFileDialog.FileName);
-            }
+                newDocumentForm(openFileDialog.FileName);
+        }
+
+        private void newDocumentForm(string path)
+        {
+            DocumentForm documentForm = new DocumentForm(this);
+            documentForm.Show();
+            if(path != null)
+                documentForm.loadDocument(path);
+            documentForm.extraCellTable.selectCell(1, 1);
+            documentForm.extraCellTable.selectCell(0, 0);
         }
 
         private void formulaInput_KeyPress(object sender, KeyPressEventArgs e)
@@ -174,6 +178,12 @@ namespace extraCell.view
         private void alignCenterButton_Click(object sender, EventArgs e)
         {
             activeDocument.extraCellTable.CurrentCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
+
+        private void zapiszWszystkopMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (DocumentForm doc in MdiChildren)
+                doc.saveFile();
         }
 
     }

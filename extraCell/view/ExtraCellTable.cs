@@ -15,6 +15,13 @@ namespace extraCell.view
 {
     public class ExtraCellTable : DataGridView
     {
+        private ContextMenuStrip cellContextMenu;
+        private System.ComponentModel.IContainer components;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem toolStripMenuItem2;
+        private ToolStripMenuItem toolStripMenuItem3;
+        private ToolStripMenuItem toolStripMenuItem4;
+    
         public bool isEditing { get; set; }
         public /*ToolStrip*/TextBox inputBox { get; set; }
         public ToolStripTextBox addressBox { get; set; }
@@ -48,7 +55,13 @@ namespace extraCell.view
         {
             string strRowNumber = (e.RowIndex + 1).ToString();
             SizeF size = e.Graphics.MeasureString(strRowNumber, this.Font);
-            Brush b = SystemBrushes.ControlText;
+            Brush b;
+            
+            //kolor numeru wiersza - trzeba dopracowac bo warunekcos nie bangla..
+            if (SelectedRows.Contains(Rows[e.RowIndex]))
+                b = SystemBrushes.ActiveCaptionText;
+            else
+                b = SystemBrushes.ControlText;
 
             if (this.RowHeadersWidth < (int)(size.Width + 5)) 
                 this.RowHeadersWidth = (int)(size.Width + 5);
@@ -72,19 +85,59 @@ namespace extraCell.view
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExtraCellTable));
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.cellContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cellContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
+            // cellContextMenu
+            // 
+            this.cellContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4});
+            this.cellContextMenu.Name = "cellContextMenu";
+            this.cellContextMenu.Size = new System.Drawing.Size(180, 92);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
+            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(179, 22);
+            this.toolStripMenuItem2.Text = "toolStripMenuItem2";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(179, 22);
+            this.toolStripMenuItem3.Text = "toolStripMenuItem3";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(179, 22);
+            this.toolStripMenuItem4.Text = "toolStripMenuItem4";
+            // 
             // ExtraCellTable
             // 
-            resources.ApplyResources(this, "$this");
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.CausesValidation = false;
+            this.ContextMenuStrip = this.cellContextMenu;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -93,9 +146,13 @@ namespace extraCell.view
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ShowEditingIcon = false;
+            this.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExtraCellTable_CellClick);
             this.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExtraCellTable_CellEnter);
+            this.SelectionChanged += new System.EventHandler(this.ExtraCellTable_SelectionChanged);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ExtraCellTable_KeyPress);
+            this.cellContextMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -178,7 +235,7 @@ namespace extraCell.view
         protected override void OnColumnAdded(DataGridViewColumnEventArgs e)
         {
             e.Column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            e.Column.CellTemplate = new ExtraCellCustomCell();
+            //e.Column.CellTemplate = new ExtraCellCustomCell();
             base.OnColumnAdded(e);
         }
 
@@ -202,5 +259,44 @@ namespace extraCell.view
             addressBox.Text = ece.getColumnName(CurrentCellAddress.X+1)+(CurrentCellAddress.Y+1).ToString();
         }
 
+        private void ExtraCellTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Nie działa tak jakbym sobie tego zyczyl...
+            /*if (e.ColumnIndex == 0 || e.RowIndex == 0)
+            {
+                this.ContextMenuStrip = null;
+            }
+            else
+            {
+                this.ContextMenuStrip = cellContextMenu;
+            }*/
+        }
+
+        private void ExtraCellTable_SelectionChanged(object sender, EventArgs e)
+        {
+            Color selectedHeadersBackColor = System.Drawing.SystemColors.ActiveCaption;
+            Color selectedHeadersForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+
+            foreach (DataGridViewColumn col in Columns)
+            {
+                col.HeaderCell.Style.BackColor = Color.Empty;
+                col.HeaderCell.Style.ForeColor = Color.Empty;
+            }
+
+            foreach (DataGridViewRow row in Rows)
+            {
+                row.HeaderCell.Style.BackColor = Color.Empty;
+                row.HeaderCell.Style.ForeColor = Color.Empty;
+            }
+
+            foreach (DataGridViewCell cell in SelectedCells)
+            {
+                this.Columns[cell.ColumnIndex].HeaderCell.Style.BackColor = selectedHeadersBackColor;
+                this.Columns[cell.ColumnIndex].HeaderCell.Style.ForeColor = selectedHeadersForeColor;
+
+                this.Rows[cell.RowIndex].HeaderCell.Style.BackColor = selectedHeadersBackColor;
+                this.Rows[cell.RowIndex].HeaderCell.Style.ForeColor = selectedHeadersForeColor;
+            }
+        }
     }
 }

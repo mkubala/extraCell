@@ -18,7 +18,6 @@ namespace extraCell.view
         internal string documentPath { get; set;}
         internal string documentName { get; set; }
         private static int documentsCount;
-        private MDIUI parent;
         public ExtraCellTable extraCellTable { get; set; }
 
         public DocumentForm(MDIUI parent)
@@ -33,39 +32,21 @@ namespace extraCell.view
 
         private void Initialize(MDIUI p, string filePath)
         {
-            parent = p;
             InitializeComponent();
+            MdiParent = p;
 
             extraCellTable = new ExtraCellTable();
-            extraCellTable.inputBox = parent.formulaInput.TextBox;
-            extraCellTable.addressBox = parent.addressInput;
+            extraCellTable.inputBox = ((MDIUI)MdiParent).formulaInput.TextBox;
+            extraCellTable.addressBox = ((MDIUI)MdiParent).addressInput;
 
             documentsCount++;
-            parent.activeDocument = this;
+            ((MDIUI)MdiParent).activeDocument = this;
 
             extraCellTable.ece.fill();
-//            extraCellTable.Focus();
             Controls.Add(extraCellTable);
 
-            string path = filePath.Trim();
-            
-            if (path != null && path.Length > 0)
-            {
-                loadDocument(path);
-                /*FileInfo fileInfo = new FileInfo(path);
-
-                if (fileInfo.Exists)
-                {
-                    extraCellTable.ece.importXML(path);
-                    documentPath = path;
-                    documentName = fileInfo.Name;
-                }*/
-            }
-            else
-            {
-                documentPath = "";
-                documentName = "Niezapisany(" + documentsCount + ")";
-            }
+            documentPath = "";
+            documentName = "Niezapisany(" + documentsCount + ")";
             
             this.Text = documentName;
         }
@@ -137,7 +118,7 @@ namespace extraCell.view
         {
             documentsCount--;
             if (documentsCount <= 0)
-                parent.setEditOptions(false);
+                ((MDIUI)MdiParent).setEditOptions(false);
         }
 
     }

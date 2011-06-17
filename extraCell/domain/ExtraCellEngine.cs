@@ -157,7 +157,7 @@ namespace extraCell.domain
                                     writer.WriteAttributeString("formula", cell.formula);
                                     writer.WriteAttributeString("result", cell.result);
 
-//                                    writer.WriteStartElement("style");
+                                    writer.WriteStartElement("style");
                                         writer.WriteAttributeString("bgcolor", viewCell.Style.BackColor.ToArgb().ToString());
                                         writer.WriteAttributeString("fgcolor", viewCell.Style.ForeColor.ToArgb().ToString());
                                         writer.WriteAttributeString("format", viewCell.Style.Format);
@@ -177,7 +177,7 @@ namespace extraCell.domain
                                             writer.WriteEndElement();
                                         }
 
-//                                    writer.WriteEndElement();
+                                    writer.WriteEndElement();
 
                                 writer.WriteEndElement();
                             }
@@ -227,7 +227,6 @@ namespace extraCell.domain
                                     if (reader["row"] == null || reader["col"] == null)
                                     {
                                         throw new Exception("Błąd spójności struktury dokumentu");
-                                        return;
                                     }
                                         
                                     col = Convert.ToInt32(reader["col"]);
@@ -235,6 +234,8 @@ namespace extraCell.domain
 
                                     setCell(col, row, new Cell(reader["formula"], reader["result"]));
                                     viewCell = ect.Rows[row].Cells[col];
+                                    break;
+                                case "style":
                                     if (reader["format"] != null)
                                         viewCell.Style.Format = reader["format"];
                                     if (reader["bgcolor"] != null)
@@ -258,13 +259,14 @@ namespace extraCell.domain
                                     if(Convert.ToBoolean(reader["underline"]))
                                         fs = fs|FontStyle.Underline;
 
-                                    viewCell.Style.Font = new Font(
-                                        reader["family"], 
-                                        (float)Convert.ToDouble(reader["size"]), 
-                                        fs, 
-                                        (GraphicsUnit) Enum.Parse(typeof(GraphicsUnit), reader["unit"]),
-                                        Convert.ToByte(reader["gdicharset"])
-                                    );
+                                    if (reader["family"] != null && reader["size"] != null && reader["unit"] != null && reader["gdicharset"] != null)
+                                            viewCell.Style.Font = new Font(
+                                            reader["family"], 
+                                            (float)Convert.ToDouble(reader["size"]), 
+                                            fs, 
+                                            (GraphicsUnit) Enum.Parse(typeof(GraphicsUnit), reader["unit"]),
+                                            Convert.ToByte(reader["gdicharset"])
+                                        );
                                     break;
                             }
                         }
