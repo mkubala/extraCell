@@ -131,7 +131,6 @@
       <DependentUpon>DocumentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="view\ExtraCellCustomCell.cs" />
-    <Compile Include="view\ExtraCellStyle.cs" />
     <Compile Include="view\MDIUI.cs">
       <SubType>Form</SubType>
     </Compile>

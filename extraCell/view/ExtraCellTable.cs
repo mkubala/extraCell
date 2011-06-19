@@ -23,7 +23,9 @@ namespace extraCell.view
         private ToolStripMenuItem toolStripMenuItem4;
 
         private MDIUI mainForm { get; set; }
-    
+
+        internal bool isInitialized { get; set; }
+
         public bool isEditing { get; set; }
         public /*ToolStrip*/TextBox inputBox { get; set; }
         public ToolStripTextBox addressBox { get; set; }
@@ -32,6 +34,7 @@ namespace extraCell.view
         public ExtraCellTable()
             : base()
         {
+            isInitialized = false;
             mainForm = (MDIUI) Application.OpenForms[0];
             addressBox = mainForm.addressInput;
             inputBox = mainForm.formulaInput.TextBox;
@@ -240,7 +243,7 @@ namespace extraCell.view
         protected override void OnColumnAdded(DataGridViewColumnEventArgs e)
         {
             e.Column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            //e.Column.CellTemplate = new ExtraCellCustomCell();
+            e.Column.CellTemplate = new ExtraCellCustomCell();
             base.OnColumnAdded(e);
         }
 
@@ -260,24 +263,26 @@ namespace extraCell.view
 
         private void ExtraCellTable_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            inputBox.Text = ece.getCell(CurrentCellAddress.X, CurrentCellAddress.Y).formula;
-            addressBox.Text = ece.getColumnName(CurrentCellAddress.X+1)+(CurrentCellAddress.Y+1).ToString();
-
-
-            bool isBold = false,
-                isItalic = false,
-                isUnderline = false;
-
-            if (CurrentCell.Style.Font != null)
+            if (isInitialized)
             {
-                isBold = CurrentCell.Style.Font.Bold;
-                isItalic = CurrentCell.Style.Font.Italic;
-                isUnderline = CurrentCell.Style.Font.Underline;
+                inputBox.Text = ece.getCell(CurrentCellAddress.X, CurrentCellAddress.Y).formula;
+//                addressBox.Text = ece.getColumnName(CurrentCellAddress.X + 1) + (CurrentCellAddress.Y + 1).ToString();
+                updateAddresBox();
+
+                if (isInitialized && CurrentCell != null && CurrentCell.Style != null)
+                {
+                    if (CurrentCell.Style.Font != null)
+                    {
+                        mainForm.boldButton.Checked = (CurrentCell.Style.Font.Bold) ? true : false;
+                        mainForm.italicButton.Checked = (CurrentCell.Style.Font.Italic) ? true : false;
+                        mainForm.underlineButton.Checked = (CurrentCell.Style.Font.Underline) ? true : false;
+                    }
+
+                    mainForm.alignCenterButton.Checked = (CurrentCell.Style.Alignment == DataGridViewContentAlignment.MiddleCenter) ? true : false;
+                    mainForm.alignLeftButton.Checked = (CurrentCell.Style.Alignment == DataGridViewContentAlignment.MiddleLeft) ? true : false;
+                    mainForm.alignRightButton.Checked = (CurrentCell.Style.Alignment == DataGridViewContentAlignment.MiddleRight) ? true : false;
+                }
             }
-            
-            mainForm.boldButton.Checked = isBold;
-            mainForm.italicButton.Checked = isItalic;
-            mainForm.underlineButton.Checked = isUnderline;
         }
 
         private void ExtraCellTable_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -295,28 +300,50 @@ namespace extraCell.view
 
         private void ExtraCellTable_SelectionChanged(object sender, EventArgs e)
         {
-            Color selectedHeadersBackColor = System.Drawing.SystemColors.ActiveCaption;
-            Color selectedHeadersForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-
-            foreach (DataGridViewColumn col in Columns)
+            if (isInitialized)
             {
-                col.HeaderCell.Style.BackColor = Color.Empty;
-                col.HeaderCell.Style.ForeColor = Color.Empty;
+                Color selectedHeadersBackColor = System.Drawing.SystemColors.ActiveCaption;
+                Color selectedHeadersForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+
+                foreach (DataGridViewColumn col in Columns)
+                {
+                    col.HeaderCell.Style.BackColor = Color.Empty;
+                    col.HeaderCell.Style.ForeColor = Color.Empty;
+                }
+
+                foreach (DataGridViewRow row in Rows)
+                {
+                    row.HeaderCell.Style.BackColor = Color.Empty;
+                    row.HeaderCell.Style.ForeColor = Color.Empty;
+                }
+
+                foreach (DataGridViewCell cell in SelectedCells)
+                {
+                    this.Columns[cell.ColumnIndex].HeaderCell.Style.BackColor = selectedHeadersBackColor;
+                    this.Columns[cell.ColumnIndex].HeaderCell.Style.ForeColor = selectedHeadersForeColor;
+
+                    this.Rows[cell.RowIndex].HeaderCell.Style.BackColor = selectedHeadersBackColor;
+                    this.Rows[cell.RowIndex].HeaderCell.Style.ForeColor = selectedHeadersForeColor;
+                }
+
+//                updateAddresBox();
             }
+        }
 
-            foreach (DataGridViewRow row in Rows)
+        private void updateAddresBox() {
+            if (SelectedCells.Count > 1)
             {
-                row.HeaderCell.Style.BackColor = Color.Empty;
-                row.HeaderCell.Style.ForeColor = Color.Empty;
+                int last = SelectedCells.Count - 1;
+                addressBox.Text = ece.getColumnName(SelectedCells[last].ColumnIndex + 1)
+                                + (SelectedCells[last].RowIndex + 1).ToString()
+                                + ":"
+                                + ece.getColumnName(SelectedCells[0].ColumnIndex + 1)
+                                + (SelectedCells[0].RowIndex + 1).ToString();
             }
-
-            foreach (DataGridViewCell cell in SelectedCells)
+            else
             {
-                this.Columns[cell.ColumnIndex].HeaderCell.Style.BackColor = selectedHeadersBackColor;
-                this.Columns[cell.ColumnIndex].HeaderCell.Style.ForeColor = selectedHeadersForeColor;
-
-                this.Rows[cell.RowIndex].HeaderCell.Style.BackColor = selectedHeadersBackColor;
-                this.Rows[cell.RowIndex].HeaderCell.Style.ForeColor = selectedHeadersForeColor;
+                addressBox.Text = ece.getColumnName(SelectedCells[0].ColumnIndex + 1)
+                                + (SelectedCells[0].RowIndex + 1).ToString();
             }
         }
     }

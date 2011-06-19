@@ -31,26 +31,27 @@ namespace extraCell.view
 
         internal void setEditOptions(bool enabled)
         {
-            oknaToolStripMenuItem.Enabled = enabled;
-            zapiszJakoMenuItem.Enabled = enabled;
-            zapiszMenuItem.Enabled = enabled;
-            zamknijMenuItem.Enabled = enabled;
-            edycjaToolStripMenuItem.Enabled = enabled;
-            szukajToolStripMenuItem.Enabled = enabled;
-            zapiszButton.Enabled = enabled;
-            printToolStripButton.Enabled = enabled;
-            cutToolStripButton.Enabled = enabled;
-            copyToolStripButton.Enabled = enabled;
-            pasteToolStripButton.Enabled = enabled;
-            tloButton.Enabled = enabled;
-            kolorButton.Enabled = enabled;
-            czcionkaButton.Enabled = enabled;
-            addressInput.Enabled = enabled;
-            formulaInput.Enabled = enabled;
-            alignCenterButton.Enabled = enabled;
-            zapiszJakoButton.Enabled = enabled;
-            zapiszWszystkoButton.Enabled = enabled;
-            zapiszWszystkopMenuItem.Enabled = enabled;
+            foreach (ToolStripItem comp in mainMenu.Items)
+                comp.Enabled = enabled;
+
+            foreach (ToolStripItem comp in formulaTools.Items)
+                comp.Enabled = enabled;
+
+            foreach (ToolStripItem comp in editTools.Items)
+                comp.Enabled = enabled;
+
+            foreach (ToolStripItem comp in new ToolStripItem[] { 
+                /* komponenty, które mająbyć zawsze aktywne */
+                nowyButton, 
+                otworzButton,
+                otworzMenuItem,
+                plikToolStripMenuItem,
+                pomocToolStripMenuItem,
+                oProgramieToolStripMenuItem,
+                nowyMenuItem,
+                wyjdzMenuItem
+            })
+                comp.Enabled = true;
         }
 
         private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -76,6 +77,8 @@ namespace extraCell.view
             documentForm.Show();
             if(path != null)
                 documentForm.loadDocument(path);
+
+            documentForm.extraCellTable.isInitialized = true;
 
             documentForm.extraCellTable.selectCell(1, 1);
             documentForm.extraCellTable.selectCell(0, 0);
