@@ -119,6 +119,11 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="domain\IEngine.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
     <Compile Include="view\DocumentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +156,10 @@
     <Compile Include="view\ExtraCellTable.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\DocumentForm.resx">
       <DependentUpon>DocumentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +234,60 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gfx\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-document-save-all-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-document-save-as-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-document-save-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\align-above-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\align-bellow-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\align-compact-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\align-middle-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Apps-preferences-desktop-font-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\color-picker-alternative-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\font-colors-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text-align-center-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text-align-justity-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text-align-left-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text-align-right-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text-bold-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text-italic-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text-underline-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions_document_save_all_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

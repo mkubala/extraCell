@@ -21,6 +21,8 @@ namespace extraCell.view
         private ToolStripMenuItem toolStripMenuItem2;
         private ToolStripMenuItem toolStripMenuItem3;
         private ToolStripMenuItem toolStripMenuItem4;
+
+        private MDIUI mainForm { get; set; }
     
         public bool isEditing { get; set; }
         public /*ToolStrip*/TextBox inputBox { get; set; }
@@ -30,7 +32,9 @@ namespace extraCell.view
         public ExtraCellTable()
             : base()
         {
-            addressBox = new ToolStripTextBox();
+            mainForm = (MDIUI) Application.OpenForms[0];
+            addressBox = mainForm.addressInput;
+            inputBox = mainForm.formulaInput.TextBox;
             isEditing = false;
 
             EnableHeadersVisualStyles = true;
@@ -105,35 +109,36 @@ namespace extraCell.view
             this.toolStripMenuItem3,
             this.toolStripMenuItem4});
             this.cellContextMenu.Name = "cellContextMenu";
-            this.cellContextMenu.Size = new System.Drawing.Size(180, 92);
+            this.cellContextMenu.Size = new System.Drawing.Size(181, 92);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem1.Text = "toolStripMenuItem1";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(179, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem2.Text = "toolStripMenuItem2";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(179, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem3.Text = "toolStripMenuItem3";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(179, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem4.Text = "toolStripMenuItem4";
             // 
             // ExtraCellTable
             // 
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.CausesValidation = false;
@@ -257,6 +262,22 @@ namespace extraCell.view
         {
             inputBox.Text = ece.getCell(CurrentCellAddress.X, CurrentCellAddress.Y).formula;
             addressBox.Text = ece.getColumnName(CurrentCellAddress.X+1)+(CurrentCellAddress.Y+1).ToString();
+
+
+            bool isBold = false,
+                isItalic = false,
+                isUnderline = false;
+
+            if (CurrentCell.Style.Font != null)
+            {
+                isBold = CurrentCell.Style.Font.Bold;
+                isItalic = CurrentCell.Style.Font.Italic;
+                isUnderline = CurrentCell.Style.Font.Underline;
+            }
+            
+            mainForm.boldButton.Checked = isBold;
+            mainForm.italicButton.Checked = isItalic;
+            mainForm.underlineButton.Checked = isUnderline;
         }
 
         private void ExtraCellTable_CellClick(object sender, DataGridViewCellEventArgs e)

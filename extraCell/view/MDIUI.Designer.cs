@@ -69,8 +69,10 @@
             this.alignLeftButton = new System.Windows.Forms.ToolStripButton();
             this.alignCenterButton = new System.Windows.Forms.ToolStripButton();
             this.alignRightButton = new System.Windows.Forms.ToolStripButton();
-            this.alignJustityButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.boldButton = new System.Windows.Forms.ToolStripButton();
+            this.italicButton = new System.Windows.Forms.ToolStripButton();
+            this.underlineButton = new System.Windows.Forms.ToolStripButton();
             this.formulaTools = new System.Windows.Forms.ToolStrip();
             this.addressInput = new System.Windows.Forms.ToolStripTextBox();
             this.formulaLabel = new System.Windows.Forms.ToolStripLabel();
@@ -108,14 +110,14 @@
             this.toolStripSeparator1,
             this.wyjdzMenuItem});
             this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
-            this.plikToolStripMenuItem.Size = new System.Drawing.Size(34, 20);
+            this.plikToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
             this.plikToolStripMenuItem.Text = "&Plik";
             // 
             // nowyMenuItem
             // 
             this.nowyMenuItem.Name = "nowyMenuItem";
             this.nowyMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.nowyMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.nowyMenuItem.Size = new System.Drawing.Size(218, 22);
             this.nowyMenuItem.Text = "&Nowy";
             this.nowyMenuItem.Click += new System.EventHandler(this.nowyToolStripMenuItem_Click);
             // 
@@ -123,39 +125,36 @@
             // 
             this.otworzMenuItem.Name = "otworzMenuItem";
             this.otworzMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.otworzMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.otworzMenuItem.Size = new System.Drawing.Size(218, 22);
             this.otworzMenuItem.Text = "&Otwórz";
             this.otworzMenuItem.Click += new System.EventHandler(this.otwórzToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(211, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(215, 6);
             // 
             // zapiszMenuItem
             // 
-            this.zapiszMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("zapiszMenuItem.Image")));
             this.zapiszMenuItem.Name = "zapiszMenuItem";
             this.zapiszMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.zapiszMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.zapiszMenuItem.Size = new System.Drawing.Size(218, 22);
             this.zapiszMenuItem.Text = "Zapi&sz";
             this.zapiszMenuItem.Click += new System.EventHandler(this.zapiszToolStripMenuItem_Click);
             // 
             // zapiszJakoMenuItem
             // 
-            this.zapiszJakoMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("zapiszJakoMenuItem.Image")));
             this.zapiszJakoMenuItem.Name = "zapiszJakoMenuItem";
-            this.zapiszJakoMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
-                        | System.Windows.Forms.Keys.S)));
-            this.zapiszJakoMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.zapiszJakoMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.zapiszJakoMenuItem.Size = new System.Drawing.Size(218, 22);
             this.zapiszJakoMenuItem.Text = "Zapisz &jako..";
             this.zapiszJakoMenuItem.Click += new System.EventHandler(this.zapiszJakoMenuItem_Click);
             // 
             // zapiszWszystkopMenuItem
             // 
-            this.zapiszWszystkopMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("zapiszWszystkopMenuItem.Image")));
             this.zapiszWszystkopMenuItem.Name = "zapiszWszystkopMenuItem";
-            this.zapiszWszystkopMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.zapiszWszystkopMenuItem.Size = new System.Drawing.Size(218, 22);
             this.zapiszWszystkopMenuItem.Text = "Zapisz wszystko";
             this.zapiszWszystkopMenuItem.Click += new System.EventHandler(this.zapiszWszystkopMenuItem_Click);
             // 
@@ -163,21 +162,21 @@
             // 
             this.zamknijMenuItem.Name = "zamknijMenuItem";
             this.zamknijMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.zamknijMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.zamknijMenuItem.Size = new System.Drawing.Size(218, 22);
             this.zamknijMenuItem.Text = "&Zamknij dokument";
             this.zamknijMenuItem.Click += new System.EventHandler(this.zamknijToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(211, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(215, 6);
             // 
             // wyjdzMenuItem
             // 
             this.wyjdzMenuItem.Name = "wyjdzMenuItem";
-            this.wyjdzMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
-                        | System.Windows.Forms.Keys.Q)));
-            this.wyjdzMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.wyjdzMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Q)));
+            this.wyjdzMenuItem.Size = new System.Drawing.Size(218, 22);
             this.wyjdzMenuItem.Text = "&Wyjdź";
             this.wyjdzMenuItem.Click += new System.EventHandler(this.wyjdźToolStripMenuItem_Click);
             // 
@@ -188,28 +187,28 @@
             this.kopiujToolStripMenuItem,
             this.wklejToolStripMenuItem});
             this.edycjaToolStripMenuItem.Name = "edycjaToolStripMenuItem";
-            this.edycjaToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.edycjaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.edycjaToolStripMenuItem.Text = "&Edycja";
             // 
             // wytnijToolStripMenuItem
             // 
             this.wytnijToolStripMenuItem.Name = "wytnijToolStripMenuItem";
             this.wytnijToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.wytnijToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.wytnijToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.wytnijToolStripMenuItem.Text = "Wytnij";
             // 
             // kopiujToolStripMenuItem
             // 
             this.kopiujToolStripMenuItem.Name = "kopiujToolStripMenuItem";
             this.kopiujToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.kopiujToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.kopiujToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.kopiujToolStripMenuItem.Text = "Kopiuj";
             // 
             // wklejToolStripMenuItem
             // 
             this.wklejToolStripMenuItem.Name = "wklejToolStripMenuItem";
             this.wklejToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.wklejToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.wklejToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.wklejToolStripMenuItem.Text = "Wklej";
             // 
             // szukajToolStripMenuItem
@@ -218,26 +217,26 @@
             this.znajdzToolStripMenuItem,
             this.zastapToolStripMenuItem});
             this.szukajToolStripMenuItem.Name = "szukajToolStripMenuItem";
-            this.szukajToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.szukajToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.szukajToolStripMenuItem.Text = "Szukaj";
             // 
             // znajdzToolStripMenuItem
             // 
             this.znajdzToolStripMenuItem.Name = "znajdzToolStripMenuItem";
             this.znajdzToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.znajdzToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.znajdzToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.znajdzToolStripMenuItem.Text = "Znajdź";
             // 
             // zastapToolStripMenuItem
             // 
             this.zastapToolStripMenuItem.Name = "zastapToolStripMenuItem";
-            this.zastapToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.zastapToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.zastapToolStripMenuItem.Text = "Zastąp";
             // 
             // oknaToolStripMenuItem
             // 
             this.oknaToolStripMenuItem.Name = "oknaToolStripMenuItem";
-            this.oknaToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.oknaToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.oknaToolStripMenuItem.Text = "&Okna";
             // 
             // pomocToolStripMenuItem
@@ -245,13 +244,13 @@
             this.pomocToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.oProgramieToolStripMenuItem});
             this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
-            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.pomocToolStripMenuItem.Text = "Po&moc";
             // 
             // oProgramieToolStripMenuItem
             // 
             this.oProgramieToolStripMenuItem.Name = "oProgramieToolStripMenuItem";
-            this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.oProgramieToolStripMenuItem.Text = "O programie";
             // 
             // editTools
@@ -275,8 +274,10 @@
             this.alignLeftButton,
             this.alignCenterButton,
             this.alignRightButton,
-            this.alignJustityButton,
-            this.toolStripSeparator5});
+            this.toolStripSeparator5,
+            this.boldButton,
+            this.italicButton,
+            this.underlineButton});
             this.editTools.Location = new System.Drawing.Point(0, 24);
             this.editTools.Name = "editTools";
             this.editTools.Size = new System.Drawing.Size(784, 25);
@@ -306,7 +307,7 @@
             // zapiszButton
             // 
             this.zapiszButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.zapiszButton.Image = ((System.Drawing.Image)(resources.GetObject("zapiszButton.Image")));
+            this.zapiszButton.Image = global::extraCell.Resource1.Actions_document_save_icon;
             this.zapiszButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.zapiszButton.Name = "zapiszButton";
             this.zapiszButton.Size = new System.Drawing.Size(23, 22);
@@ -316,7 +317,7 @@
             // zapiszJakoButton
             // 
             this.zapiszJakoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.zapiszJakoButton.Image = ((System.Drawing.Image)(resources.GetObject("zapiszJakoButton.Image")));
+            this.zapiszJakoButton.Image = global::extraCell.Resource1.Actions_document_save_as_icon;
             this.zapiszJakoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.zapiszJakoButton.Name = "zapiszJakoButton";
             this.zapiszJakoButton.Size = new System.Drawing.Size(23, 22);
@@ -326,7 +327,7 @@
             // zapiszWszystkoButton
             // 
             this.zapiszWszystkoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.zapiszWszystkoButton.Image = ((System.Drawing.Image)(resources.GetObject("zapiszWszystkoButton.Image")));
+            this.zapiszWszystkoButton.Image = global::extraCell.Resource1.Actions_document_save_all_icon;
             this.zapiszWszystkoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.zapiszWszystkoButton.Name = "zapiszWszystkoButton";
             this.zapiszWszystkoButton.Size = new System.Drawing.Size(23, 22);
@@ -382,7 +383,7 @@
             // kolorButton
             // 
             this.kolorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.kolorButton.Image = ((System.Drawing.Image)(resources.GetObject("kolorButton.Image")));
+            this.kolorButton.Image = global::extraCell.Resource1.font_colors_icon;
             this.kolorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.kolorButton.Name = "kolorButton";
             this.kolorButton.Size = new System.Drawing.Size(23, 22);
@@ -392,7 +393,7 @@
             // tloButton
             // 
             this.tloButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tloButton.Image = ((System.Drawing.Image)(resources.GetObject("tloButton.Image")));
+            this.tloButton.Image = global::extraCell.Resource1.color_picker_alternative_icon;
             this.tloButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tloButton.Name = "tloButton";
             this.tloButton.Size = new System.Drawing.Size(23, 22);
@@ -407,7 +408,7 @@
             // czcionkaButton
             // 
             this.czcionkaButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.czcionkaButton.Image = ((System.Drawing.Image)(resources.GetObject("czcionkaButton.Image")));
+            this.czcionkaButton.Image = global::extraCell.Resource1.Apps_preferences_desktop_font_icon;
             this.czcionkaButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.czcionkaButton.Name = "czcionkaButton";
             this.czcionkaButton.Size = new System.Drawing.Size(23, 22);
@@ -417,43 +418,67 @@
             // alignLeftButton
             // 
             this.alignLeftButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.alignLeftButton.Image = ((System.Drawing.Image)(resources.GetObject("alignLeftButton.Image")));
+            this.alignLeftButton.Image = global::extraCell.Resource1.text_align_left_icon;
             this.alignLeftButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.alignLeftButton.Name = "alignLeftButton";
             this.alignLeftButton.Size = new System.Drawing.Size(23, 22);
             this.alignLeftButton.Text = "Wyrównaj do lewej";
+            this.alignLeftButton.Click += new System.EventHandler(this.alignLeftButton_Click);
             // 
             // alignCenterButton
             // 
             this.alignCenterButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.alignCenterButton.Image = ((System.Drawing.Image)(resources.GetObject("alignCenterButton.Image")));
+            this.alignCenterButton.Image = global::extraCell.Resource1.text_align_center_icon;
             this.alignCenterButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.alignCenterButton.Name = "alignCenterButton";
             this.alignCenterButton.Size = new System.Drawing.Size(23, 22);
             this.alignCenterButton.Text = "Wyrównaj do środka";
+            this.alignCenterButton.Click += new System.EventHandler(this.alignCenterButton_Click_1);
             // 
             // alignRightButton
             // 
             this.alignRightButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.alignRightButton.Image = ((System.Drawing.Image)(resources.GetObject("alignRightButton.Image")));
+            this.alignRightButton.Image = global::extraCell.Resource1.text_align_right_icon;
             this.alignRightButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.alignRightButton.Name = "alignRightButton";
             this.alignRightButton.Size = new System.Drawing.Size(23, 22);
             this.alignRightButton.Text = "Wyrównaj do prawej";
-            // 
-            // alignJustityButton
-            // 
-            this.alignJustityButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.alignJustityButton.Image = ((System.Drawing.Image)(resources.GetObject("alignJustityButton.Image")));
-            this.alignJustityButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.alignJustityButton.Name = "alignJustityButton";
-            this.alignJustityButton.Size = new System.Drawing.Size(23, 22);
-            this.alignJustityButton.Text = "Wyjustuj";
+            this.alignRightButton.Click += new System.EventHandler(this.alignRightButton_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // boldButton
+            // 
+            this.boldButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.boldButton.Image = global::extraCell.Resource1.text_bold_icon;
+            this.boldButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.boldButton.Name = "boldButton";
+            this.boldButton.Size = new System.Drawing.Size(23, 22);
+            this.boldButton.Text = "Pogrubienie";
+            this.boldButton.Click += new System.EventHandler(this.boldButton_Click);
+            // 
+            // italicButton
+            // 
+            this.italicButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.italicButton.Image = global::extraCell.Resource1.text_italic_icon;
+            this.italicButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.italicButton.Name = "italicButton";
+            this.italicButton.Size = new System.Drawing.Size(23, 22);
+            this.italicButton.Text = "Pochylenie";
+            this.italicButton.Click += new System.EventHandler(this.italicButton_Click);
+            // 
+            // underlineButton
+            // 
+            this.underlineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.underlineButton.Image = global::extraCell.Resource1.text_underline_icon;
+            this.underlineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.underlineButton.Name = "underlineButton";
+            this.underlineButton.Size = new System.Drawing.Size(23, 22);
+            this.underlineButton.Text = "Podkreślenie";
+            this.underlineButton.Click += new System.EventHandler(this.underlineButton_Click);
             // 
             // formulaTools
             // 
@@ -534,7 +559,6 @@
         private System.Windows.Forms.ToolStripMenuItem wytnijToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kopiujToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wklejToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip editTools;
         private System.Windows.Forms.ToolStripButton newToolStripButton;
         private System.Windows.Forms.ToolStripButton openToolStripButton;
         private System.Windows.Forms.ToolStripButton zapiszButton;
@@ -559,7 +583,10 @@
         private System.Windows.Forms.ToolStripButton alignCenterButton;
         private System.Windows.Forms.ToolStripButton alignRightButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton alignJustityButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        internal System.Windows.Forms.ToolStripButton boldButton;
+        internal System.Windows.Forms.ToolStrip editTools;
+        internal System.Windows.Forms.ToolStripButton underlineButton;
+        internal System.Windows.Forms.ToolStripButton italicButton;
     }
 }

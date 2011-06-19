@@ -36,8 +36,8 @@ namespace extraCell.view
             MdiParent = p;
 
             extraCellTable = new ExtraCellTable();
-            extraCellTable.inputBox = ((MDIUI)MdiParent).formulaInput.TextBox;
-            extraCellTable.addressBox = ((MDIUI)MdiParent).addressInput;
+            /*extraCellTable.inputBox = ((MDIUI)MdiParent).formulaInput.TextBox;
+            extraCellTable.addressBox = ((MDIUI)MdiParent).addressInput;*/
 
             documentsCount++;
             ((MDIUI)MdiParent).activeDocument = this;

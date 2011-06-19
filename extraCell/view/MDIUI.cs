@@ -50,6 +50,7 @@ namespace extraCell.view
             alignCenterButton.Enabled = enabled;
             zapiszJakoButton.Enabled = enabled;
             zapiszWszystkoButton.Enabled = enabled;
+            zapiszWszystkopMenuItem.Enabled = enabled;
         }
 
         private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -75,6 +76,7 @@ namespace extraCell.view
             documentForm.Show();
             if(path != null)
                 documentForm.loadDocument(path);
+
             documentForm.extraCellTable.selectCell(1, 1);
             documentForm.extraCellTable.selectCell(0, 0);
         }
@@ -186,5 +188,68 @@ namespace extraCell.view
                 doc.saveFile();
         }
 
+        private void boldButton_Click(object sender, EventArgs e)
+        {
+            setFontStyle(FontStyle.Bold, boldButton);
+        }
+
+        private void italicButton_Click(object sender, EventArgs e)
+        {
+            setFontStyle(FontStyle.Italic, italicButton);
+        }
+
+        private void underlineButton_Click(object sender, EventArgs e)
+        {
+            setFontStyle(FontStyle.Underline, underlineButton);
+        }
+
+        private void setFontStyle(FontStyle fs, ToolStripButton button)
+        {
+            FontStyle fontStyle;
+            button.Checked = !button.Checked;
+            foreach(DataGridViewCell cell in activeDocument.extraCellTable.SelectedCells)
+            {
+                if (cell.Style.Font == null) 
+                    cell.Style.Font = DefaultFont;
+                
+                fontStyle = cell.Style.Font.Style;
+                
+                if (button.Checked)
+                    fontStyle |= fs;
+                else
+                    fontStyle ^= fs;
+
+                cell.Style.Font = new Font(cell.Style.Font, fontStyle);
+            }
+        }
+
+        private void setCellAlign(DataGridViewContentAlignment ca , ToolStripButton button)
+        {
+            alignCenterButton.Checked = false;
+            alignLeftButton.Checked = false;
+            alignRightButton.Checked = false;
+
+            button.Checked = true;
+            
+            foreach (DataGridViewCell cell in activeDocument.extraCellTable.SelectedCells)
+            {
+                cell.Style.Alignment = ca;
+            }
+        }
+
+        private void alignLeftButton_Click(object sender, EventArgs e)
+        {
+            setCellAlign(DataGridViewContentAlignment.MiddleLeft, alignLeftButton);
+        }
+
+        private void alignCenterButton_Click_1(object sender, EventArgs e)
+        {
+            setCellAlign(DataGridViewContentAlignment.MiddleCenter, alignCenterButton);
+        }
+
+        private void alignRightButton_Click(object sender, EventArgs e)
+        {
+            setCellAlign(DataGridViewContentAlignment.MiddleRight, alignRightButton);
+        }
     }
 }
