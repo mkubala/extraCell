@@ -123,7 +123,7 @@
             this.Controls.Add(this.searchQueryInputBox);
             this.Name = "SearchForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "test";
+            this.Text = "Znajdź...";
             this.opcjeGroupBox.ResumeLayout(false);
             this.opcjeGroupBox.PerformLayout();
             this.ResumeLayout(false);

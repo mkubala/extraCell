@@ -6,21 +6,21 @@ using System.Diagnostics;
 
 namespace extraCell.formula.functions
 {
-    class iloraz : IFunction
+    class pierwiastek : IFunction
     {
         public Object run(Object[] args)
         {
             Double res = 0d;
 
 
-            double[] x = new double[2];
+            double x = new double();
 
-            if (args.Count() == 2)
+            if (args.Count() == 1)
             {
-                for (int i = 0; i < 2; i++)
-                    x[i] = Convert.ToDouble((args[i].ToString().Trim()).Replace('.', ','));
 
-                res = (Convert.ToDouble(x[0]) /  Convert.ToDouble(x[1]));
+                x = Convert.ToDouble((args[0].ToString().Trim()).Replace('.', ','));
+
+                res = Math.Sqrt(Convert.ToDouble(x));
             }
             else
             {
@@ -32,17 +32,14 @@ namespace extraCell.formula.functions
 
         public string getHelp()
         {
-            return "Funkcja zwraca wynik dzielenia pierwszego argumentu przez drugi";
+            return "Funkcja zwraca wartość pierwiastka kwadratowego.";
         }
 
         public string[] getExamples()
         {
             return new string[] { 
-                "iloraz(9,3)",
-                "iloraz(A2, B2)",
-                "iloraz(4.2, 2.1)"
+                "pierwiastek(9)"
             };
         }
-
     }
 }

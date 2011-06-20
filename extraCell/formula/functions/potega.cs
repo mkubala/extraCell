@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace extraCell.formula.functions
 {
-    class iloraz : IFunction
+    class potega : IFunction
     {
         public Object run(Object[] args)
         {
@@ -20,7 +20,7 @@ namespace extraCell.formula.functions
                 for (int i = 0; i < 2; i++)
                     x[i] = Convert.ToDouble((args[i].ToString().Trim()).Replace('.', ','));
 
-                res = (Convert.ToDouble(x[0]) /  Convert.ToDouble(x[1]));
+                res = Math.Pow(Convert.ToDouble(x[0]), Convert.ToDouble(x[1]));
             }
             else
             {
@@ -30,19 +30,18 @@ namespace extraCell.formula.functions
             return res.ToString();
         }
 
+
         public string getHelp()
         {
-            return "Funkcja zwraca wynik dzielenia pierwszego argumentu przez drugi";
+            return "Funkcja przyjmuje 2 argumenty i zwraca wartość potęgi. Pierwszy argument stanowi podstawę, kolejny - wykładnik";
         }
 
         public string[] getExamples()
         {
             return new string[] { 
-                "iloraz(9,3)",
-                "iloraz(A2, B2)",
-                "iloraz(4.2, 2.1)"
+                "potega(2,2)",
+                "potega(3,2)",
             };
         }
-
     }
 }

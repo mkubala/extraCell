@@ -55,6 +55,7 @@ namespace extraCell.view
             this.Size = new System.Drawing.Size(552, 270);
 
             InitializeComponent();
+            DoubleBuffered = true;
         }
 
         // Numerowanie wierszy
@@ -145,6 +146,7 @@ namespace extraCell.view
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.CausesValidation = false;
+            this.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.ContextMenuStrip = this.cellContextMenu;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -182,14 +184,22 @@ namespace extraCell.view
                 
                 int colEnd = ece.getColumnNumber(m.Groups["colEnd"].Value);
                 int rowEnd = Convert.ToInt32(m.Groups["rowEnd"].Value);
-                
-                if(colStart > colEnd && rowStart > rowEnd) {
+
+                if (colStart == colEnd && rowStart == rowEnd)
+                {
+                    selectCell(colStart, rowStart);
+                    addressBox.Text = m.Groups["colStart"].Value + m.Groups["rowStart"].Value;
+                    return;
+                }
+
+                if(colStart >= colEnd && rowStart >= rowEnd) {
+                    addressBox.Text = m.Groups["colEnd"].Value + m.Groups["rowEnd"].Value + ":" + m.Groups["colStart"].Value + m.Groups["rowStart"].Value;
                     int tmp = colEnd;
                     colEnd = colStart;
                     colStart = tmp;
                     tmp = rowEnd;
-                    rowEnd = rowStart;
-                    rowStart = tmp;
+                    rowEnd = rowStart + 1;
+                    rowStart = tmp - 1;
                 }
 
                 int width = colEnd - colStart + 1;
@@ -325,8 +335,6 @@ namespace extraCell.view
                     this.Rows[cell.RowIndex].HeaderCell.Style.BackColor = selectedHeadersBackColor;
                     this.Rows[cell.RowIndex].HeaderCell.Style.ForeColor = selectedHeadersForeColor;
                 }
-
-//                updateAddresBox();
             }
         }
 

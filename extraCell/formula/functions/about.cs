@@ -11,5 +11,16 @@ namespace extraCell.formula.functions
         {
             return "by: Marcin Kubala, Michał Urbańczyk, Paweł Ochalik";
         }
+
+        public string getHelp() {
+            return "Funkcja ta wyświetla krótką informację o autorach.";
+        }
+        
+        public string[] getExamples()
+        {
+            return new string[] { 
+                "about()"
+            };
+        }
     }
 }

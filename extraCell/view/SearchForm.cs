@@ -16,23 +16,31 @@ namespace extraCell.view
         private LinkedList<int[]> res;
         private int currentIndex = 0;
 
-        public SearchForm() { InitializeComponent(); }
-
-        public SearchForm(ExtraCellTable ect)
+        public SearchForm(MDIUI p)
         {
-            extraCellTable = ect;
+            MdiParent = p;
             InitializeComponent();
         }
 
         private void szukaj()
         {
-            RegexOptions options = RegexOptions.None;
+            if (searchQueryInputBox.Text.Trim().Length == 0)
+            {
+                setResultOptions(false);
+                MessageBox.Show("Nie podano wzorca wyszukiwania");
+                return;
+            }
+
+            extraCellTable = ((MDIUI)MdiParent).activeDocument.extraCellTable;
+            RegexOptions options = RegexOptions.Compiled;// = RegexOptions.None;
 
             if (!wielkoscZnakowCheck.Checked)
-                options = options | RegexOptions.IgnoreCase;
+                options |= RegexOptions.IgnoreCase;
 
             if (caleWyrazyCheck.Checked)
-                options = options | RegexOptions.ExplicitCapture;
+                options |= RegexOptions.ExplicitCapture;
+
+            System.Diagnostics.Debug.WriteLine(options);
 
             res = extraCellTable.ece.search(searchQueryInputBox.Text.ToString(), options);
             if (res.Count > 0)

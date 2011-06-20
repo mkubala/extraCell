@@ -62,9 +62,7 @@
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
@@ -100,6 +98,12 @@
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>extraCell.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -114,6 +118,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="domain\Cell.cs" />
+    <Compile Include="formula\functions\konkatenacja.cs" />
+    <Compile Include="formula\functions\max.cs" />
+    <Compile Include="formula\functions\min.cs" />
+    <Compile Include="formula\functions\modulo.cs" />
+    <Compile Include="formula\functions\pierwiastek.cs" />
+    <Compile Include="formula\functions\potega.cs" />
+    <Compile Include="formula\functions\srednia.cs" />
     <Compile Include="helpers\Converters.cs" />
     <Compile Include="domain\ExtraCellEngine.cs">
       <SubType>Component</SubType>
@@ -129,6 +140,12 @@
     </Compile>
     <Compile Include="view\DocumentForm.Designer.cs">
       <DependentUpon>DocumentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\DostepneFunkcje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\DostepneFunkcje.Designer.cs">
+      <DependentUpon>DostepneFunkcje.cs</DependentUpon>
     </Compile>
     <Compile Include="view\ExtraCellCustomCell.cs" />
     <Compile Include="view\MDIUI.cs">
@@ -146,7 +163,6 @@
     <Compile Include="formula\functions\about.cs" />
     <Compile Include="formula\functions\iloczyn.cs" />
     <Compile Include="formula\functions\iloraz.cs" />
-    <Compile Include="formula\functions\print.cs" />
     <Compile Include="formula\functions\roznica.cs" />
     <Compile Include="formula\functions\suma.cs" />
     <Compile Include="formula\IFunction.cs" />
@@ -161,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\DocumentForm.resx">
       <DependentUpon>DocumentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\DostepneFunkcje.resx">
+      <DependentUpon>DostepneFunkcje.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\MDIUI.resx">
       <DependentUpon>MDIUI.cs</DependentUpon>

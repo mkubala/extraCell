@@ -6,23 +6,33 @@ using System.Diagnostics;
 
 namespace extraCell.formula.functions
 {
-    class suma : IFunction
+    class min : IFunction
     {
         public Object run(Object[] args)
         {
-            Double res = 0d;
+
+            Double min = 0;
+
             foreach (Object arg in args)
                 if (arg.ToString().Length > 0)
                 {
-                    foreach (String s in arg.ToString().Split(','))
-                        res += Convert.ToDouble(s.Trim().Replace('.',','));
+                    
+                    String [] sp = arg.ToString().Split(',');
+
+                    min = Convert.ToDouble(sp[0].Trim().Replace('.', ','));
+
+                    for (int i=1;i< sp.Count();i++)
+                    {
+                        var akt = Convert.ToDouble(sp[i].Trim().Replace('.', ','));
+                        min = (akt < min) ? akt : min;
+                    }
                 }
                 else
                 {
                     return "###";
                 }
 
-            return res.ToString();
+            return min.ToString();
         }
 
         public string getHelp()
@@ -33,10 +43,11 @@ namespace extraCell.formula.functions
         public string[] getExamples()
         {
             return new string[] { 
-                "suma(2,3)",
-                "suma(A3:F13)",
-                "suma(0.0000010, 4.42, 423.65, 22.1)"
+                "max(2,5,100)",
+                "max(2.1, 4.4, 0.99973)",
+                "max(A3:D8)"
             };
         }
+
     }
 }

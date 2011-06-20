@@ -15,10 +15,14 @@ namespace extraCell.view
     {
         internal static String documentFilter = "ExtraCell Document (*.xcd)|*.xcd|XML document (*.xml)|*.xml|Wszystkie pliki (*.*)|*.*";
         public DocumentForm activeDocument {get; set; }
+        internal SearchForm searchForm;
+        private DostepneFunkcje dostepneFunkcje;
 
         public MDIUI()
         {
             InitializeComponent();
+            searchForm = new SearchForm(this);
+            dostepneFunkcje = new DostepneFunkcje();
             setEditOptions(false);
         }
 
@@ -49,7 +53,8 @@ namespace extraCell.view
                 pomocToolStripMenuItem,
                 oProgramieToolStripMenuItem,
                 nowyMenuItem,
-                wyjdzMenuItem
+                wyjdzMenuItem,
+                dostepneFunkcjeMenuItem
             })
                 comp.Enabled = true;
         }
@@ -95,18 +100,22 @@ namespace extraCell.view
 
         private void MDIUI_MdiChildActivate(object sender, EventArgs e)
         {
-            if (ActiveMdiChild != null && !ActiveMdiChild.IsDisposed)
+            if (ActiveMdiChild.GetType().IsAssignableFrom(typeof(DocumentForm))) 
             {
-                activeDocument = ((DocumentForm)ActiveMdiChild);
-                formulaInput.Text = activeDocument.extraCellTable.CurrentCell.Value.ToString();
-                setEditOptions(true);
-            }
-            else
-            {
-                setEditOptions(false);
-                activeDocument = null;
-                addressInput.Text = "";
-                formulaInput.Text = "";
+                if (ActiveMdiChild != null && !ActiveMdiChild.IsDisposed)
+                {
+                    activeDocument = ((DocumentForm)ActiveMdiChild);
+                    DataGridViewCell cell = activeDocument.extraCellTable.CurrentCell;
+                    formulaInput.Text = activeDocument.extraCellTable.ece.getCell(cell.ColumnIndex, cell.RowIndex).formula;
+                    setEditOptions(true);
+                }
+                else
+                {
+                    setEditOptions(false);
+                    activeDocument = null;
+                    addressInput.Text = "";
+                    formulaInput.Text = "";
+                }
             }
         }
 
@@ -157,17 +166,6 @@ namespace extraCell.view
         private void zapiszToolStripMenuItem_Click(object sender, EventArgs e)
         {
             activeDocument.saveFile();
-        }
-
-        private void MDIUI_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
-
-        private void formulaInput_TextChanged(object sender, EventArgs e)
-        {
-            /*activeDocument.extraCellTable.isEditing = true;
-            activeDocument.extraCellTable.CurrentCell.Value = formulaInput.Text;*/
         }
 
         private void wyjdźToolStripMenuItem_Click(object sender, EventArgs e)
@@ -253,6 +251,70 @@ namespace extraCell.view
         private void alignRightButton_Click(object sender, EventArgs e)
         {
             setCellAlign(DataGridViewContentAlignment.MiddleRight, alignRightButton);
+        }
+
+        private void znajdzToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            searchForm.Activate();
+            searchForm.Show();
+        }
+
+        private void wklejToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExtraCellTable ect = activeDocument.extraCellTable;
+            if (ect.GetCellCount(DataGridViewElementStates.Selected) > 0)
+            {
+                try
+                {
+                    int x = ect.CurrentCell.ColumnIndex;
+                    int y = ect.CurrentCell.RowIndex;
+
+                    char[] lineDelim = { '\r', '\n' },
+                            colDelim = { '\t' };
+
+                    string[] rows = ((string)Clipboard.GetDataObject().GetData(DataFormats.Text)).Split(lineDelim, StringSplitOptions.RemoveEmptyEntries);
+
+                    for (int i = 0; i < rows.Length; i++)
+                    {
+                        string[] cols = rows[i].Split(colDelim);
+                        for (int j = 0; j < cols.Length; j++)
+                        {
+                            ect.Rows[y + i].Cells[x + j].Value = cols[j];
+                        }
+                    }
+                }
+                catch (Exception) { }
+            }
+        }
+
+        private void kopiujToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExtraCellTable ect = activeDocument.extraCellTable;
+            try
+            {
+                Clipboard.SetDataObject(ect.GetClipboardContent().GetData(DataFormats.Text));
+            }
+            catch (Exception) { }
+        }
+
+        private void wytnijToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExtraCellTable ect = activeDocument.extraCellTable;
+            try
+            {
+                Clipboard.SetDataObject(ect.GetClipboardContent().GetData(DataFormats.Text));
+                foreach (DataGridViewCell cell in ect.SelectedCells)
+                    cell.Value = "";
+            }
+            catch (Exception) { }
+        }
+
+        private void dostepneFunkcjeMenuItem_Click(object sender, EventArgs e)
+        {
+            dostepneFunkcje.Activate();
+            if (dostepneFunkcje.IsDisposed)
+                dostepneFunkcje = new DostepneFunkcje();
+            dostepneFunkcje.Show();
         }
     }
 }

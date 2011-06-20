@@ -6,8 +6,9 @@ using System.Diagnostics;
 
 namespace extraCell.formula.functions
 {
-    class roznica : IFunction
+    class srednia : IFunction
     {
+        int count = 0;
         public Object run(Object[] args)
         {
             Double res = 0d;
@@ -15,27 +16,29 @@ namespace extraCell.formula.functions
                 if (arg.ToString().Length > 0)
                 {
                     foreach (String s in arg.ToString().Split(','))
-                        res -= Convert.ToDouble(s.Trim().Replace('.', ','));
+                    {
+                        res += Convert.ToDouble(s.Trim().Replace('.', ','));
+                        count++;
+                    }
                 }
                 else
                 {
                     return "###";
                 }
 
-            return res.ToString();
+            return (res / count).ToString();
         }
+
 
         public string getHelp()
         {
-            return "Funkcja zwraca wynik odejmowania.";
+            return "Funkcja zwraca średnia arytmetyczna wartości w zadanym zbiorze.";
         }
 
         public string[] getExamples()
         {
             return new string[] { 
-                "roznica(10, 2)",
-                "roznica(2.1, 4.4, 0.99973)",
-                "roznica(200,2,7,8,34,6,3)"
+                "srednia(2, 3.3, 50, 12)"
             };
         }
     }

@@ -8,5 +8,7 @@ namespace extraCell.formula
     interface IFunction
     {
         Object run(Object[] args);
+        string getHelp();
+        string[] getExamples();
     }
 }

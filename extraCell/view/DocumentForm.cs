@@ -36,8 +36,6 @@ namespace extraCell.view
             MdiParent = p;
 
             extraCellTable = new ExtraCellTable();
-            /*extraCellTable.inputBox = ((MDIUI)MdiParent).formulaInput.TextBox;
-            extraCellTable.addressBox = ((MDIUI)MdiParent).addressInput;*/
 
             documentsCount++;
             ((MDIUI)MdiParent).activeDocument = this;
@@ -119,6 +117,13 @@ namespace extraCell.view
             documentsCount--;
             if (documentsCount <= 0)
                 ((MDIUI)MdiParent).setEditOptions(false);
+        }
+
+        private void DocumentForm_Activated(object sender, EventArgs e)
+        {
+            SearchForm searchForm = ((MDIUI)MdiParent).searchForm;
+            if (!searchForm.IsDisposed)
+                searchForm.Activate();
         }
 
     }

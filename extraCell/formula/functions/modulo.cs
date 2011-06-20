@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace extraCell.formula.functions
 {
-    class iloraz : IFunction
+    class modulo : IFunction
     {
         public Object run(Object[] args)
         {
@@ -20,7 +20,7 @@ namespace extraCell.formula.functions
                 for (int i = 0; i < 2; i++)
                     x[i] = Convert.ToDouble((args[i].ToString().Trim()).Replace('.', ','));
 
-                res = (Convert.ToDouble(x[0]) /  Convert.ToDouble(x[1]));
+                res = Convert.ToDouble(x[0]) %  Convert.ToDouble(x[1]);
             }
             else
             {
@@ -32,17 +32,16 @@ namespace extraCell.formula.functions
 
         public string getHelp()
         {
-            return "Funkcja zwraca wynik dzielenia pierwszego argumentu przez drugi";
+            return "Funkcja zwraca modulo - resztę z dzielenia.";
         }
 
         public string[] getExamples()
         {
             return new string[] { 
-                "iloraz(9,3)",
-                "iloraz(A2, B2)",
-                "iloraz(4.2, 2.1)"
+                "modulo(2, 5)",
+                "modulo(2.1, 4.4)",
+                "modulo(A3, D8)"
             };
         }
-
     }
 }
