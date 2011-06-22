@@ -6,33 +6,29 @@ using System.Diagnostics;
 
 namespace extraCell.formula.functions
 {
-    class max : IFunction
+    class min : IFunction
     {
         public Object run(Object[] args)
         {
 
-            Double max = 0;
+            Double min = 0;
+
+            min = Convert.ToDouble(args[0].ToString().Trim().Replace('.', ','));
 
             foreach (Object arg in args)
                 if (arg.ToString().Length > 0)
                 {
-                    
-                    String [] sp = arg.ToString().Split(',');
 
-                    max = Convert.ToDouble(sp[0].Trim().Replace('.', ','));
+                    var akt = Convert.ToDouble(arg.ToString().Trim().Replace('.', ','));
+                    if (akt < min) min = akt;
 
-                    for (int i=1;i< sp.Count();i++)
-                    {
-                        var akt = Convert.ToDouble(sp[i].Trim().Replace('.', ','));
-                        max = (akt > max) ? akt : max;
-                    }
                 }
                 else
                 {
                     return "###";
                 }
 
-            return max.ToString();
+            return min.ToString();
         }
 
         public string getHelp()

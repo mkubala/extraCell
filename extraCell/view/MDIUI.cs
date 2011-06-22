@@ -316,5 +316,10 @@ namespace extraCell.view
                 dostepneFunkcje = new DostepneFunkcje();
             dostepneFunkcje.Show();
         }
+
+        private void MDIUI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

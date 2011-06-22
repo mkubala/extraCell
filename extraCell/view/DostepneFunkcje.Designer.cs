@@ -31,16 +31,16 @@
             this.listaFunkcjiBox = new System.Windows.Forms.ListBox();
             this.tabki = new System.Windows.Forms.TabControl();
             this.opisTab = new System.Windows.Forms.TabPage();
-            this.przykladyTab = new System.Windows.Forms.TabPage();
-            this.przykladyLabel = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.opisLabel = new System.Windows.Forms.Label();
+            this.przykladyTab = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.przykladyLabel = new System.Windows.Forms.Label();
             this.tabki.SuspendLayout();
             this.opisTab.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.przykladyTab.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // listaFunkcjiBox
@@ -73,34 +73,6 @@
             this.opisTab.Text = "Opis";
             this.opisTab.UseVisualStyleBackColor = true;
             // 
-            // przykladyTab
-            // 
-            this.przykladyTab.Controls.Add(this.flowLayoutPanel1);
-            this.przykladyTab.Location = new System.Drawing.Point(4, 22);
-            this.przykladyTab.Name = "przykladyTab";
-            this.przykladyTab.Padding = new System.Windows.Forms.Padding(3);
-            this.przykladyTab.Size = new System.Drawing.Size(350, 173);
-            this.przykladyTab.TabIndex = 1;
-            this.przykladyTab.Text = "Przykłady";
-            this.przykladyTab.UseVisualStyleBackColor = true;
-            // 
-            // przykladyLabel
-            // 
-            this.przykladyLabel.AutoSize = true;
-            this.przykladyLabel.Location = new System.Drawing.Point(3, 0);
-            this.przykladyLabel.Name = "przykladyLabel";
-            this.przykladyLabel.Size = new System.Drawing.Size(200, 13);
-            this.przykladyLabel.TabIndex = 0;
-            this.przykladyLabel.Text = "Wybierz funkcję aby zobaczyć przykłady";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.przykladyLabel);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 6);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(338, 161);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.opisLabel);
@@ -118,6 +90,34 @@
             this.opisLabel.TabIndex = 0;
             this.opisLabel.Text = "Wybierz funkcję aby wyświetlić pomoc";
             // 
+            // przykladyTab
+            // 
+            this.przykladyTab.Controls.Add(this.flowLayoutPanel1);
+            this.przykladyTab.Location = new System.Drawing.Point(4, 22);
+            this.przykladyTab.Name = "przykladyTab";
+            this.przykladyTab.Padding = new System.Windows.Forms.Padding(3);
+            this.przykladyTab.Size = new System.Drawing.Size(350, 173);
+            this.przykladyTab.TabIndex = 1;
+            this.przykladyTab.Text = "Przykłady";
+            this.przykladyTab.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.przykladyLabel);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 6);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(338, 161);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // przykladyLabel
+            // 
+            this.przykladyLabel.AutoSize = true;
+            this.przykladyLabel.Location = new System.Drawing.Point(3, 0);
+            this.przykladyLabel.Name = "przykladyLabel";
+            this.przykladyLabel.Size = new System.Drawing.Size(200, 13);
+            this.przykladyLabel.TabIndex = 0;
+            this.przykladyLabel.Text = "Wybierz funkcję aby zobaczyć przykłady";
+            // 
             // DostepneFunkcje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,15 +126,15 @@
             this.Controls.Add(this.tabki);
             this.Controls.Add(this.listaFunkcjiBox);
             this.Name = "DostepneFunkcje";
-            this.Text = "DostepneFunkcje";
+            this.Text = "Dostępne funkcje";
             this.Load += new System.EventHandler(this.DostepneFunkcje_Load);
             this.tabki.ResumeLayout(false);
             this.opisTab.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             this.przykladyTab.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }

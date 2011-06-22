@@ -522,6 +522,7 @@
             this.MainMenuStrip = this.mainMenu;
             this.Name = "MDIUI";
             this.Text = "MDIUI";
+            this.Load += new System.EventHandler(this.MDIUI_Load);
             this.MdiChildActivate += new System.EventHandler(this.MDIUI_MdiChildActivate);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();

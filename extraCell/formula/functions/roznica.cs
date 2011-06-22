@@ -10,18 +10,26 @@ namespace extraCell.formula.functions
     {
         public Object run(Object[] args)
         {
-            Double res = 0d;
-            foreach (Object arg in args)
-                if (arg.ToString().Length > 0)
+            Double res = Convert.ToDouble(args[0].ToString().Trim().Replace('.', ','));
+
+           for (int i=1;i<args.Count();i++)
+           {
+                if (args[i].ToString().Length > 0)
                 {
-                    foreach (String s in arg.ToString().Split(','))
-                        res -= Convert.ToDouble(s.Trim().Replace('.', ','));
+                    //   foreach (String s in arg.ToString().Split(','))
+                    //res -= Convert.ToDouble(s.Trim().Replace('.', ','));
+
+                    var akt = Convert.ToDouble(args[i].ToString().Trim().Replace('.', ','));
+
+                    res -= akt;
                 }
+           
+                
                 else
                 {
                     return "###";
                 }
-
+        }
             return res.ToString();
         }
 

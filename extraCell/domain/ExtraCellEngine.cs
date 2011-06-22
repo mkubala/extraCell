@@ -157,7 +157,7 @@ namespace extraCell.domain
                                     writer.WriteAttributeString("formula", cell.formula);
                                     writer.WriteAttributeString("result", cell.result);
 
-                                    writer.WriteStartElement("style");
+//                                    writer.WriteStartElement("style");
                                         writer.WriteAttributeString("bgcolor", viewCell.Style.BackColor.ToArgb().ToString());
                                         writer.WriteAttributeString("fgcolor", viewCell.Style.ForeColor.ToArgb().ToString());
                                         writer.WriteAttributeString("format", viewCell.Style.Format);
@@ -177,7 +177,7 @@ namespace extraCell.domain
                                             writer.WriteEndElement();
                                         }
 
-                                    writer.WriteEndElement();
+  //                                  writer.WriteEndElement();
 
                                 writer.WriteEndElement();
                             }
@@ -234,11 +234,11 @@ namespace extraCell.domain
 
                                     setCell(col, row, new Cell(reader["formula"], reader["result"]));
                                     viewCell = ect.Rows[row].Cells[col];
-                                    break;
-                                case "style":
+                                    /*break;
+                                case "style":*/
                                     if (reader["format"] != null)
                                         viewCell.Style.Format = reader["format"];
-                                    if (reader["bgcolor"] != null)
+                                    if (reader["bgcolor"] != null && !reader["bgcolor"].Equals("0"))
                                         viewCell.Style.BackColor = Color.FromArgb(Convert.ToInt32(reader["bgcolor"]));
                                     if (reader["fgcolor"] != null)
                                         viewCell.Style.ForeColor = Color.FromArgb(Convert.ToInt32(reader["fgcolor"]));

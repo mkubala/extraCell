@@ -1,16 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="extraCell.Form1">
-    <Position X="3.5" Y="0.5" Width="3" />
-    <TypeIdentifier>
-      <HashCode>/z+4CI1C8C/tPzf//2iRSZjD/z8YAMDEP/z/fzADYvE=</HashCode>
-      <FileName>Form1.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="System.Windows.Forms.DataGridView" HideInheritanceLine="true">
-    <Position X="0.5" Y="3.25" Width="2" />
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="System.Windows.Forms.DataGridView" Collapsed="true" HideInheritanceLine="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <Compartments>
-      <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
       <Compartment Name="Events" Collapsed="true" />
     </Compartments>
@@ -29,14 +21,181 @@
       </Class>
     </NestedTypes>
     <TypeIdentifier />
-    <Lollipop Position="0.846" />
+    <Lollipop Position="0.846" Collapsed="true" />
   </Class>
-  <Class Name="extraCell.Formula">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+  <Class Name="extraCell.domain.ExtraCellEngine" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAACAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Formula.cs</FileName>
+      <HashCode>AEUkAEBARAGAAAAAAgEAABAAAAAAAAAAAigEABAAAAE=</HashCode>
+      <FileName>domain\ExtraCellEngine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="extraCell.formula.functions.suma" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>formula\functions\suma.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="extraCell.formula.functions.about" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>formula\functions\about.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="extraCell.formula.functions.iloczyn" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>formula\functions\iloczyn.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="extraCell.formula.functions.iloraz" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>formula\functions\iloraz.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="extraCell.formula.functions.konkatenacja" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>formula\functions\konkatenacja.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="extraCell.formula.functions.min" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>formula\functions\max.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="extraCell.formula.functions.max" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>formula\functions\min.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="extraCell.formula.functions.modulo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>formula\functions\modulo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="extraCell.formula.functions.pierwiastek" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>formula\functions\pierwiastek.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="extraCell.formula.functions.potega" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>formula\functions\potega.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="extraCell.formula.functions.roznica" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>formula\functions\roznica.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="extraCell.formula.functions.srednia" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAAAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>formula\functions\srednia.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="extraCell.helpers.CellClassConverter" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>helpers\Converters.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="extraCell.view.SearchForm" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAAAAAABCAABACAACKAAAAKiACAgAAEAACgAAACAEA=</HashCode>
+      <FileName>view\SearchForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="extraCell.view.DocumentForm" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAQACAAAQAAACCAAAAWAIAEAAAAAIAQAAAAAAA=</HashCode>
+      <FileName>view\DocumentForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="extraCell.view.DostepneFunkcje" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQABAAAAACAAAAACAACAAgACAIAhAAAAACAAAAAAQgA=</HashCode>
+      <FileName>view\DostepneFunkcje.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="extraCell.view.ExtraCellCustomCell" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAEAAAAAAAABAABAAAAAAAAABAIAAAAAIAAA=</HashCode>
+      <FileName>view\ExtraCellCustomCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="extraCell.view.ExtraCellTable" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJAAAQCAEIABAACAgGAANAiAAAACAAEAAAAEAAAAAg=</HashCode>
+      <FileName>view\ExtraCellTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="extraCell.view.MDIUI" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AxpiML1CASTAMIEAAAqsOQAyA0AAHIAAaRyJ6TBDAEw=</HashCode>
+      <FileName>view\MDIUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="extraCell.Program" Collapsed="true">
+    <Position X="15" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="extraCell.domain.IEngine" Collapsed="true">
+    <Position X="3" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAEAABAAAAAAAAgAAAAAAAAAAAAAAAigAABAAAAA=</HashCode>
+      <FileName>domain\IEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="extraCell.formula.IFunction" Collapsed="true">
+    <Position X="4.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>formula\IFunction.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
